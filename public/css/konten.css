@@ -1,0 +1,83 @@
+
+        .body-container {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            text-align: center;
+            background-color: #044E75;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .container-content {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+        .makanan-container {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .kaulinan-container {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .wisata-container {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .text-box {
+            flex: 1;
+            padding: 20px;
+        }
+        .image-box {
+            flex: 1;
+            text-align: center;
+        }
+        img {
+            width: 300px; /* Ukuran gambar */
+            max-width: 300px; /* Membatasi ukuran maksimal */
+            height: 300px; /* Menyamakan tinggi gambar */
+            object-fit: cover; /* Agar gambar tetap proporsional */
+            border-radius: 10px;
+        }
+        /* Gaya untuk zigzag */
+        .reverse {
+            flex-direction: row-reverse;
+        }
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .makanan-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .reverse {
+                flex-direction: column;
+            }
+            img {
+                max-width: 200px;
+                height: auto;
+            }
+        }

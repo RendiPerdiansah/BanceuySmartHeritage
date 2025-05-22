@@ -110,8 +110,17 @@
       <label for="nama_pengunjung">Nama Lengkap</label>
       <input type="text" id="nama_pengunjung" name="nama_pengunjung" required>
 
-      <label for="no_hp">Nomor Telepon</label>
-      <input type="text" id="no_hp" name="no_hp" required>
+      @php
+          $user = auth('akun')->user();
+      @endphp
+
+      @if($user)
+          <label for="no_hp">Nomor Telepon</label>
+          <input type="text" id="no_hp" name="no_hp" value="{{ $user->no_hp }}" readonly>
+      @else
+          <label for="no_hp">Nomor Telepon</label>
+          <input type="text" id="no_hp" name="no_hp" required>
+      @endif
 
       <label for="tanggal_kunjungan">Tanggal Kunjungan</label>
       <input type="text" id="tanggal_kunjungan" name="tanggal_kunjungan" required>

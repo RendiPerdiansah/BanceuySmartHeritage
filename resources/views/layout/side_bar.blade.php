@@ -55,26 +55,54 @@
                   </a>
                   <div class="collapse" id="tabel">
                       <ul class="nav nav-collapse">
+                         @if(auth('akun')->check() && auth('akun')->user()->level == 1)
                           <li>
                               <a href="/tabel_akun">
                                   <span class="sub-item">Tabel Akun</span>
                               </a>
                           </li>
+                          @endif
                           <li>
                               <a href="/homestay-table">
                                   <span class="sub-item">Tabel Homestay</span>
                               </a>
                           </li>
+                           @if(auth('akun')->check() && auth('akun')->user()->level == 1)
                           <li>
                               <a href="/tabel_pesanan">
                                   <span class="sub-item">Tabel Pesanan</span>
                               </a>
                           </li>
-                          <li>
-                              <a href="">
-                                  <span class="sub-item">Tabel -</span>
+                            @endif
+                          {{-- <li>
+                              <a href="/tabel_kelola_homestay">
+                                  <span class="sub-item">Tabel Kelola Homestay</span>
                               </a>
-                          </li>
+                          </li> --}}
+                          @if (auth('akun')->check() && auth('akun')->user()->level == 2)
+                              <li>
+                            <a href="/tabel_pesanan_homestay">
+                                <span class="sub-item">Tabel pesanan Homestay</span>
+                            </a>
+                           </li>
+                          @endif
+                          
+                            @if(auth('akun')->check() && auth('akun')->user()->level == 1)
+                           <li>
+                            <a href="/tabel_buku_kunjungan">
+                                <span class="sub-item">Tabel kelola data pengunjung</span>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if (auth('akun')->check() && auth('akun')->user()->level == 1)
+                           <li>
+                            <a href="/tabel_pembayaran">
+                                <span class="sub-item">Tabel pembayaran</span>
+                            </a>
+                        </li> 
+                        @endif
+                        
                          
                       </ul>
                   </div>

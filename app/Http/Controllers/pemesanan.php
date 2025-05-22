@@ -22,15 +22,27 @@ class Pemesanan extends Controller
         $request->validate([
             'nama_pengunjung' => 'required',
             'tanggal_kunjungan' => 'required|date',
+            'jumlah_pengunjung' => 'required|integer|min:1|max:50',
+            'nama_paket' => 'required',
+            'nama_homestay' => 'required',
+            'catatan_tambahan' => 'nullable|string|max:255',
         ]);
 
+        $user = auth('akun')->user();
+
+        $data = $request->all();
+        if ($user) {
+            $data['no_hp'] = $user->no_hp;
+            $data['alamat'] = $user->alamat;
+        }
+
         // Cek apakah tanggal sudah penuh
-        $jumlah = PemesananPaket::where('tanggal_kunjungan', $request->tanggal_kunjungan)->count();
-        if ($jumlah >= 50) {
+        $jumlah = PemesananPaket::where('tanggal_kunjungan', $data['tanggal_kunjungan'])->count();
+        if ($jumlah >= 2) {
             return back()->with('error', 'Tanggal kunjungan sudah penuh.');
         }
 
-        PemesananPaket::create($request->all());
+        PemesananPaket::create($data);
         return back()->with('success', 'Pemesanan berhasil.');
     }
 

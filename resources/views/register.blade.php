@@ -36,6 +36,10 @@
             @csrf
             <input type="text" name="nama" class="input" placeholder="Nama Lengkap" value="{{ old('nama') }}" required>
             <input type="text" name="username" class="input" placeholder="Username" value="{{ old('username') }}" required>
+            <input type="text" name="no_hp" class="input" placeholder="No HP" value="{{ old('no_hp') }}" required>
+            <input type="email" name="email" class="input" placeholder="Email" value="{{ old('email') }}" required>
+            <input type="text" name="alamat" class="input" placeholder="Alamat" value="{{ old('alamat') }}" required>
+            <!-- Removed hidden status input to allow controller to set it -->
             <input type="password" name="password" class="input" placeholder="Password" required>
             <input type="password" name="password_confirmation" class="input" placeholder="Konfirmasi Password" required>
             <button class="form-btn" type="submit">Create account</button>

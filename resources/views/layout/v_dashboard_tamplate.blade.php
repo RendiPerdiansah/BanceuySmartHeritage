@@ -213,37 +213,48 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item topbar-user dropdown hidden-caret">
-                                <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-                                    <div class="avatar-sm">
-                                        <img src="{{ asset('assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle" />
-                                    </div>
-                                    <span class="profile-username">
-                                        <span class="op-7">Hi,</span>
-                                        <span class="fw-bold">{{ auth('akun')->user()->nama ?? 'User' }}</span>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user animated fadeIn">
-                                    <div class="dropdown-user-scroll scrollbar-outer">
-                                        <li>
-                                            <div class="user-box">
-                                                <div class="avatar-lg">
-                                                    <img src="{{ asset('assets/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded" />
-                                                </div>
-                                                <div class="u-text">
-                                                    <h4>{{ auth('akun')->user()->nama ?? 'User' }}</h4>
-                                                    <p class="text-muted">{{ auth('akun')->user()->email ?? '' }}</p>
-                                                    <a href="#" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
-                                                </div>
-                                            </div>
+<li class="nav-item topbar-user dropdown hidden-caret">
+    <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
+        <div class="avatar-sm">
+            @php
+                $user = auth('akun')->user();
+            @endphp
+            @if ($user && $user->foto_profile)
+                <img src="{{ asset('storage/' . $user->foto_profile) }}" alt="..." class="avatar-img rounded-circle" />
+            @else
+                <img src="{{ asset('assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle" />
+            @endif
+        </div>
+        <span class="profile-username">
+            <span class="op-7">Hi,</span>
+            <span class="fw-bold">{{ $user->nama ?? 'User' }}</span>
+        </span>
+    </a>
+    <ul class="dropdown-menu dropdown-user animated fadeIn">
+        <div class="dropdown-user-scroll scrollbar-outer">
+            <li>
+                <div class="user-box">
+                    <div class="avatar-lg">
+                        @if ($user && $user->foto_profile)
+                            <img src="{{ asset('storage/' . $user->foto_profile) }}" alt="image profile" class="avatar-img rounded" />
+                        @else
+                            <img src="{{ asset('assets/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded" />
+                        @endif
+                    </div>
+                    <div class="u-text">
+                        <h4>{{ $user->nama ?? 'User' }}</h4>
+                        <p class="text-muted">{{ $user->email ?? '' }}</p>
+                        <a href="{{ route('profile') }}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                    </div>
+                </div>
                                         </li>
                                         <li>
-                                            <div class="dropdown-divider"></div>
+                                            {{-- <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">My Profile</a>
                                             <a class="dropdown-item" href="#">My Balance</a>
                                             <a class="dropdown-item" href="#">Inbox</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Account Setting</a>
+                                            <a class="dropdown-item" href="#">Account Setting</a> --}}
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{{ route('akun.logout') }}"
                                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

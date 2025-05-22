@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="card-title">Data Akun</h4>
-            <a href="#" class="btn btn-primary btn-sm">
+            <a href="{{ route('akun.create') }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus me-1"></i> Tambah Akun
             </a>
         </div>
@@ -31,10 +31,10 @@
                             <td>{{ $akun->username }}</td>
                             <td>{{ $akun->created_at->format('d M Y') }}</td>
                             <td>
-                                <a href="" class="btn btn-warning btn-sm">
+                                <a href="{{ route('akun.edit', $akun->id) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus akun ini?')">
+                                <form action="{{ route('akun.delete', $akun->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus akun ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm">

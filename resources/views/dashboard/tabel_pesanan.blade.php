@@ -14,10 +14,15 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Nama Pengunjung</th>
+                            <th>No Telepon</th>
+                            <th>Alamat</th>
                             <th>Tanggal Kunjungan</th>
-                            
+                            <th>Jumlah Pengunjung</th>
+                            <th>Nama Paket</th>
+                            <th>Nama Homestay</th>
+                            <th>Catatan Tambahan</th>
                             <th>Dibuat Pada</th>
                             <th>Aksi</th>
                         </tr>
@@ -27,8 +32,13 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $pesanan->nama_pengunjung }}</td>
+                            <td>{{ $pesanan->no_hp }}</td>
+                            <td>{{ $pesanan->alamat }}</td>
                             <td>{{ $pesanan->tanggal_kunjungan }}</td>
-                            
+                            <td>{{ $pesanan->jumlah_pengunjung }}</td>
+                            <td>{{ $pesanan->nama_paket }}</td>
+                            <td>{{ $pesanan->nama_homestay }}</td>
+                            <td>{{ $pesanan->catatan_tambahan }}</td>
                             <td>{{ $pesanan->created_at->format('d M Y') }}</td>
                             <td>
                                 <a href="" class="btn btn-warning btn-sm">

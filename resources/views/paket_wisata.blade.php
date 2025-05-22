@@ -17,7 +17,7 @@
             <div class="destination-card">
                 <img src="{{ url('assets/images/paket_1ha.jpg') }}" alt="Destinasi 1">
                 <h3>Paket 1 Hari (A)</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                
                 <a href="{{ url('detail_paket_1H_A') }}" class="detail-button">Detail</a>
             </div>
             
@@ -25,7 +25,7 @@
             <div class="destination-card">
                 <img src="{{ url('assets/images/paket_1hb.jpg') }}" alt="Destinasi 2">
                 <h3>Paket 1 Hari (B)</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                
                 <a href="detail_paket_1H_B" class="detail-button">Detail</a>
             </div>
 
@@ -33,7 +33,7 @@
             <div class="destination-card">
                 <img src="{{ url('assets/images/paket_2h1m.jpg') }}" alt="Destinasi 3">
                 <h3>Paket 2 Hari 1 Malam</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                
                 <a href="/detail_paket_2H_1M" class="detail-button">Detail</a>
             </div>
 
@@ -41,7 +41,7 @@
             <div class="destination-card">
                 <img src="{{ url('assets/images/paket_3h2m.jpg') }}" alt="Destinasi 4">
                 <h3>Paket 3 Hari 2 Malam</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                
                 <a href="/detail_paket_3H_2M" class="detail-button">Detail</a>
             </div>
         </div>

@@ -3,6 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomestayController;
 
+Route::middleware(['auth:akun'])->group(function () {
+    Route::get('/profile', [\App\Http\Controllers\DashboardController::class, 'showProfile'])->name('profile');
+    Route::get('/profile/edit', [\App\Http\Controllers\DashboardController::class, 'editProfile'])->name('profile.edit');
+    Route::post('/profile/update', [\App\Http\Controllers\DashboardController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('/profile/foto/{id}', [\App\Http\Controllers\DashboardController::class, 'getProfileFoto'])->name('profile.foto');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,9 +26,9 @@ Route::view('/wisata_alam', 'wisata_alam');
 Route::view('/ritual', 'ritual');
 // Route::view('/paket_wisata', 'paket_wisata');
 Route::view('/informasi_kunjungan', 'informasi_kunjungan');
-// Route::view('/homestay', 'homestay');
-// Route::get('/homestay', [HomestayController::class, 'index']);
-// Route::get('/homestay/{id}', [HomestayController::class, 'show']);
+Route::view('/homestay', 'homestay');
+Route::get('/homestay', [HomestayController::class, 'index']);
+Route::get('/homestay/{id}', [HomestayController::class, 'show']);
 Route::view('/gula_aren', 'gula_aren');
 Route::view('/kicimpring', 'kicimpring');
 Route::view('/kue_satu', 'kue_satu');
@@ -42,10 +50,10 @@ Route::view('/register', 'register');
 Route::view('/kesenian', 'kesenian');
 //Update tanggal 01 april 2025
 // Route::view('/tabel', 'layout.v_table_tamplate');
-Route::view('/detail_paket_1H_A', 'detail_paket_1H_A');
-Route::view('/detail_paket_1H_B', 'detail_paket_1H_B');
-Route::view('/detail_paket_2H_1M', 'detail_paket_2H_1M');
-Route::view('/detail_paket_3H_2M', 'detail_paket_3H_2M');
+Route::view('/detail_paket_1H_A', 'detail.detail_paket_1H_A');
+Route::view('/detail_paket_1H_B', 'detail.detail_paket_1H_B');
+Route::view('/detail_paket_2H_1M', 'detail.detail_paket_2H_1M');
+Route::view('/detail_paket_3H_2M', 'detail.detail_paket_3H_2M');
 //Update tanggal 04 april 2025
 // Route::view('/pemesanan_paket', 'pesan_paket');
 Route::get('/pemesanan_paket', function () {
@@ -67,6 +75,11 @@ Route::middleware('auth:akun')->group(function () {
     Route::get('/dashboard', function () {
         return view('layout.v_dashboard_tamplate');
     });
+
+    Route::get('/profile', [\App\Http\Controllers\DashboardController::class, 'showProfile'])->name('profile');
+
+    Route::get('/profile/edit', [\App\Http\Controllers\DashboardController::class, 'editProfile'])->name('profile.edit');
+    Route::post('/profile/update', [\App\Http\Controllers\DashboardController::class, 'updateProfile'])->name('profile.update');
 });
 
 //Update 11 Maret 2025
@@ -74,10 +87,18 @@ Route::middleware('auth:akun')->group(function () {
 
 use App\Http\Controllers\DashboardController;
 
-Route::get('/tabel_akun', [DashboardController::class, 'showTabelAkun'])->name('tabel_akun');
-Route::get('/tabel_pesanan', [DashboardController::class, 'showTabelPesanan'])->name('tabel_pesanan');
+    Route::get('/tabel_akun', [DashboardController::class, 'showTabelAkun'])->name('tabel_akun');
+    Route::get('/tabel_pesanan', [DashboardController::class, 'showTabelPesanan'])->name('tabel_pesanan');
+
+    // Account management routes
+    Route::get('/akun/create', [DashboardController::class, 'createAkun'])->name('akun.create');
+    Route::post('/akun', [DashboardController::class, 'storeAkun'])->name('akun.store');
+    Route::get('/akun/{id}/edit', [DashboardController::class, 'editAkun'])->name('akun.edit');
+    Route::put('/akun/{id}', [DashboardController::class, 'updateAkun'])->name('akun.update');
+    Route::delete('/akun/{id}', [DashboardController::class, 'deleteAkun'])->name('akun.delete');
 //
 use App\Http\Controllers\Pemesanan;
+use App\Http\Controllers\PemesananHomestayController;
 
 Route::get('/form-kunjungan', [Pemesanan::class, 'create']);
 Route::post('/form-kunjungan', [Pemesanan::class, 'store']);
@@ -95,3 +116,47 @@ Route::get('/homestay-table/delete/{id_homestay}', [C_Homestay::class, 'delete']
 Route::get('/paket_wisata', [Pemesanan::class, 'index'])->middleware('auth:akun');
 
 
+//Update tanggal 30 April 2025
+Route::view('/tabel_kelola_homestay', 'dashboard.tabel_kelola_homestay');
+
+//Update tanggal 02 Mei 2025
+Route::get('/form-homestay', [PemesananHomestayController::class, 'create']);
+Route::post('/form-homestay', [PemesananHomestayController::class, 'store']);
+Route::view('/detail_homestay_A', 'detail.Detail_homestay_A');
+Route::view('/detail_homestay_B', 'detail.Detail_homestay_B');
+Route::view('/detail_homestay_C', 'detail.Detail_homestay_C');
+Route::view('/detail_homestay_D', 'detail.Detail_homestay_D');
+
+route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
+
+use App\Http\Controllers\BukuKunjunganController;
+Route::view('/buku_kunjungan', 'form_buku_kunjungan');
+Route::get('/form-buku-kunjungan', [BukuKunjunganController::class, 'create']);
+Route::post('/form-buku-kunjungan', [BukuKunjunganController::class, 'store']);
+
+Route::get('/tabel_buku_kunjungan', [DashboardController::class, 'showTabelBukuKunjungan'])->name('tabel_buku_kunjungan');
+
+//Update tanggal 07 mei 2025
+Route::view('/tabel_pembayaran', 'dashboard.tabel_pembayaran');
+
+//test
+Route::get('/akun/detail/{id}', [DashboardController::class, 'DetailAkun']);
+
+// Update Multi Level Auth (Belum Selesai)
+use App\Http\Middleware\AdminMiddleware;    
+use App\Http\Middleware\PengelolaMiddleware;
+use App\Http\Middleware\PengunjungMiddleware;
+use App\Http\Controllers\AdminController;
+
+
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+});
+
+Route::middleware([PengelolaMiddleware::class])->group(function () {
+    Route::get('/pengelola_homestay', [DashboardController::class, 'ShowTabelPesananHomestay']);
+});
+
+Route::middleware([PengunjungMiddleware::class])->group(function () {
+    Route::get('/pengunjung', [DashboardController::class, 'index']);
+});

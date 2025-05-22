@@ -1,38 +1,218 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galeri Kampung Adat Banceuy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifikasi Pembayaran</title>
+  <style>
+    .container-content {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.container-content .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.outer-box {
+    width: 100%;
+}
+
+.card-container {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card .img-content img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card .img-content:hover img {
+    transform: scale(1.05);
+}
+
+.content {
+    padding: 20px;
+    text-align: left;
+}
+
+.content .heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007f5f;
+    margin-bottom: 8px;
+}
+
+.content p {
+    font-size: 14px;
+    color: #555;
+}
+
+  </style>
 </head>
-<body class="bg-gray-100 font-sans leading-relaxed tracking-wide">
+<body>
 
-  <section class="py-10 px-5 max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Galeri Kampung Adat Banceuy</h2>
+  <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <!-- Project Two Row-->
+                <div class="container-content">
+                    <div class="title">Konten Kampung Adat Banceuy</div>
+                    <div class="card-wrapper">
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/sejarah">
+                                            <img src="assets/images/sejarah.jpg" alt="Sejarah Kampung Adat" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Sejarah</p>
+                                        <p>Sejarah kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/budaya">
+                                            <img src="assets/images/budaya.jpg" alt="Budaya Kampung Adat" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Budaya</p>
+                                        <p>Budaya kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/makanan_khas">
+                                        <img src="assets/images/opak.jpg" alt="Makanan Khas" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Makanan Khas</p>
+                                        <p>Makanan Khas kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/kesenian">
+                                        <img src="assets/images/kesenian.jpg" alt="Kesenian" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Kesenian</p>
+                                        <p>Kesenian kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/kaulinan_barudak">
+                                        <img src="assets/images/kaulinan.jpg" alt="Kaulinan Barudak" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Kaulinan Barudak</p>
+                                        <p>Kaulinan Barudak kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/wisata_alam">
+                                        <img src="assets/images/leuwi lawang.jpg" alt="Wisata Alam" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Wisata Alam</p>
+                                        <p>Wisata Alam kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <!-- Card -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-        <img src="https://source.unsplash.com/400x300/?village,nature" alt="Pemandangan Kampung" class="w-full h-56 object-cover transition-transform duration-300 hover:scale-105">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg text-gray-800">Pemandangan Alam</h3>
-          <p class="text-sm text-gray-500">Suasana pagi di Kampung Banceuy yang asri dan alami.</p>
-        </div>
-      </div>
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/paket_wisata">
+                                        <img src="images/paket_1ha.jpg" alt="Paket Wisata" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Paket Wisata</p>
+                                        <p>Paket Wisata kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-      <!-- Ulangi div di atas untuk tiap foto -->
-      <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-        <img src="https://source.unsplash.com/400x300/?culture,indonesia" alt="Budaya" class="w-full h-56 object-cover transition-transform duration-300 hover:scale-105">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg text-gray-800">Tradisi Adat</h3>
-          <p class="text-sm text-gray-500">Upacara adat yang diwariskan turun temurun.</p>
-        </div>
-      </div>
-
-      <!-- Tambahin lagi sesuai kebutuhan -->
-    </div>
-  </section>
+                        <div class="outer-box">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="img-content">
+                                        <a href="/homestay">
+                                        <img src="assets/images/homestayy.jpg" alt="Homestay" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <p class="heading">Homestay</p>
+                                        <p>Homestay kampung adat banceuy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>   
+            </div> 
+        </section>
 
 </body>
 </html>

@@ -12,7 +12,7 @@ class Akun extends Authenticatable
     protected $table = 'akun';
 
     protected $fillable = [
-        'nama', 'username', 'password'
+        'nama', 'username', 'password', 'level', 'no_hp', 'email', 'status', 'alamat', 'foto_profile',
     ];
 
     protected $hidden = [

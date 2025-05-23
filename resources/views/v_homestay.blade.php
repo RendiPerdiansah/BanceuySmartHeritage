@@ -29,6 +29,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nama Homestay</th>
+                            <th>Deskripsi</th>
                             <th>Harga Homestay</th>
                             <th>Foto Homestay</th>
                             <th>Aksi</th>
@@ -39,6 +40,7 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $data->nama_homestay }}</td>
+                            <td>{{ $data->deskripsi }}</td>
                             <td>{{ $data->harga_homestay }}</td>
                             <td><img src="{{ url('foto_homestay/' . $data->foto_homestay) }}" width="100px"></td>
                             <td>

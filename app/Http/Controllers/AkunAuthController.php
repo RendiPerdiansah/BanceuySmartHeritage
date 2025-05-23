@@ -25,11 +25,12 @@ class AkunAuthController extends Controller
         $email = $request->email;
         $status = 'pengunjung'; // default status
 
-        if (str_ends_with($email, '@admin.com')) {
+        $emailLower = strtolower($email);
+        if (strpos($emailLower, '@admin') !== false) {
             $status = 'admin';
-        } elseif (str_ends_with($email, '@pengelola.com')) {
+        } elseif (strpos($emailLower, '@pengelola') !== false) {
             $status = 'pengelola';
-        } elseif (str_ends_with($email, '@pengunjung.com')) {
+        } elseif (strpos($emailLower, '@pengunjung/gmail') !== false) {
             $status = 'pengunjung';
         }
 
@@ -42,9 +43,11 @@ class AkunAuthController extends Controller
             $level = 3;
         }
 
+        $usernameLower = strtolower($request->username);
+
         Akun::create([
             'nama' => $request->nama,
-            'username' => $request->username,
+            'username' => $usernameLower,
             'no_hp' => $request->no_hp,
             'email' => $email,
             'alamat' => $request->alamat,
@@ -94,8 +97,6 @@ private function redirectByLevel($level) {
             return '/pengunjung';
     }
 }
-
-    
 
 }
 

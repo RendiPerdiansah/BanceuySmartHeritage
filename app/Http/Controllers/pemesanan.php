@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PemesananPaket;
 
+use App\Models\Homestay;
+
 class Pemesanan extends Controller
 {
 
@@ -17,6 +19,30 @@ class Pemesanan extends Controller
         return view('form-kunjungan');
     }
 
+    public function detailPaket1HA()
+    {
+        $homestays = Homestay::all();
+        return view('detail.detail_paket_1H_A', compact('homestays'));
+    }
+
+    public function detailPaket1HB()
+    {
+        $homestays = Homestay::all();
+        return view('detail.detail_paket_1H_B', compact('homestays'));
+    }
+
+    public function detailPaket2H1M()
+    {
+        $homestays = Homestay::all();
+        return view('detail.detail_paket_2H_1M', compact('homestays'));
+    }
+
+    public function detailPaket3H2M()
+    {
+        $homestays = Homestay::all();
+        return view('detail.detail_paket_3H_2M', compact('homestays'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -24,7 +50,7 @@ class Pemesanan extends Controller
             'tanggal_kunjungan' => 'required|date',
             'jumlah_pengunjung' => 'required|integer|min:1|max:50',
             'nama_paket' => 'required',
-            'nama_homestay' => 'required',
+            'id_homestay' => 'required|integer',
             'catatan_tambahan' => 'nullable|string|max:255',
         ]);
 

@@ -24,6 +24,12 @@
                     </div>
 
                     <div class="mb-3">
+    <label class="form-label fw-bold">Deskripsi Homestay:</label>
+    <p class="form-control-plaintext">{{ $homestay->deskripsi }}</p>
+</div>
+
+
+                    <div class="mb-3">
                         <label class="form-label fw-bold">Harga Homestay:</label>
                         <p class="form-control-plaintext">Rp{{ number_format($homestay->harga_homestay, 0, ',', '.') }}</p>
                     </div>

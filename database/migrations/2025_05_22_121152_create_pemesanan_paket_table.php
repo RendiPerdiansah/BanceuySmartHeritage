@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pemesanan_paket', function (Blueprint $table) {
-            $table->integer('id')->nullable();
+            $table->integer('id_pesanan', true);
             $table->text('nama_pengunjung')->nullable();
             $table->text('tanggal_kunjungan')->nullable();
             $table->text('created_at')->nullable();
             $table->text('updated_at')->nullable();
-            $table->text('nama_homestay')->nullable();
+            $table->integer('id_homestay')->index('id_homestay');
             $table->text('nama_paket')->nullable();
             $table->integer('jumlah_pengunjung')->nullable();
             $table->text('catatan_tambahan')->nullable();
             $table->text('alamat')->nullable();
-            $table->float('no_hp')->nullable();
+            $table->double('no_hp')->nullable();
         });
     }
 

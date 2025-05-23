@@ -18,7 +18,7 @@
     <!-- Konten Paket -->
     <div class="bg-white p-8 rounded-lg shadow-md max-w-lg w-full">
         <h1 class="text-3xl font-bold mb-4">Homestay (C)</h1>
-        <p class="text-lg mb-4">Homestay ini terletak di tengah-tengah kampung yang asri dan tenang. Berada jauh dari hiruk-pikuk kota, lokasi homestay menawarkan suasana pedesaan yang damai dan penuh kehangatan. Akses menuju homestay cukup mudah, dapat dijangkau dengan kendaraan roda dua maupun roda empat, dan hanya berjarak sekitar 10 menit dari jalan utama desa. Letaknya yang strategis juga memudahkan tamu untuk menjelajahi berbagai destinasi wisata alam dan budaya di sekitar kampung.</p>
+        <p class="text-lg mb-4">{{ $homestay->deskripsi }}</p>
         
         <div class="bg-gray-50 p-4 rounded-lg mb-6">
             <h2 class="text-2xl font-bold mb-2">Fasilitas</h2>
@@ -30,7 +30,7 @@
         </div>
 
         <h2 class="text-2xl font-bold mb-2">Harga</h2>
-        <p class="mb-6">Mulai dari: <span class="font-bold text-red-600">Rp 350.000</span></p>
+        <p class="mb-6">Mulai dari: <span class="font-bold text-red-600">Rp {{ number_format($homestay->harga_homestay, 0, ',', '.') }}/Malam</span></p>
 
         <div class="flex justify-between">
             <a href="/homestay" class="bg-red-500 text-white px-4 py-2 rounded-lg">Kembali</a>

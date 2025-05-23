@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_homestay', function (Blueprint $table) {
-            $table->integer('id_homestay')->nullable();
+            $table->integer('id_homestay', true);
             $table->text('nama_homestay')->nullable();
             $table->integer('harga_homestay')->nullable();
             $table->text('foto_homestay')->nullable();

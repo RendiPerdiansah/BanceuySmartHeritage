@@ -24,7 +24,7 @@ class DashboardController extends Controller
 
     public function showTabelPesanan()
     {
-        $dataPesanan = PemesananPaket::all(); 
+        $dataPesanan = PemesananPaket::with('homestay')->get(); 
         return view('dashboard.tabel_pesanan', compact('dataPesanan'));
     }
 

@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pemesanan_homestay', function (Blueprint $table) {
-            $table->integer('id')->nullable();
+            $table->integer('id_pemesanan')->nullable();
             $table->text('nama_pengunjung')->nullable();
             $table->text('alamat')->nullable();
             $table->integer('lama_tinggal')->nullable();
             $table->text('created_at')->nullable();
             $table->text('updated_at')->nullable();
+            $table->integer('id_homestay')->nullable()->index('id_homestay');
         });
     }
 

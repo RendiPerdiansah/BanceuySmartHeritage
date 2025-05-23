@@ -2,7 +2,7 @@
 
 @section('title', 'Edit Homestay')
 
-@section('page', 'Edit Data Homestay')
+@section('page', 'Edit Homestay')
 
 @section('content')
 <div class="container-fluid mt-4">
@@ -10,60 +10,53 @@
         <div class="col-md-8">
 
             <div class="card">
-                <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Edit Homestay</h5>
-                    <a href="/homestay-table" class="btn btn-light btn-sm">
-                        <i class="fas fa-arrow-left me-1"></i> Kembali
-                    </a>
                 </div>
 
-                <form action="/homestay-table/update/{{ $homestay->id_homestay }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="card-body">
+                <div class="card-body">
+                    <form action="{{ url('/homestay-table/update/' . $homestay->id_homestay) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Nama Homestay</label>
-                            <input type="text" name="nama_homestay" class="form-control" value="{{ $homestay->nama_homestay }}" readonly>
+                            <label for="nama_homestay" class="form-label">Nama Homestay</label>
+                            <input type="text" class="form-control" id="nama_homestay" name="nama_homestay" value="{{ old('nama_homestay', $homestay->nama_homestay) }}">
                             @error('nama_homestay')
-                            <small class="text-danger">{{ $message }}</small>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Harga Homestay</label>
-                            <input type="text" name="harga_homestay" class="form-control" value="{{ $homestay->harga_homestay }}">
+                            <label for="harga_homestay" class="form-label">Harga Homestay</label>
+                            <input type="number" class="form-control" id="harga_homestay" name="harga_homestay" value="{{ old('harga_homestay', $homestay->harga_homestay) }}">
                             @error('harga_homestay')
-                            <small class="text-danger">{{ $message }}</small>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Foto Homestay</label>
-                            <div class="input-group mb-2">
-                                <div class="custom-file">
-                                    <input type="file" name="foto_homestay" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                </div>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">Upload</span>
-                                </div>
-                            </div>
-                            @error('foto_homestay')
-                            <small class="text-danger">{{ $message }}</small>
+                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4">{{ old('deskripsi', $homestay->deskripsi) }}</textarea>
+                            @error('deskripsi')
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
-
-                            <div class="mt-2">
-                                <img src="{{ url('foto_homestay/' . $homestay->foto_homestay) }}" class="img-thumbnail" style="max-width: 200px;" alt="Foto Homestay">
-                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save me-1"></i> Update
-                        </button>
-                    </div>
-                </form>
+                        <div class="mb-3">
+                            <label for="foto_homestay" class="form-label">Foto Homestay</label>
+                            <input type="file" class="form-control" id="foto_homestay" name="foto_homestay" accept="image/*">
+                            @error('foto_homestay')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                            @if($homestay->foto_homestay)
+                                <img src="{{ asset('foto_homestay/' . $homestay->foto_homestay) }}" alt="Foto Homestay" class="img-thumbnail mt-2" style="max-width: 200px;">
+                            @endif
+                        </div>
 
+                        <button type="submit" class="btn btn-primary">Update Homestay</button>
+                        <a href="{{ url('/homestay-table') }}" class="btn btn-secondary ms-2">Kembali</a>
+                    </form>
+                </div>
             </div>
 
         </div>

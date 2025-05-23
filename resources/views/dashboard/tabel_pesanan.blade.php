@@ -37,7 +37,7 @@
                             <td>{{ $pesanan->tanggal_kunjungan }}</td>
                             <td>{{ $pesanan->jumlah_pengunjung }}</td>
                             <td>{{ $pesanan->nama_paket }}</td>
-                            <td>{{ $pesanan->nama_homestay }}</td>
+                            <td>{{ $pesanan->homestay ? $pesanan->homestay->nama_homestay : '-' }}</td>
                             <td>{{ $pesanan->catatan_tambahan }}</td>
                             <td>{{ $pesanan->created_at->format('d M Y') }}</td>
                             <td>

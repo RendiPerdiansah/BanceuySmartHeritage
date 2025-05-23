@@ -18,6 +18,9 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Username</th>
+                            <th>No HP</th>
+                            <th>Status</th>
+                            <th>Alamat</th>
                             <th>Dibuat Pada</th>
                             <th>Aksi</th>
                         </tr>
@@ -29,6 +32,9 @@
                             <td>{{ $akun->nama }}</td>
                             <td>{{ $akun->email }}</td>
                             <td>{{ $akun->username }}</td>
+                            <td>{{ $akun->no_hp }}</td>
+                            <td>{{ $akun->status }}</td>
+                            <td>{{ $akun->alamat }}</td>
                             <td>{{ $akun->created_at->format('d M Y') }}</td>
                             <td>
                                 <a href="{{ route('akun.edit', $akun->id) }}" class="btn btn-warning btn-sm">

@@ -118,16 +118,15 @@
                 </div>
     
                 <div class="mb-4">
-                    <label for="nama_homestay" class="block font-medium">Pilih Homestay</label>
-                    <select id="nama_homestay" name="nama_homestay" class="w-full border rounded px-3 py-2" required>
-                        <option value="">-- Pilih Homestay --</option>
-                        <option value="Homestay A">Homestay A</option>
-                        <option value="Homestay B">Homestay B</option>
-                        <option value="Homestay C">Homestay C</option>
-                        <option value="Homestay D">Homestay D</option>
-                        <option value="Tidak Pesan Homestay ">Tidak Pesan Homestay</option>
-                    </select>
-                </div>
+                <label for="id_homestay" class="block font-medium">Pilih Homestay</label>
+                <select id="id_homestay" name="id_homestay" class="w-full border rounded px-3 py-2" required>
+                    <option value="">-- Pilih Homestay --</option>
+                    @foreach($homestays as $homestay)
+                        <option value="{{ $homestay->id_homestay }}">{{ $homestay->nama_homestay }}</option>
+                    @endforeach
+                    <option value="0">Tidak Pesan Homestay</option>
+                </select>
+            </div>
     
                 <div class="mb-4">
                     <label for="catatan_tambahan" class="block font-medium">Catatan Tambahan</label>

@@ -50,10 +50,12 @@ Route::view('/register', 'register');
 Route::view('/kesenian', 'kesenian');
 //Update tanggal 01 april 2025
 // Route::view('/tabel', 'layout.v_table_tamplate');
-Route::view('/detail_paket_1H_A', 'detail.detail_paket_1H_A');
-Route::view('/detail_paket_1H_B', 'detail.detail_paket_1H_B');
-Route::view('/detail_paket_2H_1M', 'detail.detail_paket_2H_1M');
-Route::view('/detail_paket_3H_2M', 'detail.detail_paket_3H_2M');
+use App\Http\Controllers\Pemesanan;
+
+Route::get('/detail_paket_1H_A', [Pemesanan::class, 'detailPaket1HA']);
+Route::get('/detail_paket_1H_B', [Pemesanan::class, 'detailPaket1HB']);
+Route::get('/detail_paket_2H_1M', [Pemesanan::class, 'detailPaket2H1M']);
+Route::get('/detail_paket_3H_2M', [Pemesanan::class, 'detailPaket3H2M']);
 //Update tanggal 04 april 2025
 // Route::view('/pemesanan_paket', 'pesan_paket');
 Route::get('/pemesanan_paket', function () {
@@ -97,7 +99,7 @@ use App\Http\Controllers\DashboardController;
     Route::put('/akun/{id}', [DashboardController::class, 'updateAkun'])->name('akun.update');
     Route::delete('/akun/{id}', [DashboardController::class, 'deleteAkun'])->name('akun.delete');
 //
-use App\Http\Controllers\Pemesanan;
+
 use App\Http\Controllers\PemesananHomestayController;
 
 Route::get('/form-kunjungan', [Pemesanan::class, 'create']);
@@ -122,10 +124,12 @@ Route::view('/tabel_kelola_homestay', 'dashboard.tabel_kelola_homestay');
 //Update tanggal 02 Mei 2025
 Route::get('/form-homestay', [PemesananHomestayController::class, 'create']);
 Route::post('/form-homestay', [PemesananHomestayController::class, 'store']);
-Route::view('/detail_homestay_A', 'detail.Detail_homestay_A');
-Route::view('/detail_homestay_B', 'detail.Detail_homestay_B');
-Route::view('/detail_homestay_C', 'detail.Detail_homestay_C');
-Route::view('/detail_homestay_D', 'detail.Detail_homestay_D');
+
+
+Route::get('/detail_homestay_A', [C_Homestay::class, 'detailA']);
+Route::get('/detail_homestay_B', [C_Homestay::class, 'detailB']);
+Route::get('/detail_homestay_C', [C_Homestay::class, 'detailC']);
+Route::get('/detail_homestay_D', [C_Homestay::class, 'detailD']);
 
 route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
 

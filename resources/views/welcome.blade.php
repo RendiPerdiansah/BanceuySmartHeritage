@@ -14,6 +14,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         {{-- <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li> --}}
+                        <li class="nav-item"><a class="nav-link" href="/paket_wisata">Pesan Paket</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/homestay">Pesan Homestay</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">content</a></li>
                         <li class="nav-item"><a class="nav-link" href="#galery">Galery</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
@@ -169,37 +171,9 @@
                             </div>
                         </div>
 
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/paket_wisata">
-                                        <img src="images/paket_1ha.jpg" alt="Paket Wisata" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Paket Wisata</p>
-                                        <p>Paket Wisata kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/homestay">
-                                        <img src="assets/images/homestayy.jpg" alt="Homestay" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Homestay</p>
-                                        <p>Homestay kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>     
                 </div>   
             </div> 

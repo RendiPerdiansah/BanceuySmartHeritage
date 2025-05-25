@@ -114,6 +114,14 @@ Route::get('/homestay-table/edit/{id_homestay}', [C_Homestay::class, 'edit']);
 Route::post('/homestay-table/update/{id_homestay}', [C_Homestay::class, 'update']);
 Route::get('/homestay-table/delete/{id_homestay}', [C_Homestay::class, 'delete']);
 
+Route::get('/paket-table', [\App\Http\Controllers\C_Paket::class, 'index'])->name('paket');
+Route::get('/paket-table/detail/{id}', [\App\Http\Controllers\C_Paket::class, 'detail']);
+Route::get('/paket-table/add', [\App\Http\Controllers\C_Paket::class, 'add']);
+Route::post('/paket-table/insert', [\App\Http\Controllers\C_Paket::class, 'insert']);
+Route::get('/paket-table/edit/{id}', [\App\Http\Controllers\C_Paket::class, 'edit']);
+Route::post('/paket-table/update/{id}', [\App\Http\Controllers\C_Paket::class, 'update']);
+Route::get('/paket-table/delete/{id}', [\App\Http\Controllers\C_Paket::class, 'delete']);
+
 // Middleware pemesanan paket
 Route::get('/paket_wisata', [Pemesanan::class, 'index'])->middleware('auth:akun');
 

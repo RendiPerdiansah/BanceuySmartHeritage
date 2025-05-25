@@ -74,11 +74,14 @@
                               </a>
                           </li>
                             @endif
-                          {{-- <li>
-                              <a href="/tabel_kelola_homestay">
-                                  <span class="sub-item">Tabel Kelola Homestay</span>
+                            @if(auth('akun')->check() && auth('akun')->user()->level == 1)
+                                <li>
+                              <a href="/paket-table">
+                                  <span class="sub-item">Tabel Paket</span>
                               </a>
-                          </li> --}}
+                          </li>
+                            @endif
+                          
                           @if (auth('akun')->check() && auth('akun')->user()->level == 2)
                               <li>
                             <a href="/tabel_pesanan_homestay">

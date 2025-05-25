@@ -7,6 +7,7 @@ use App\Models\PemesananPaket;
 use Midtrans\Config;
 use Midtrans\Snap;
 use App\Models\Homestay;
+use App\Models\Paket;
 
 class Pemesanan extends Controller
 {
@@ -20,28 +21,35 @@ class Pemesanan extends Controller
         return view('form-kunjungan');
     }
 
+   
+
+ 
     public function detailPaket1HA()
     {
         $homestays = Homestay::all();
-        return view('detail.detail_paket_1H_A', compact('homestays'));
+        $paket = \App\Models\Paket::where('nama_paket', 'Paket 1 Hari (A)')->first();
+        return view('detail.detail_paket_1H_A', ['homestays' => $homestays, 'paket' => $paket]);
     }
 
     public function detailPaket1HB()
     {
         $homestays = Homestay::all();
-        return view('detail.detail_paket_1H_B', compact('homestays'));
+        $paket = \App\Models\Paket::where('nama_paket', 'Paket 1 Hari (B)')->first();
+        return view('detail.detail_paket_1H_B', ['homestays' => $homestays, 'paket' => $paket]);
     }
 
     public function detailPaket2H1M()
     {
         $homestays = Homestay::all();
-        return view('detail.detail_paket_2H_1M', compact('homestays'));
+        $paket = \App\Models\Paket::where('nama_paket', 'Paket 2 Hari 1 Malam')->first();
+        return view('detail.detail_paket_2H_1M', ['homestays' => $homestays, 'paket' => $paket]);
     }
 
     public function detailPaket3H2M()
     {
         $homestays = Homestay::all();
-        return view('detail.detail_paket_3H_2M', compact('homestays'));
+        $paket = \App\Models\Paket::where('nama_paket', 'Paket 3 Hari 2 Malam')->first();
+        return view('detail.detail_paket_3H_2M', ['homestays' => $homestays, 'paket' => $paket]);
     }
 
     public function store(Request $request)
@@ -55,10 +63,12 @@ class Pemesanan extends Controller
         //     'catatan_tambahan' => 'nullable|string|max:255',
         // ]);
 
+        $paket = \App\Models\Paket::where('nama_paket', $request->nama_paket)->first();
+        $totalHarga = $paket ? $paket->harga_paket * $request->jumlah_pengunjung : 0;
 
         $data = $request->all();
-
         $data['order_id'] = 'order-' . strtoupper(uniqid());
+        $data['total_harga'] = $totalHarga;
 
         $pemesanan = PemesananPaket::create($data);
 
@@ -71,7 +81,7 @@ class Pemesanan extends Controller
         $params = [
             'transaction_details' => [
                 'order_id' => $pemesanan->id,
-                'gross_amount' => 7000000, // Ganti dengan harga paket yang sesuai
+                'gross_amount' => $totalHarga,
             ],
             'customer_details' => [
                 'first_name' => $request->nama_pengunjung,

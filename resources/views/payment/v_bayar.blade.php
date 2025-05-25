@@ -24,7 +24,11 @@
               <h5 class="card-title">Detail pesanan</h5>
               <table>
                 <tr>
-                    <td>name</td>
+                    <td>nama paket</td>
+                    <td>{{ $pemesanan->nama_paket }}</td>
+                </tr>
+                <tr>
+                    <td>nama pemesan</td>
                     <td>{{ $pemesanan->nama_pengunjung }}</td>
                 </tr>
                 <tr>
@@ -41,10 +45,11 @@
                 </tr>
                 <tr>
                     <td>Total Harga</td>
-                    <td> : {{ $pemesanan->total_harga ?? '-' }}</td>
+                    <td> : Rp{{ number_format($pemesanan->total_harga ?? 0, 0, ',', '.') }}</td>
                 </tr>
               </table>
               <button class="btn btn-primary mt-3" id="pay-button">Bayar</button>
+              <button class="btn btn-secondary mt-3" onclick="window.location.href='/paket_wisata'">Kembali</button>
             </div>
         </div>
     </div>

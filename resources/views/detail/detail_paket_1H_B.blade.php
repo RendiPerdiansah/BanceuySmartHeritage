@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paket 1 Hari (B)</title>
+    <title>{{ $paket->nama_paket ?? '-' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
      <!-- flatpickr -->
@@ -17,8 +17,8 @@
 
     <!-- Konten Paket -->
     <div class="bg-white p-8 rounded-lg shadow-md max-w-lg w-full">
-        <h1 class="text-3xl font-bold mb-4">Paket 1 Hari (B)</h1>
-        <p class="text-lg mb-4">Kegiatan yang tertera dibawah dapat dirubah sesuai kebutuhan dengan menghubungi contact person yang tertera dihalaman contact.</p>
+        <h1 class="text-3xl font-bold mb-4">{{ $paket->nama_paket ?? '-' }}</h1>
+        <p class="text-lg mb-4">{{ $paket->deskripsi_paket ?? '-' }}</p>
         
         <div class="bg-gray-50 p-4 rounded-lg mb-6">
             <h2 class="text-2xl font-bold mb-2">Kegiatan</h2>
@@ -33,11 +33,13 @@
         </div>
 
         <h2 class="text-2xl font-bold mb-2">Harga</h2>
-        <p class="mb-6">Mulai dari: <span class="font-bold text-red-600">Rp80.000/Orang</span></p>
+        <p class="mb-6">Mulai dari: <span class="font-bold text-red-600">Rp{{ number_format($paket->harga_paket ?? 80000, 0, ',', '.') }}/Orang</span></p>
+
+        
 
         <div class="flex justify-between">
             <a href="/paket_wisata" class="bg-red-500 text-white px-4 py-2 rounded-lg">Kembali</a>
-            <button onclick="openModal('Paket 1 Hari (B)')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Pesan Paket</button>
+            <button onclick="openModal('{{ $paket->nama_paket ?? '-' }}')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Pesan Paket</button>
         </div>
     </div>
 

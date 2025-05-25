@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paket 2 Hari 1 Malam</title>
+    <title>{{ $paket->nama_paket ?? '-' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
      <!-- flatpickr -->
@@ -17,34 +17,29 @@
 
     <!-- Konten Paket -->
     <div class="bg-white p-8 rounded-lg shadow-md max-w-lg w-full">
-        <h1 class="text-3xl font-bold mb-4">Paket 2 Hari 1 Malam</h1>
-        <p class="text-lg mb-4">Kegiatan yang tertera dibawah dapat dirubah sesuai kebutuhan dengan menghubungi contact person yang tertera dihalaman contact.</p>
+        <h1 class="text-3xl font-bold mb-4">{{ $paket->nama_paket ?? '-' }}</h1>
+        <p class="text-lg mb-4">{{ $paket->deskripsi_paket ?? '-' }}</p>
         
         <div class="bg-gray-50 p-4 rounded-lg mb-6">
             <h2 class="text-2xl font-bold mb-2">Kegiatan</h2>
             <ul class="list-disc list-inside">
-                <li>Upacara Adat Penyambutan</li>
-                <li>Edukasi Kesenian Celempung</li>
-                <li>Edukasi Kuliner Kue Satu</li>
-                <li>Atraksi Rakyat Miruha</li>
-                <li>Api Unggun</li>
-                <li>Selayang Pandang Kampung Adat Bancey</li>
-                <li>Bandrek dan Rebusan</li>
-                <li>Hiking + Air Mineral</li>
+                <li>Kuliner Kue Satu</li>
+                <li>Kesenian Celempung</li>
                 <li>Kaulinan Barudak</li>
-                <li>Praktik Kerajinan</li>
-                <li>Makan</li>
-                <li>Homestay Kapasitas 4 Orang</li>
+                <li>Makan 1 Kali</li>
                 <li>Tour Guide</li>
+                
             </ul>
         </div>
 
         <h2 class="text-2xl font-bold mb-2">Harga</h2>
-        <p class="mb-6">Mulai dari: <span class="font-bold text-red-600">Rp 370.000/Orang</span></p>
+        <p class="mb-6">Mulai dari: <span class="font-bold text-red-600">Rp{{ number_format($paket->harga_paket ?? 80000, 0, ',', '.') }}/Orang</span></p>
+
+        
 
         <div class="flex justify-between">
             <a href="/paket_wisata" class="bg-red-500 text-white px-4 py-2 rounded-lg">Kembali</a>
-            <button onclick="openModal('Paket 2 Hari 1 Malam')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Pesan Paket</button>
+            <button onclick="openModal('{{ $paket->nama_paket ?? '-' }}')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Pesan Paket</button>
         </div>
     </div>
 

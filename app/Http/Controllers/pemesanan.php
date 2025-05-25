@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PemesananPaket;
-
+use Midtrans\Config;
+use Midtrans\Snap;
 use App\Models\Homestay;
 
 class Pemesanan extends Controller
@@ -45,14 +46,41 @@ class Pemesanan extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_pengunjung' => 'required',
-            'tanggal_kunjungan' => 'required|date',
-            'jumlah_pengunjung' => 'required|integer|min:1|max:50',
-            'nama_paket' => 'required',
-            'id_homestay' => 'required|integer',
-            'catatan_tambahan' => 'nullable|string|max:255',
-        ]);
+        // $request->validate([
+        //     'nama_pengunjung' => 'required',
+        //     'tanggal_kunjungan' => 'required|date',
+        //     'jumlah_pengunjung' => 'required|integer|min:1|max:50',
+        //     'nama_paket' => 'required',
+        //     'id_homestay' => 'required|integer',
+        //     'catatan_tambahan' => 'nullable|string|max:255',
+        // ]);
+
+
+        $data = $request->all();
+
+        $data['order_id'] = 'order-' . strtoupper(uniqid());
+
+        $pemesanan = PemesananPaket::create($data);
+
+        //Konfigurasi midtrans
+        Config::$serverKey = config('midtrans.server_key');
+        Config::$isProduction = config('midtrans.is_production');
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => $pemesanan->id,
+                'gross_amount' => 7000000, // Ganti dengan harga paket yang sesuai
+            ],
+            'customer_details' => [
+                'first_name' => $request->nama_pengunjung,
+                'phone' => $request->no_hp ?? '',
+            ],
+        ];
+
+        $snapToken = Snap::getSnapToken($params);
+        return view('payment.v_bayar', compact('snapToken', 'pemesanan'));
 
         $user = auth('akun')->user();
 

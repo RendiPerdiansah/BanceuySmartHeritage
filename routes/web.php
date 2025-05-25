@@ -164,3 +164,13 @@ Route::middleware([PengelolaMiddleware::class])->group(function () {
 Route::middleware([PengunjungMiddleware::class])->group(function () {
     Route::get('/pengunjung', [DashboardController::class, 'index']);
 });
+
+
+// Payment midtrans
+// routes/web.php
+
+use App\Http\Controllers\PaymentController;
+
+Route::post('/pemesanan/store', [pemesanan::class, 'store']);
+Route::post('/payment/store', [PaymentController::class, 'store']);
+Route::view('/thank-you', 'payment.thankyou');

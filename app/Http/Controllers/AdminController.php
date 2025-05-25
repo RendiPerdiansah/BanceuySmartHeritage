@@ -10,4 +10,14 @@ class AdminController extends Controller
     {
         return view('layout.v_dashboard_tamplate');
     }
+
+    public function pengunjung()
+    {
+        return view('welcome');
+    }
+
+    public function pengelola()
+    {
+        return view('welcome');
+    }
 }

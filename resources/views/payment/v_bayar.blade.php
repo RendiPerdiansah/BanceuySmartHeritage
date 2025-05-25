@@ -19,7 +19,7 @@
     <div class="container">
         
         <div class="card">
-            <img src="{{ asset ('assets/images/paket_1ha.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ isset($paket) ? asset('foto_paket/' . $paket->foto_paket) : asset('assets/images/paket_1ha.jpg') }}" class="card-img-top" alt="{{ $paket->nama_paket ?? 'Paket' }}">
             <div class="card-body">
               <h5 class="card-title">Detail pesanan</h5>
               <table>

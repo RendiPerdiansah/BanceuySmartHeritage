@@ -90,7 +90,7 @@ class Pemesanan extends Controller
         ];
 
         $snapToken = Snap::getSnapToken($params);
-        return view('payment.v_bayar', compact('snapToken', 'pemesanan'));
+        return view('payment.v_bayar', compact('snapToken', 'pemesanan', 'paket'));
 
         $user = auth('akun')->user();
 

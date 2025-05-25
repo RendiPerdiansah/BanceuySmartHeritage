@@ -105,6 +105,7 @@ use App\Http\Controllers\PemesananHomestayController;
 Route::get('/form-kunjungan', [Pemesanan::class, 'create']);
 Route::post('/form-kunjungan', [Pemesanan::class, 'store']);
 Route::get('/api/tanggal-penuh', [Pemesanan::class, 'tanggalPenuh']);
+
 // CRUD
 Route::get('/homestay-table', [C_Homestay::class, 'index'])->name('homestay');
 Route::get('/homestay-table/detail/{id_homestay}', [C_Homestay::class, 'detail']);
@@ -150,6 +151,9 @@ Route::get('/tabel_buku_kunjungan', [DashboardController::class, 'showTabelBukuK
 
 //Update tanggal 07 mei 2025
 Route::view('/tabel_pembayaran', 'dashboard.tabel_pembayaran');
+Route::get('/payment/unpaid', [\App\Http\Controllers\PaymentController::class, 'showUnpaidOrders'])->name('payment.unpaid');
+
+Route::get('/payment/{id}/pay', [\App\Http\Controllers\PaymentController::class, 'pay'])->name('payment.pay');
 
 //test
 Route::get('/akun/detail/{id}', [DashboardController::class, 'DetailAkun']);
@@ -166,11 +170,11 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 });
 
 Route::middleware([PengelolaMiddleware::class])->group(function () {
-    Route::get('/pengelola_homestay', [DashboardController::class, 'ShowTabelPesananHomestay']);
+    Route::get('/pengelola_homestay', [AdminController::class, 'pengelola']);
 });
 
 Route::middleware([PengunjungMiddleware::class])->group(function () {
-    Route::get('/pengunjung', [DashboardController::class, 'index']);
+    Route::get('/pengunjung', [AdminController::class, 'pengunjung']);
 });
 
 
@@ -180,5 +184,7 @@ Route::middleware([PengunjungMiddleware::class])->group(function () {
 use App\Http\Controllers\PaymentController;
 
 Route::post('/pemesanan/store', [pemesanan::class, 'store']);
+
+Route::get('/pemesanan/{id}/pay', [\App\Http\Controllers\Pemesanan::class, 'payOrder'])->name('pemesanan.payOrder');
 Route::post('/payment/store', [PaymentController::class, 'store']);
 Route::view('/thank-you', 'payment.thankyou');

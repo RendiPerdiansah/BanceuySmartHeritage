@@ -23,6 +23,7 @@
                             <th>Nama Paket</th>
                             <th>Nama Homestay</th>
                             <th>Catatan Tambahan</th>
+                            <th>Status Pesanan</th>
                             <th>Dibuat Pada</th>
                             <th>Aksi</th>
                         </tr>
@@ -39,6 +40,7 @@
                             <td>{{ $pesanan->nama_paket }}</td>
                             <td>{{ $pesanan->homestay ? $pesanan->homestay->nama_homestay : '-' }}</td>
                             <td>{{ $pesanan->catatan_tambahan }}</td>
+                            <td>{{ $pesanan->status ?? '-' }}</td>
                             <td>{{ $pesanan->created_at->format('d M Y') }}</td>
                             <td>
                                 <a href="" class="btn btn-warning btn-sm">

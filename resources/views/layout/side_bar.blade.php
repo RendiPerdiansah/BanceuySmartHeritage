@@ -100,7 +100,7 @@
 
                         @if (auth('akun')->check() && auth('akun')->user()->level == 1)
                            <li>
-                            <a href="/tabel_pembayaran">
+                            <a href="/payment/unpaid">
                                 <span class="sub-item">Tabel pembayaran</span>
                             </a>
                         </li> 

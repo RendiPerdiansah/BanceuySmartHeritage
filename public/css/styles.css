@@ -11064,7 +11064,7 @@ body {
 }
 
 /* masthead gradient-color */
-.masthead {
+/* .masthead {
   position: relative;
   width: 100%;
   height: auto;
@@ -11075,21 +11075,21 @@ body {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-}
+} */
 
 /* masthead tanpa gradient-color */
-/* .masthead {
+.masthead {
   position: relative;
   width: 100%;
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: url("../assets/images/beranda.jpg");
+  background: url("../assets/images/welcome1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-} */
+}
 
 
 /* .projects-section {

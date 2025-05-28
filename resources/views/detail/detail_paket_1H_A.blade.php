@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $paket->nama_paket ?? '-' }}</title>
+    <link rel="stylesheet" href="{{ asset('css/image_detail_paket.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
 
      <!-- flatpickr -->
@@ -11,10 +12,13 @@
      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
      <!-- SweetAlert2 -->
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     
+    
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center min-h-screen relative">
 
+    
+    
     <!-- Konten Paket -->
     <div class="bg-white p-8 rounded-lg shadow-md max-w-lg w-full">
         <h1 class="text-3xl font-bold mb-4">{{ $paket->nama_paket ?? '-' }}</h1>

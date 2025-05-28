@@ -143,9 +143,9 @@ Route::get('/detail_homestay_D', [C_Homestay::class, 'detailD']);
 route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
 
 use App\Http\Controllers\BukuKunjunganController;
-Route::view('/buku_kunjungan', 'form_buku_kunjungan');
-Route::get('/form-buku-kunjungan', [BukuKunjunganController::class, 'create']);
-Route::post('/form-buku-kunjungan', [BukuKunjunganController::class, 'store']);
+Route::view('/buku_kunjungan', 'buku_kunjungan');
+Route::get('/buku-kunjungan', [BukuKunjunganController::class, 'create']);
+Route::post('/buku-kunjungan', [BukuKunjunganController::class, 'store']);
 
 Route::get('/tabel_buku_kunjungan', [DashboardController::class, 'showTabelBukuKunjungan'])->name('tabel_buku_kunjungan');
 

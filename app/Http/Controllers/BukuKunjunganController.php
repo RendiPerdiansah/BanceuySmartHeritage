@@ -9,11 +9,11 @@ class BukuKunjunganController extends Controller
 {
     public function index()
     {
-        return view('form_buku_kunjungan');
+        return view('buku_kunjungan');
     }
     public function create()
     {
-        return view('form_buku_kunjungan');
+        return view('buku_kunjungan');
     }
 
     public function store(Request $request)

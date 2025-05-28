@@ -1,110 +1,122 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Budaya Kampung Adat</title>
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" />
-    <style>
-        body {
-            font-family: 'Figtree', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(to right, #FF2D20, #FF6F20);
-            color: white;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        p {
-            line-height: 1.6;
-            font-size: 1.1rem;
-            margin: 15px 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header class="text-center py-5"
+@extends('layout.v_tamplate')
+<header class="text-center py-5"
         style="background: url('{{ asset('images/budaya.jpg')}}') no-repeat center center; background-size: cover; color: white;">
         <div class="overlay" style=" padding: 100px;">
             <h1 class="display-4"></h1>
         </div>
     </header>
-        <main class="mt-6">
-            <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
-                <div class="section">
-                    <h2><a href="{{ url('sejarah') }}">Upacara Adat Ruwatan Bumi</a></h2>
+
+    <div class="body-container">
+        <div class="header">Budaya Kampung Adat Banceuy</div>
+
+        <div class="container-content">
+            <!-- Ruwatan Bumi-->
+            <h2>Upacara Adat Ruwatan Bumi</h2>
+            <div class="kaulinan-container">
+                <div class="text-box">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit excepturi saepe praesentium nesciunt eius deserunt cum ratione iste ullam illo neque quaerat, quidem maiores necessitatibus. Officia explicabo dolor dolorem quis!</p>
                 </div>
-                <div class="section">
-                    <h2><a href="{{ url('/budaya') }}">Upacara Hajat Wawar</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/tradisi') }}">Hajat Mulud Aki Leutik</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/makanan_khas') }}">Hajat Solokan</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/alat_musik') }}">Mapag Cai (Ngabeungbat)</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/kaulinan_barudak') }}">Mitembeyan Tandur</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/atraksi_rakyat') }}">Upacara Khitanan/Naderan</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/wisata_alam') }}">Hajat Puput Puseur</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/ritual') }}">Ngabangsar</a></h2>
-                </div>
-                <div class="section">
-                    <h2><a href="{{ url('/paket_wisata') }}">Hajat Saparan</a></h2>
+                <div class="image-box">
+                    <img src="" alt="Ruwatan Bumi">
                 </div>
             </div>
-        </main>
-        <footer>
-            <p>&copy; 2023 Kampung Adat. Semua hak dilindungi.</p>
-        </footer>
-</body>
+    
+            <!-- Upacara Hajat Wawar -->
+            <h2>Upacara Hajat Wawar</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda sequi aspernatur eius facilis a aliquam dignissimos sunt quam dolorum quia. Maiores, laboriosam optio aperiam repellat voluptas ut eaque quod quia.</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="hajat wawar">
+                </div>
+            </div>
+    
+            <!-- Hajat Mulud Aki Leutik -->
+            <h2>Hajat Mulud Aki Leutik</h2>
+            <div class="kaulinan-container">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil quam minima perferendis suscipit sint reprehenderit veniam delectus eligendi tenetur! Dolorum veniam ad aspernatur quae ut cumque harum suscipit quibusdam maxime!</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="mulud aki leutik">
+                </div>
+            </div>
+    
+            <!-- Hajat Solokan -->
+            <h2>Hajat Solokan</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis, atque sed sint quod quam temporibus. Molestias porro atque numquam provident possimus. Eaque modi vitae facilis eius, odio dicta officiis.</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="Hajat solokan">
+                </div>
+            </div>
+    
+            <!-- Mapag Cai (Ngabeungbat) -->
+            <h2>Mapag Cai (Ngabeungbat)</h2>
+            <div class="kaulinan-container">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis fugit doloribus, ullam illum dolores esse doloremque voluptatum, obcaecati temporibus et ducimus provident numquam omnis assumenda explicabo tempora. Eius, similique reprehenderit?</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="mapag cai">
+                </div>
+            </div>
+    
+            <!-- Mitembeyan Tandur -->
+            <h2>Mitembeyan Tandur</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="Mitembeyan tandur">
+                </div>
+            </div>
 
-</html>
+            <h2>Upacara Khitanan/Naderan</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="Khitanan/Naderan">
+                </div>
+            </div>
+
+            <h2>Hajat Puput Puseur</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="puput puseur">
+                </div>
+            </div>
+
+            <h2>Ngabangsar</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="ngabangsar">
+                </div>
+            </div>
+
+            <h2>Hajat Saparan</h2>
+            <div class="kaulinan-container reverse">
+                <div class="text-box">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                </div>
+                <div class="image-box">
+                    <img src="" alt="hajat saparan">
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>

@@ -21,7 +21,7 @@
         <!--CSS card hover-->
         <link href="css/card_hover.css" rel="stylesheet"/>
         <!--CSS Makanan Khas & Kaulinan Barudak-->
-        {{-- <link href="css/konten.css" rel="stylesheet"/> --}}
+        <link href="css/konten.css" rel="stylesheet"/>
     </head>
     <body>
         @yield('content')   

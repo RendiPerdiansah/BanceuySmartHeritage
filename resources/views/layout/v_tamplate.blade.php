@@ -22,10 +22,15 @@
         <link href="css/card_hover.css" rel="stylesheet"/>
         <!--CSS Makanan Khas & Kaulinan Barudak-->
         <link href="css/konten.css" rel="stylesheet"/>
+        
     </head>
     <body>
         @yield('content')   
-    
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
     </body>
 
    

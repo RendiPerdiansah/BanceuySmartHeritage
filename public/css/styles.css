@@ -10976,6 +10976,10 @@ html {
 }
 
 body {
+  padding-top: 3.5rem; /* height of the fixed navbar */
+}
+
+body {
   letter-spacing: 0.0625em;
 }
 

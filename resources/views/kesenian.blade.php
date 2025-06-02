@@ -9,13 +9,11 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
+           <ul class="navbar-nav ms-auto">
                 {{-- <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li> --}}
                 <li class="nav-item"><a class="nav-link" href="/paket_wisata">Pesan Paket</a></li>
                 <li class="nav-item"><a class="nav-link" href="/homestay">Pesan Homestay</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">content</a></li>
-                <li class="nav-item"><a class="nav-link" href="#galery">Galery</a></li>
-                <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
                 @php
     $akun = Auth::guard('akun')->user();
 @endphp

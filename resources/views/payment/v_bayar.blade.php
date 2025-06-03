@@ -25,27 +25,27 @@
               <table>
                 <tr>
                     <td>nama paket</td>
-                    <td>{{ $pemesanan->nama_paket }}</td>
+                    <td>{{ $pesanan->nama_paket }}</td>
                 </tr>
                 <tr>
                     <td>nama pemesan</td>
-                    <td>{{ $pemesanan->nama_pengunjung }}</td>
+                    <td>{{ $pesanan->nama_pengunjung }}</td>
                 </tr>
                 <tr>
                     <td>No HP</td>
-                    <td>{{ $pemesanan->no_hp }}</td>
+                    <td>{{ $pesanan->no_hp }}</td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td>{{ $pemesanan->alamat }}</td>
+                    <td>{{ $pesanan->alamat }}</td>
                 </tr>
                 <tr>
                     <td>Jumlah Pengunjung</td>
-                    <td>{{ $pemesanan->jumlah_pengunjung }} Orang</td>
+                    <td>{{ $pesanan->jumlah_pengunjung }} Orang</td>
                 </tr>
                 <tr>
                     <td>Total Harga</td>
-                    <td> : Rp{{ number_format($pemesanan->total_harga ?? 0, 0, ',', '.') }}</td>
+                    <td> : Rp{{ number_format($pesanan->total_harga ?? 0, 0, ',', '.') }}</td>
                 </tr>
               </table>
               <button class="btn btn-primary mt-3" id="pay-button">Bayar</button>
@@ -62,7 +62,7 @@
         window.snap.pay('{{ $snapToken }}', {
             onSuccess: function(result) {
                 // Redirect to /payment/success with orderId as a query parameter
-                window.location.href = '/payment/succes?orderId={{ $pemesanan->order_id }}';
+                window.location.href = '/payment/succes?orderId={{ $pesanan->order_id }}';
             },
             onPending: function(result) {
                 alert("Menunggu pembayaran Anda!");

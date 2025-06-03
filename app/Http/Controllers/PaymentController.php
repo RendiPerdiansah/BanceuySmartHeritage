@@ -39,18 +39,49 @@ class PaymentController extends Controller
     public function pay($id)
     {
         $pesanan = \App\Models\PemesananPaket::where('order_id', $id)->first();
-        if ($pesanan) {
-            $pesanan->status = 'sudah dibayar';
-            $pesanan->save();
-
-            // Also update payment table status
-            $payment = Payment::where('order_id', $pesanan->order_id)->first();
-            if ($payment) {
-                $payment->payment_status = 'settlement';
-                $payment->save();
-            }
+        if (!$pesanan) {
+            return redirect()->route('payment.unpaid')->with('error', 'Pesanan tidak ditemukan.');
         }
-        return redirect()->route('payment.unpaid')->with('success', 'Status pesanan berhasil diubah menjadi sudah dibayar.');
+
+        $paket = \App\Models\Paket::where('nama_paket', $pesanan->nama_paket)->first();
+
+        // Midtrans configuration
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => $pesanan->order_id,
+                'gross_amount' => $pesanan->total_harga,
+            ],
+            'customer_details' => [
+                'first_name' => $pesanan->nama_pengunjung,
+                'phone' => $pesanan->no_hp,
+                'address' => $pesanan->alamat,
+            ],
+        ];
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return view('payment.v_bayar', compact('pesanan', 'paket', 'snapToken'));
+    }
+
+    public function checkStatus($orderId)
+    {
+        // Midtrans configuration
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+        try {
+            $status = \Midtrans\Transaction::status($orderId);
+            return response()->json($status);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
 

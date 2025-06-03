@@ -32,7 +32,7 @@
                     <td>Rp{{ number_format($order->total_harga, 0, ',', '.') }}</td>
                     <td>{{ $order->status }}</td>
                     <td>
-                        <a href="{{ url('/payment/{id}/pay') }}" class="btn btn-primary btn-sm">Bayar</a>
+                        <a href="{{ url('/payment/' . $order->order_id . '/pay') }}" class="btn btn-primary btn-sm">Bayar</a>
                     </td>
                 </tr>
                 @empty

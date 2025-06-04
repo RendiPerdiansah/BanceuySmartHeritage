@@ -20,7 +20,7 @@ class CreatePaymentTable extends Migration
             $table->timestamp('payment_date')->nullable();
             $table->timestamps();
 
-            $table->foreign('order_id')->references('id_pesanan')->on('pemesanan_paket')->onDelete('cascade');
+           
         });
     }
 

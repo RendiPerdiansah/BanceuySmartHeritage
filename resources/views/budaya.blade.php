@@ -48,16 +48,18 @@
     </div>
 </nav>
 
-<header class="text-center py-5"
+
+
+    <div class="konten-body-container">
+        <div class="konten-header">Budaya Kampung Adat Banceuy</div>
+
+        <header class="text-center py-5"
         style="background: url('{{ asset('images/budaya.jpg')}}') no-repeat center center; background-size: cover; color: white;">
         <div class="overlay" style=" padding: 100px;">
             <h1 class="display-4"></h1>
         </div>
     </header>
-
-    <div class="konten-body-container">
-        <div class="konten-header">Budaya Kampung Adat Banceuy</div>
-
+    
         <div class="konten-container-content">
             <!-- Ruwatan Bumi-->
             <h2>Upacara Adat Ruwatan Bumi</h2>

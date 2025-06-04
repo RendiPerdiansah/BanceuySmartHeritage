@@ -71,6 +71,7 @@ class Pemesanan extends Controller
         $data['total_harga'] = $totalHarga;
 
         $pemesanan = PemesananPaket::create($data);
+        $pesanan = $pemesanan;
 
         //Konfigurasi midtrans
         Config::$serverKey = config('midtrans.server_key');
@@ -80,7 +81,7 @@ class Pemesanan extends Controller
 
         $params = [
             'transaction_details' => [
-                'order_id' => $pemesanan->id,
+                'order_id' => $pesanan->id,
                 'gross_amount' => $totalHarga,
             ],
             'customer_details' => [
@@ -90,7 +91,7 @@ class Pemesanan extends Controller
         ];
 
         $snapToken = Snap::getSnapToken($params);
-        return view('payment.v_bayar', compact('snapToken', 'pemesanan', 'paket'));
+        return view('payment.v_bayar', compact('snapToken', 'pesanan', 'paket'));
 
         $user = auth('akun')->user();
 

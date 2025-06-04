@@ -25,7 +25,7 @@
 
 @if ($akun)
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button"
+    <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" aria-haspopup="true"
        data-bs-toggle="dropdown" aria-expanded="false">
         {{ $akun->nama ?? 'Profile' }}
     </a>
@@ -287,8 +287,6 @@
        
         <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->

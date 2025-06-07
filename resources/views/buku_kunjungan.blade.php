@@ -34,18 +34,16 @@
         <h2 class="text-2xl font-bold mb-4">Form Buku Kunjungan</h2>
         
         <!-- Pesan -->
-        @if(session('success'))
-            <div class="bg-green-100 text-green-800 p-3 rounded mb-4">{{ session('success') }}</div>
-        @endif
         @if(session('error'))
             <div class="bg-red-100 text-red-800 p-3 rounded mb-4">{{ session('error') }}</div>
         @endif
 
         @php
             $user = auth('akun')->user(); // ganti 'akun' kalau kamu pakai guard default
+            $pemesanan = $pemesanan ?? null;
         @endphp
 
-        <form action="/form-buku-kunjungan" method="POST">
+        <form action="/buku-kunjungan" method="POST">
             @csrf
 
             @if($user)
@@ -62,17 +60,17 @@
 
             <div class="mb-4">
                 <label for="alamat" class="block font-medium">Alamat</label>
-                <input type="text" name="alamat" id="alamat" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="alamat" id="alamat" class="w-full border rounded px-3 py-2" required value="{{ $pemesanan ? $pemesanan->alamat : '' }}" readonly>
             </div>
 
             <div class="mb-4">
                 <label for="tanggal_kunjungan" class="block font-medium">Tanggal Kunjungan</label>
-                <input type="text" name="tanggal_kunjungan" id="tanggal_kunjungan" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="tanggal_kunjungan" id="tanggal_kunjungan" class="w-full border rounded px-3 py-2" required value="{{ $pemesanan ? $pemesanan->tanggal_kunjungan : '' }}" readonly>
             </div>
 
             <div class="mb-4">
                 <label for="jumlah_pengunjung" class="block font-medium">Jumlah pengunjung</label>
-                <input type="text" name="jumlah_pengunjung" id="jumlah_pengunjung" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="jumlah_pengunjung" id="jumlah_pengunjung" class="w-full border rounded px-3 py-2" required value="{{ $pemesanan ? $pemesanan->jumlah_pengunjung : '' }}" readonly>
             </div>
 
             <div class="mb-4">
@@ -88,11 +86,29 @@
 <script>
     function openModal() {
         document.getElementById("modal").classList.remove("hidden");
+        sessionStorage.removeItem('bukuKunjunganNotified');
     }
 
     function closeModal() {
         document.getElementById("modal").classList.add("hidden");
     }
+
+    // Close modal and show notification if success message exists
+    document.addEventListener('DOMContentLoaded', function () {
+        @if(session('success'))
+            closeModal();
+            if (!sessionStorage.getItem('bukuKunjunganNotified')) {
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-800 p-3 rounded mb-4 z-50 shadow-lg';
+                notification.textContent = "{{ session('success') }}";
+                document.body.appendChild(notification);
+                setTimeout(() => {
+                    notification.remove();
+                }, 4000);
+                sessionStorage.setItem('bukuKunjunganNotified', 'true');
+            }
+        @endif
+    });
 
     // Inisialisasi flatpickr untuk input tanggal
     flatpickr("#tanggal_kunjungan", {

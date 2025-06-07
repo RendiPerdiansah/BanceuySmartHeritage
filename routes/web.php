@@ -143,8 +143,13 @@ Route::get('/detail_homestay_D', [C_Homestay::class, 'detailD']);
 route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
 
 use App\Http\Controllers\BukuKunjunganController;
-Route::view('/buku_kunjungan', 'buku_kunjungan');
+
+
+Route::get('/buku_kunjungan', [BukuKunjunganController::class, 'create']);
 Route::get('/buku-kunjungan', [BukuKunjunganController::class, 'create']);
+Route::post('/form-buku-kunjungan', [PemesananHomestayController::class, 'store']);
+
+
 Route::post('/buku-kunjungan', [BukuKunjunganController::class, 'store']);
 
 Route::get('/tabel_buku_kunjungan', [DashboardController::class, 'showTabelBukuKunjungan'])->name('tabel_buku_kunjungan');
@@ -187,4 +192,9 @@ Route::post('/pemesanan/store', [pemesanan::class, 'store']);
 
 Route::get('/pemesanan/{id}/pay', [\App\Http\Controllers\Pemesanan::class, 'payOrder'])->name('pemesanan.payOrder');
 Route::post('/payment/store', [PaymentController::class, 'store']);
+Route::get('/payment/success', [\App\Http\Controllers\PaymentController::class, 'success'])->name('payment.success');
+Route::post('/payment/notification', [\App\Http\Controllers\PaymentController::class, 'notification'])->name('payment.notification');
+Route::get('/payment/succes', function () {
+    return redirect('/payment/success');
+});
 Route::view('/thank-you', 'payment.thankyou');

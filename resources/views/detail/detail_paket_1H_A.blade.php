@@ -121,7 +121,11 @@
                 <select id="id_homestay" name="id_homestay" class="w-full border rounded px-3 py-2" required>
                     <option value="">-- Pilih Homestay --</option>
                     @foreach($homestays as $homestay)
-                        <option value="{{ $homestay->id_homestay }}">{{ $homestay->nama_homestay }}</option>
+                        <option value="{{ $homestay->id_homestay }}" 
+                            @if(isset($bookedHomestays) && in_array($homestay->id_homestay, $bookedHomestays)) disabled @endif>
+                            {{ $homestay->nama_homestay }}
+                            @if(isset($bookedHomestays) && in_array($homestay->id_homestay, $bookedHomestays)) (Sudah Dipesan) @endif
+                        </option>
                     @endforeach
                     <option value="0">Tidak Pesan Homestay</option>
                 </select>

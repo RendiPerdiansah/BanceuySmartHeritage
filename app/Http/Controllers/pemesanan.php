@@ -31,37 +31,95 @@ class Pemesanan extends Controller
         return view('detail.detail_paket_1H_A', ['homestays' => $homestays, 'paket' => $paket]);
     }
 
-    public function detailPaket1HB()
+    public function detailPaket1HB(Request $request)
     {
         $homestays = Homestay::all();
         $paket = \App\Models\Paket::where('nama_paket', 'Paket 1 Hari (B)')->first();
-        return view('detail.detail_paket_1H_B', ['homestays' => $homestays, 'paket' => $paket]);
+
+        $tanggal = $request->query('tanggal_kunjungan', null);
+
+        $bookedHomestays = [];
+        if ($tanggal) {
+            $bookedHomestays = \App\Models\PemesananPaket::where('tanggal_kunjungan', $tanggal)
+                ->where('id_homestay', '!=', 0)
+                ->pluck('id_homestay')
+                ->toArray();
+        }
+
+        return view('detail.detail_paket_1H_B', [
+            'homestays' => $homestays,
+            'paket' => $paket,
+            'bookedHomestays' => $bookedHomestays,
+            'selectedDate' => $tanggal,
+        ]);
     }
 
-    public function detailPaket2H1M()
+    public function detailPaket2H1M(Request $request)
     {
         $homestays = Homestay::all();
         $paket = \App\Models\Paket::where('nama_paket', 'Paket 2 Hari 1 Malam')->first();
-        return view('detail.detail_paket_2H_1M', ['homestays' => $homestays, 'paket' => $paket]);
+
+        $tanggal = $request->query('tanggal_kunjungan', null);
+
+        $bookedHomestays = [];
+        if ($tanggal) {
+            $bookedHomestays = \App\Models\PemesananPaket::where('tanggal_kunjungan', $tanggal)
+                ->where('id_homestay', '!=', 0)
+                ->pluck('id_homestay')
+                ->toArray();
+        }
+
+        return view('detail.detail_paket_2H_1M', [
+            'homestays' => $homestays,
+            'paket' => $paket,
+            'bookedHomestays' => $bookedHomestays,
+            'selectedDate' => $tanggal,
+        ]);
     }
 
-    public function detailPaket3H2M()
+    public function detailPaket3H2M(Request $request)
     {
         $homestays = Homestay::all();
         $paket = \App\Models\Paket::where('nama_paket', 'Paket 3 Hari 2 Malam')->first();
-        return view('detail.detail_paket_3H_2M', ['homestays' => $homestays, 'paket' => $paket]);
+
+        $tanggal = $request->query('tanggal_kunjungan', null);
+
+        $bookedHomestays = [];
+        if ($tanggal) {
+            $bookedHomestays = \App\Models\PemesananPaket::where('tanggal_kunjungan', $tanggal)
+                ->where('id_homestay', '!=', 0)
+                ->pluck('id_homestay')
+                ->toArray();
+        }
+
+        return view('detail.detail_paket_3H_2M', [
+            'homestays' => $homestays,
+            'paket' => $paket,
+            'bookedHomestays' => $bookedHomestays,
+            'selectedDate' => $tanggal,
+        ]);
     }
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'nama_pengunjung' => 'required',
-        //     'tanggal_kunjungan' => 'required|date',
-        //     'jumlah_pengunjung' => 'required|integer|min:1|max:50',
-        //     'nama_paket' => 'required',
-        //     'id_homestay' => 'required|integer',
-        //     'catatan_tambahan' => 'nullable|string|max:255',
-        // ]);
+        $request->validate([
+            'nama_pengunjung' => 'required',
+            'tanggal_kunjungan' => 'required|date',
+            'jumlah_pengunjung' => 'required|integer|min:1|max:50',
+            'nama_paket' => 'required',
+            'id_homestay' => 'required|integer',
+            'catatan_tambahan' => 'nullable|string|max:255',
+        ]);
+
+        // Check if homestay is already booked in another paket on the same date
+        if ($request->id_homestay != 0) {
+            $existingBooking = PemesananPaket::where('id_homestay', $request->id_homestay)
+                ->where('tanggal_kunjungan', $request->tanggal_kunjungan)
+                ->first();
+            if ($existingBooking) {
+                return back()->with('error', 'Homestay sudah dipesan di paket lain pada tanggal yang sama. Silakan pilih tanggal atau homestay lain.');
+            }
+        }
 
         $paket = \App\Models\Paket::where('nama_paket', $request->nama_paket)->first();
         $totalHarga = $paket ? $paket->harga_paket * $request->jumlah_pengunjung : 0;
@@ -69,6 +127,9 @@ class Pemesanan extends Controller
         $data = $request->all();
         $data['order_id'] = 'order-' . strtoupper(uniqid());
         $data['total_harga'] = $totalHarga;
+
+        // Removed max 1 homestay per paket restriction to allow multiple bookings of the same paket
+        // The homestay booking restriction is enforced by date only
 
         $pemesanan = PemesananPaket::create($data);
         $pesanan = $pemesanan;
@@ -92,23 +153,6 @@ class Pemesanan extends Controller
 
         $snapToken = Snap::getSnapToken($params);
         return view('payment.v_bayar', compact('snapToken', 'pesanan', 'paket'));
-
-        $user = auth('akun')->user();
-
-        $data = $request->all();
-        if ($user) {
-            $data['no_hp'] = $user->no_hp;
-            $data['alamat'] = $user->alamat;
-        }
-
-        // Cek apakah tanggal sudah penuh
-        $jumlah = PemesananPaket::where('tanggal_kunjungan', $data['tanggal_kunjungan'])->count();
-        if ($jumlah >= 2) {
-            return back()->with('error', 'Tanggal kunjungan sudah penuh.');
-        }
-
-        PemesananPaket::create($data);
-        return back()->with('success', 'Pemesanan berhasil.');
     }
 
     public function tanggalPenuh()

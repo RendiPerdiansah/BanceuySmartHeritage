@@ -53,22 +53,24 @@
     <div class="konten-body-container">
         <div class="konten-header">Budaya Kampung Adat Banceuy</div>
 
-        <header class="text-center py-5"
-        style="background: url('{{ asset('images/budaya.jpg')}}') no-repeat center center; background-size: cover; color: white;">
-        <div class="overlay" style=" padding: 100px;">
-            <h1 class="display-4"></h1>
-        </div>
-    </header>
+        
     
         <div class="konten-container-content">
             <!-- Ruwatan Bumi-->
             <h2>Upacara Adat Ruwatan Bumi</h2>
             <div class="konten-kaulinan-container">
                 <div class="konten-text-box">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit excepturi saepe praesentium nesciunt eius deserunt cum ratione iste ullam illo neque quaerat, quidem maiores necessitatibus. Officia explicabo dolor dolorem quis!</p>
+                    <p>Ruwatan Bumi atau Ngaruwat Bumi berasal dari kata rawat atau 
+ngarawat (bhs. Sunda) yang artinya mengumpulkan atau memelihara, 
+secara umum memiliki makna yaitu mengumpulkan seluruh masyarakat 
+serta mengumpulkan seluruh hasil bumi, baik bahan mentah, setengah 
+jadi maupun yang sudah jadi.Tujuan dari Ngaruwat Bumi adalah ungkapan rasa syukur kepada 
+Tuhan Yang Maha Esa atas segala yang telah diperoleh dari hasil bumi 
+dan juga sebagai tolak bala serta ungkapan penghormatan kepada 
+karuhun (leluhur).</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="Ruwatan Bumi">
+                    <img src="{{ asset('assets/images/Beranda.jpg') }}" alt="Ruwatan Bumi">
                 </div>
             </div>
     
@@ -76,10 +78,17 @@
             <h2>Upacara Hajat Wawar</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda sequi aspernatur eius facilis a aliquam dignissimos sunt quam dolorum quia. Maiores, laboriosam optio aperiam repellat voluptas ut eaque quod quia.</p>
+                    <p>Hajat Wawar merupakan salah satu acara adat yang biasa 
+dilaksanakan di Kampung Adat Banceuy. Pengertian secara makna 
+ialah suatu acara adat yang dilakukan oleh masing-masing lingkungan 
+di setiap wilayah Kampung Adat Banceuy. Waktu pelaksanaan hajat 
+wawar tidak ditentukan, tergantung dari kebutuhan wilayah masing
+masing tetapi biasanya dilaksanakan paling sering 3 bulan sekali atau 
+paling tidak 1 tahun sekali. Tujuan dari hajat wawar adalah sebagai 
+tolak bala.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="hajat wawar">
+                    <img src="{{ asset('assets/images/tradisi1.jpg') }}" alt="hajat wawar">
                 </div>
             </div>
     
@@ -87,10 +96,15 @@
             <h2>Hajat Mulud Aki Leutik</h2>
             <div class="konten-kaulinan-container">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil quam minima perferendis suscipit sint reprehenderit veniam delectus eligendi tenetur! Dolorum veniam ad aspernatur quae ut cumque harum suscipit quibusdam maxime!</p>
+                    <p>Hajat mulud Aki Leutik (nama asli: Raden Ismail Shaleh) 
+merupakan hajat syukuran yang diselenggarakan khusus oleh keturunan 
+keluarga Aki Leutik dengan tujuan meningkatkan rasa syukur dan 
+memperingati hari kelahiran Nabi Muhammad SAW. Hajat ini biasa 
+dilaksanakan setiap hari senin atau kamis pada minggu terakhir bulan 
+mulud yang berlokasi di makam Aki Leutik.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="mulud aki leutik">
+                    <img src="{{ asset('assets/images/hajat_mulud.jpg') }}" alt="mulud aki leutik">
                 </div>
             </div>
     
@@ -98,10 +112,18 @@
             <h2>Hajat Solokan</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis, atque sed sint quod quam temporibus. Molestias porro atque numquam provident possimus. Eaque modi vitae facilis eius, odio dicta officiis.</p>
+                    <p>Hajat 
+solokan dilaksanakan 
+pada pertengahan usia padi dengan 
+tujuan 
+wujud syukur &ngalap 
+barokah agar saluran air berjalan 
+lancar. Hajat ini dilaksanakan pada 3 
+(tiga) saluran air (solokan), yaitu solokan Eyang Ito, solokan 
+Cipadaringan, dan solokan Kolong Tembok.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="Hajat solokan">
+                    <img src="{{ asset('assets/images/hajat_solokan.jpg') }}" alt="Hajat solokan">
                 </div>
             </div>
     
@@ -109,10 +131,13 @@
             <h2>Mapag Cai (Ngabeungbat)</h2>
             <div class="konten-kaulinan-container">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis fugit doloribus, ullam illum dolores esse doloremque voluptatum, obcaecati temporibus et ducimus provident numquam omnis assumenda explicabo tempora. Eius, similique reprehenderit?</p>
+                    <p>Mapag cai merupakan salah satu ritual adat yang dilaksanakan 
+dengan cara membersihkan saluran irigasi solokan Cipadaringan 
+sebagai saluran irigasi. Ritual ini dilatarbelakangi oleh pembagian 
+aliran air pada Kampung Banceuy dan Desa Sanca.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="mapag cai">
+                    <img src="{{ asset('assets/images/situs leluhur.jpg') }}" alt="mapag cai">
                 </div>
             </div>
     
@@ -120,27 +145,46 @@
             <h2>Mitembeyan Tandur</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                    <p>Ritual ini merupakan ritual 
+ketika akan melakukan tanam padi 
+(mitembeyan) dengan tujuan agar 
+padi yang ditanam akan tumbuh 
+sumbur dan membuahkan hasil 
+yang melimpah.Mitembeyan tandur 
+dilakukan secara bersama-sama 
+dengan pelaksanaan tandur</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="Mitembeyan tandur">
+                    <img src="{{ asset('assets/images/mitembeyan_tandur.jpg') }}" alt="Mitembeyan tandur">
                 </div>
             </div>
 
             <h2>Upacara Khitanan/Naderan</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                    <p>merupakan 
+kegiatan 
+ritual keagamaan yang biasa 
+dilakukan 
+oleh 
+warga 
+banceuy dengan tujuan untuk 
+mensucikan anak kecil laki
+laki dan perempuan.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="Khitanan/Naderan">
+                    <img src="{{ asset('assets/images/budaya.jpg') }}" alt="Khitanan/Naderan">
                 </div>
             </div>
 
             <h2>Hajat Puput Puseur</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                    <p>merupakan ritual syukuran yang biasa dilakukan oleh warga 
+banceuy ketika terlepasnya tali pusar bayi. Kegiatan tersebut dilakukan 
+biasanya setelah bayi berumur 7 atau 8 hari, dengan menggunakan 
+kunyit sebagai antiseptik bagi bayi yang dibalurkan ke seluruh bagian 
+pusar bayi.</p>
                 </div>
                 <div class="konten-image-box">
                     <img src="" alt="puput puseur">
@@ -150,17 +194,27 @@
             <h2>Ngabangsar</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusamus incidunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                    <p>Kegiatan syukuran yang biasa dilakukan oleh warga banceuy 
+ketika wanita hamil memasuki masa usia kehamilan 4 bulan atau 7 
+bulan. Kegiatan ini dilakukan untuk mendoakan keselamatan bagi calon 
+bayi, 
+supaya pada saat dilahirkan diberikan kelancaran dan 
+keselamatan, serta tidak kekurangan suatu apapun.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="ngabangsar">
+                    <img src="{{ asset('assets/images/ngabangsar.jpg') }}" alt="ngabangsar">
                 </div>
             </div>
 
             <h2>Hajat Saparan</h2>
             <div class="konten-kaulinan-container konten-reverse">
                 <div class="konten-text-box">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore vero eos, id, veniam nam odio eligendi debitis doloremque laboriosam accusunt dignissimos possimus natus, at deserunt hic. Enim, alias debitis!</p>
+                    <p>Hajat safaran adalah suatu upacara adat yang dilakukan tiap bulan 
+safar. Upacara ini dilakukan oleh orang tua yang mempunyai anak lahir 
+pada bulan safar. Upacara ini dilakukan bertujuan untuk memohon 
+kepada Allah SWT, supaya anak tersebut terjauh dari marabahaya serta 
+diberikan keselamatan, dan upacara ini juga sebagai tolak bala bagi 
+anak tersebut.</p>
                 </div>
                 <div class="konten-image-box">
                     <img src="" alt="hajat saparan">

@@ -40,6 +40,16 @@ class DashboardController extends Controller
         return view('dashboard.tabel_buku_kunjungan', compact('dataBukuKunjungan'));
     }
 
+    public function showTabelPesananPengunjung()
+    {
+        $user = auth('akun')->user();
+        $dataPesananPengunjung = [];
+        if ($user && $user->no_hp) {
+            $dataPesananPengunjung = PemesananPaket::where('no_hp', $user->no_hp)->get();
+        }
+        return view('dashboard.tabel_pesanan_pengunjung', compact('dataPesananPengunjung'));
+    }
+
     // Fungsi untuk menampilkan semua detail
     public function DetailAkun($id)
     {

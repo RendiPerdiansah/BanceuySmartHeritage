@@ -6,6 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/login.css">
     <title>Document</title>
+    <style>
+        body {
+            background-image: url({{ asset('assets/images/beranda.jpg') }});
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+    </style>
 </head>
 <body>
     <div class="form-container">

@@ -55,7 +55,17 @@
         <h2>Celempung</h2>
         <div class="konten-kaulinan-container">
             <div class="konten-text-box">
-                <p>Deskripsi Celempung dapat ditambahkan di sini.</p>
+                <p>Celempung merukan salahsatu 
+kesenian yang berada di Kampung 
+Adat Banceuy. Awal mula celempung 
+di kampung adat banceuy menurut 
+(alm) Bapak A. Rohendi, pada 
+awalnya 
+hanya 
+merupakan 
+ketidaksengajaan para penggembala 
+ternak dan para petani ketika mengisi waktu luang di saung (pondok kecil 
+tempat beristirahat dipinggir ladang atau sawah).</p>
             </div>
             <div class="konten-image-box">
                 <img src="{{ asset('assets/images/celempung.jpg') }}" alt="Celempung">
@@ -66,10 +76,18 @@
         <h2>Gemyung</h2>
         <div class="konten-kaulinan-container konten-reverse">
             <div class="konten-text-box">
-                <p>Deskripsi Gemyung dapat ditambahkan di sini.</p>
+                <p>Gembyung merupakan kesenian 
+buhun yang masih dipertahankan oleh 
+masyarakat kampong adat banceuy. 
+Gembyung terdiri dari dua kata yaitu 
+gem yang memiliki arti ageman, dan 
+Byung yang bermakna maha agung. 
+Secara makna, gembyung merupakan sebuah seni persembahan yang 
+dilakukan untuk memuji keagungan sang pencipta dan dengan dasar 
+penyebaran agama islam disekitaran kampong adat banceuy.</p>
             </div>
             <div class="konten-image-box">
-                <img src="{{ asset('assets/images/gemyung.jpg') }}" alt="Gemyung">
+                <img src="{{ asset('assets/images/gembyung.jpg') }}" alt="Gemyung">
             </div>
         </div>
 
@@ -77,7 +95,14 @@
         <h2>Dogdog</h2>
         <div class="konten-kaulinan-container">
             <div class="konten-text-box">
-                <p>Deskripsi Dogdog dapat ditambahkan di sini.</p>
+                <p>Pada umumnya dogdog digunakan 
+sebagai alat muasik pada kesenian reog. 
+Awalnya dogdog hanya digunakan sebagai 
+alat pengalihperhatian untuk anak yang 
+sedang dikhitan, agar anak tersebut tidak 
+merasakan sakit ketika dikhitan. Kenapa 
+demikian? Konon menurut cerita sesepuh, itu dimulai dari penyebaran 
+agama islam.</p>
             </div>
             <div class="konten-image-box">
                 <img src="{{ asset('assets/images/dogdog.jpg') }}" alt="Dogdog">
@@ -88,7 +113,11 @@
         <h2>Rengkong</h2>
         <div class="konten-kaulinan-container konten-reverse">
             <div class="konten-text-box">
-                <p>Deskripsi Rengkong dapat ditambahkan di sini.</p>
+                <p>Rengkong adalah alat pikul padi dari sawah 
+ke pelataran rumah. Rengkong terbuat daro 
+beberapa ruas bambu besar (gombong), pada ruas 
+ujung bambu tersebut dilubangi berukuran ± 1 cm 
+dan pangjang sesuai dengan panjang ruasan bambu.</p>
             </div>
             <div class="konten-image-box">
                 <img src="{{ asset('assets/images/rengkong.jpg') }}" alt="Rengkong">
@@ -99,7 +128,19 @@
         <h2>Durkeung</h2>
         <div class="konten-kaulinan-container">
             <div class="konten-text-box">
-                <p>Deskripsi Durkeung dapat ditambahkan di sini.</p>
+                <p>Durkeung 
+sebuah 
+kesenian 
+merupakan 
+yang 
+biasa 
+ditampilakn disalah satu ritual 
+nadran atau ritual khitanan yang 
+didalamnya terdapat beberapa 
+rangkaian upacara adat, dan 
+salahsatunya memerlukan kesenian durkeung. Nama durkeung diambil 
+dari suara alat musik yang ditabuh dalam kesenian ini, yaitu kata “dur” 
+diambil dari suara bedug dan kata “Keung” diambil dari suara bendé.</p>
             </div>
             <div class="konten-image-box">
                 <img src="{{ asset('assets/images/durkeung.jpg') }}" alt="Durkeung">
@@ -110,10 +151,17 @@
         <h2>Tutunggulan</h2>
         <div class="konten-kaulinan-container konten-reverse">
             <div class="konten-text-box">
-                <p>Deskripsi Tutunggulan dapat ditambahkan di sini.</p>
+                <p>Tutunggulan pada awalnya hanya 
+keisengan ibu-ibu yang sedang menumbuk 
+padi disebuah alat yang bernama lisung. 
+Untuk melepas penat katika menumbuk 
+padi mereka memukul bagian pinggir dari 
+badan lesung sehingga menimbulkan suara 
+yang keras. Tutunggulan dilakukan sekurang-kurangnya 6 orang sebagai 
+penabuh.</p>
             </div>
             <div class="konten-image-box">
-                <img src="{{ asset('assets/images/tutunggulan.jpg') }}" alt="Tutunggulan">
+                <img src="{{ asset('assets/images/tutungulan.jpg') }}" alt="Tutunggulan">
             </div>
         </div>
     </div>

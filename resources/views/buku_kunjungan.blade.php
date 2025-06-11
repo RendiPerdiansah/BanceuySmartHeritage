@@ -111,12 +111,12 @@
     });
 
     // Inisialisasi flatpickr untuk input tanggal
-    flatpickr("#tanggal_kunjungan", {
-        dateFormat: "Y-m-d", // Format tanggal yang dikirim ke backend
-        minDate: "today",    
-        altInput: true,
-        altFormat: "l, d F Y" 
-    });
+    // flatpickr("#tanggal_kunjungan", {
+    //     dateFormat: "Y-m-d", // Format tanggal yang dikirim ke backend
+    //     minDate: "today",    
+    //     altInput: true,
+    //     altFormat: "l, d F Y" 
+    // });
 </script>
 
 

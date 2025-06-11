@@ -16,7 +16,7 @@
                         {{-- <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li> --}}
                         <li class="nav-item"><a class="nav-link" href="/paket_wisata">Pesan Paket</a></li>
                         <li class="nav-item"><a class="nav-link" href="/homestay">Pesan Homestay</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">content</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Akses Informasi</a></li>
                         <li class="nav-item"><a class="nav-link" href="#galery">Galery</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
                         @php
@@ -69,7 +69,7 @@
                 <!-- Featured Project Row-->
                 <!-- Project Two Row-->
                 <div class="container-content">
-                    <div class="title">Konten Kampung Adat Banceuy</div>
+                    <div class="title">Informasi Kampung Adat Banceuy</div>
                     <div class="card-wrapper">
                         <div class="outer-box">
                             <div class="card-container">
@@ -178,7 +178,7 @@
         <!-- Galeri Kampung Adat Banceuy -->
 <section class="py-5 bg-white" id="galery">
      <div class="container px-4 px-lg-5">
-        <h2 class="text-center text-dark mb-5">Galeri Kampung Adat Banceuy</h2>
+        <h2 class="title">Galeri Kampung Adat Banceuy</h2>
         <div class="row gx-4 gx-lg-5">
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card shadow-sm">

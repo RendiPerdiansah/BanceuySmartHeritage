@@ -58,19 +58,21 @@
                          @if(auth('akun')->check() && auth('akun')->user()->level == 1)
                           <li>
                               <a href="/tabel_akun">
-                                  <span class="sub-item">Tabel Akun</span>
+                                  <span class="sub-item">Kelola User</span>
                               </a>
                           </li>
                           @endif
+                          @if(auth('akun')->check() && auth('akun')->user()->level == 2)
                           <li>
                               <a href="/homestay-table">
                                   <span class="sub-item">Tabel Homestay</span>
                               </a>
                           </li>
+                          @endif
                            @if(auth('akun')->check() && auth('akun')->user()->level == 1)
                           <li>
                               <a href="/tabel_pesanan">
-                                  <span class="sub-item">Tabel Pesanan</span>
+                                  <span class="sub-item">Kelola Pesanan</span>
                               </a>
                           </li>
                             @endif
@@ -101,11 +103,17 @@
                         @if (auth('akun')->check() && auth('akun')->user()->level == 1)
                            <li>
                             <a href="/payment/unpaid">
-                                <span class="sub-item">Tabel pembayaran</span>
+                                <span class="sub-item">Hasil pembayaran</span>
                             </a>
                         </li> 
                         @endif
-                        
+                        @if (auth('akun')->check() && auth('akun')->user()->level == 3)
+                            <li>
+                            <a href="/tabel_pesanan_pengunjung">
+                                <span class="sub-item">Riwayat Pesanan</span>
+                            </a>
+                        </li> 
+                        @endif
                          
                       </ul>
                   </div>

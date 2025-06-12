@@ -107,29 +107,16 @@ class Pemesanan extends Controller
             'tanggal_kunjungan' => 'required|date',
             'jumlah_pengunjung' => 'required|integer|min:1|max:50',
             'nama_paket' => 'required',
-            'id_homestay' => 'required|integer',
             'catatan_tambahan' => 'nullable|string|max:255',
         ]);
-
-        // Check if homestay is already booked in another paket on the same date
-        if ($request->id_homestay != 0) {
-            $existingBooking = PemesananPaket::where('id_homestay', $request->id_homestay)
-                ->where('tanggal_kunjungan', $request->tanggal_kunjungan)
-                ->first();
-            if ($existingBooking) {
-                return back()->with('error', 'Homestay sudah dipesan di paket lain pada tanggal yang sama. Silakan pilih tanggal atau homestay lain.');
-            }
-        }
 
         $paket = \App\Models\Paket::where('nama_paket', $request->nama_paket)->first();
         $totalHarga = $paket ? $paket->harga_paket * $request->jumlah_pengunjung : 0;
 
         $data = $request->all();
+        unset($data['id_homestay']); // Remove id_homestay from data
         $data['order_id'] = 'order-' . strtoupper(uniqid());
         $data['total_harga'] = $totalHarga;
-
-        // Removed max 1 homestay per paket restriction to allow multiple bookings of the same paket
-        // The homestay booking restriction is enforced by date only
 
         $pemesanan = PemesananPaket::create($data);
         $pesanan = $pemesanan;

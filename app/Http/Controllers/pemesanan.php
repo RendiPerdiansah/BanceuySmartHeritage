@@ -21,9 +21,9 @@ class Pemesanan extends Controller
         return view('form-kunjungan');
     }
 
-   
 
- 
+
+
     public function detailPaket1HA()
     {
         $homestays = Homestay::all();
@@ -105,7 +105,7 @@ class Pemesanan extends Controller
         $request->validate([
             'nama_pengunjung' => 'required',
             'tanggal_kunjungan' => 'required|date',
-            'jumlah_pengunjung' => 'required|integer|min:1|max:50',
+            'jumlah_pengunjung' => 'required|integer|min:30|max:50',
             'nama_paket' => 'required',
             'catatan_tambahan' => 'nullable|string|max:255',
         ]);

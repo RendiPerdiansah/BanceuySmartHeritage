@@ -277,6 +277,8 @@
             <!-- Page Content -->
             <div class="content mt-4 pt-3">
                 @yield('content')
+
+                
             </div>
             
             <!-- End Main Content -->

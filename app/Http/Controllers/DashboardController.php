@@ -8,6 +8,8 @@ use App\Models\Akun;
 use App\Models\PemesananHomestay;
 use App\Models\PemesananPaket;
 use App\Models\BukuKunjungan;
+use App\Models\Payment;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -210,5 +212,35 @@ class DashboardController extends Controller
 
         return redirect()->route('tabel_akun')->with('success', 'Akun berhasil diperbarui.');
     }
-}
+
+    public function dashboard_admin()
+    {
+        // Menghitung Total Volume (Month to Date)
+        $totalVolume = Payment::where('status', 'settlement')
+                                    ->whereMonth('updated_at', Carbon::now()->month)
+                                    ->whereYear('updated_at', Carbon::now()->year)
+                                    ->sum('gross_amount');
+
+        // Menghitung Total Transaksi (Month to Date)
+        $totalTransactions = Payment::where('status', 'settlement')
+                                        ->whereMonth('updated_at', Carbon::now()->month)
+                                        ->whereYear('updated_at', Carbon::now()->year)
+                                        ->count();
+
+        // Data untuk chart (Contoh: 7 hari terakhir)
+        $transactionVolumeChart = Payment::selectRaw('DATE(updated_at) as date, SUM(gross_amount) as volume')
+                                    ->where('status', 'settlement')
+                                    ->where('updated_at', '>=', Carbon::now()->subDays(7))
+                                    ->groupBy('date')
+                                    ->orderBy('date', 'ASC')
+                                    ->get();
+
+        return view('dashboard', [
+            'totalVolume' => $totalVolume,
+            'totalTransactions' => $totalTransactions,
+            'chartData' => $transactionVolumeChart,
+        ]);
+    }
+    }
+
 

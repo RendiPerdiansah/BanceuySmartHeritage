@@ -76,6 +76,18 @@
             @endif
 
             <div class="mb-4">
+                <label for="no_hp" class="block font-medium">No Telepon</label>
+                @php
+                    $user = auth('akun')->user();
+                @endphp
+                @if($user)
+                    <input type="tel" name="no_hp" id="no_hp" class="w-full border rounded px-3 py-2" value="{{ $user->no_hp }}" readonly>
+                @else
+                    <input type="tel" name="no_hp" id="no_hp" class="w-full border rounded px-3 py-2" required>
+                @endif
+            </div>
+
+            <div class="mb-4">
                 <label for="alamat" class="block font-medium">Alamat</label>
                 @php
                     $user = auth('akun')->user();
@@ -87,10 +99,15 @@
                 @endif
             </div>
 
-            <div class="mb-4">
-                <label for="lama_tinggal" class="block font-medium">Lama Tinggal</label>
-                <input type="text" name="lama_tinggal" id="lama_tinggal" class="w-full border rounded px-3 py-2" required>
-            </div>
+                <div class="mb-4">
+                    <label for="check_in" class="block font-medium">Tanggal Check-in</label>
+                    <input type="text" name="check_in" id="check_in" class="w-full border rounded px-3 py-2" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="check_out" class="block font-medium">Tanggal Check-out</label>
+                    <input type="text" name="check_out" id="check_out" class="w-full border rounded px-3 py-2" required>
+                </div>
 
             <button type="submit" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition">Kirim Pesanan</button>
         </form>
@@ -107,7 +124,12 @@
 }
 
 
-    flatpickr("#tanggal_pesan", {
+    flatpickr("#check_in", {
+        dateFormat: "Y-m-d",
+        minDate: "today"
+    });
+
+    flatpickr("#check_out", {
         dateFormat: "Y-m-d",
         minDate: "today"
     });

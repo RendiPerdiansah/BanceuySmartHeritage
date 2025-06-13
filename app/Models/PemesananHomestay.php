@@ -15,6 +15,6 @@ class PemesananHomestay extends Model
         'check_out',
         'no_hp',
         'total_harga',
-        'id_homestay',
+        
     ];
 }

@@ -28,15 +28,29 @@ class BukuKunjunganController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi input dari form dengan pesan kustom
         $request->validate([
             'nama_pengunjung' => 'required',
             'alamat' => 'required|string|max:255',
             'tanggal_kunjungan' => 'required|date',
             'jumlah_pengunjung' => 'required|integer|min:1|max:50',
-            'kesan_pesan' => 'nullable|string|max:255',
+            'kesan_pesan' => 'required|string|max:255',
+        ], [
+            // Pesan kustom untuk validasi field 'kesan_pesan'
+            'kesan_pesan.required' => 'Kesan dan pesan harus diisi.',
+
+            // Anda juga bisa menambahkan pesan kustom untuk field lain jika diperlukan
+            'nama_pengunjung.required' => 'Nama pengunjung harus diisi.',
+            'alamat.required' => 'Alamat harus diisi.',
+            'tanggal_kunjungan.required' => 'Tanggal kunjungan harus diisi.',
+            'jumlah_pengunjung.required' => 'Jumlah pengunjung harus diisi.',
+            'jumlah_pengunjung.integer' => 'Jumlah pengunjung harus berupa angka.',
         ]);
 
+        // Jika validasi berhasil, simpan data ke database
         BukuKunjungan::create($request->all());
-        return back()->with('success', 'Terima Kasih atas kunjungan anda.');
+
+        // Kembali ke halaman sebelumnya dengan pesan sukses
+        return back()->with('success', 'Terima Kasih atas kunjungan Anda.');
     }
 }

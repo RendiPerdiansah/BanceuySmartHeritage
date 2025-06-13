@@ -25,7 +25,7 @@ class PemesananHomestayController extends Controller
             'alamat' => 'required|string|max:500',
             'check_in' => 'required|date|after_or_equal:today',
             'check_out' => 'required|date|after:check_in',
-            'id_homestay' => 'required|exists:tb_homestay,id_homestay',
+            
         ]);
 
         $user = auth('akun')->user();
@@ -44,12 +44,12 @@ class PemesananHomestayController extends Controller
         $validatedData['lama_tinggal'] = $diffDays > 0 ? $diffDays : 0;
 
         // Calculate total_harga = harga_homestay * lama_tinggal
-        $homestay = \App\Models\Homestay::find($validatedData['id_homestay']);
-        if ($homestay) {
-            $validatedData['total_harga'] = $homestay->harga_homestay * $validatedData['lama_tinggal'];
-        } else {
-            $validatedData['total_harga'] = 0;
-        }
+        // $homestay = \App\Models\Homestay::find($validatedData['id_homestay']);
+        // if ($homestay) {
+        //     $validatedData['total_harga'] = $homestay->harga_homestay * $validatedData['lama_tinggal'];
+        // } else {
+        //     $validatedData['total_harga'] = 0;
+        // }
 
         try {
             PemesananHomestay::create($validatedData);

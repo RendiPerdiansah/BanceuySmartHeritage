@@ -25,7 +25,6 @@ class PemesananHomestayController extends Controller
             'alamat' => 'required|string|max:500',
             'check_in' => 'required|date|after_or_equal:today',
             'check_out' => 'required|date|after:check_in',
-            
         ]);
 
         $user = auth('akun')->user();
@@ -44,16 +43,23 @@ class PemesananHomestayController extends Controller
         $validatedData['lama_tinggal'] = $diffDays > 0 ? $diffDays : 0;
 
         // Calculate total_harga = harga_homestay * lama_tinggal
-        // $homestay = \App\Models\Homestay::find($validatedData['id_homestay']);
-        // if ($homestay) {
-        //     $validatedData['total_harga'] = $homestay->harga_homestay * $validatedData['lama_tinggal'];
-        // } else {
-        //     $validatedData['total_harga'] = 0;
-        // }
+        $homestay = \App\Models\Homestay::find($request->id_homestay);
+        if ($homestay) {
+            $validatedData['total_harga'] = $homestay->harga_homestay * $validatedData['lama_tinggal'];
+        } else {
+            $validatedData['total_harga'] = 0;
+        }
+
+        // Generate unique order_id
+        $validatedData['order_id'] = 'order-' . strtoupper(uniqid());
+
+        // Set initial status
+        $validatedData['status'] = 'belum dibayar';
 
         try {
-            PemesananHomestay::create($validatedData);
-            return back()->with('success', 'Pemesanan berhasil.');
+            $pemesanan = PemesananHomestay::create($validatedData);
+            // Redirect to payment page for homestay
+            return redirect()->route('payment.homestay.pay', ['order_id' => $pemesanan->order_id]);
         } catch (\Exception $e) {
             return back()->with('error', 'Terjadi kesalahan saat memproses pemesanan: ' . $e->getMessage());
         }

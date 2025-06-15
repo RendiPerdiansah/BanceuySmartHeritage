@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+
+
 use App\Http\Controllers\HomestayController;
 
 Route::middleware(['auth:akun'])->group(function () {
@@ -159,6 +162,14 @@ Route::view('/tabel_pembayaran', 'dashboard.tabel_pembayaran');
 Route::get('/payment/unpaid', [\App\Http\Controllers\PaymentController::class, 'showUnpaidOrders'])->name('payment.unpaid');
 
 Route::get('/payment/{id}/pay', [\App\Http\Controllers\PaymentController::class, 'pay'])->name('payment.pay');
+
+// Routes for PemesananHomestay payment integration
+Route::prefix('payment/homestay')->group(function () {
+    Route::get('/unpaid', [\App\Http\Controllers\PaymentController::class, 'showUnpaidHomestayOrders'])->name('payment.homestay.unpaid');
+    Route::get('/{order_id}/pay', [\App\Http\Controllers\PaymentController::class, 'payHomestay'])->name('payment.homestay.pay');
+    Route::get('/success', [\App\Http\Controllers\PaymentController::class, 'successHomestay'])->name('payment.homestay.success');
+    Route::post('/notification', [\App\Http\Controllers\PaymentController::class, 'notificationHomestay'])->name('payment.homestay.notification');
+});
 
 //test
 Route::get('/akun/detail/{id}', [DashboardController::class, 'DetailAkun']);

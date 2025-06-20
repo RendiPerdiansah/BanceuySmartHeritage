@@ -34,13 +34,14 @@ class PemesananHomestayController extends Controller
             $validatedData['no_hp'] = $user->no_hp;
         }
 
-        // Calculate lama_tinggal as difference in days between check_in and check_out
-        $checkIn = \Carbon\Carbon::parse($validatedData['check_in']);
-        $checkOut = \Carbon\Carbon::parse($validatedData['check_out']);
-        $diffDays = $checkOut->diffInDays($checkIn);
+        $checkIn = \Carbon\Carbon::parse($validatedData['check_in'])->startOfDay();
+        $checkOut = \Carbon\Carbon::parse($validatedData['check_out'])->startOfDay();
+        $diffDays = $checkIn->diffInDays($checkOut); // ✅ yang benar
 
-        // Ensure lama_tinggal is never negative
-        $validatedData['lama_tinggal'] = $diffDays > 0 ? $diffDays : 0;
+        \Log::info('CheckIn: ' . $checkIn->toDateString() . ', CheckOut: ' . $checkOut->toDateString() . ', DiffDays: ' . $diffDays);
+
+        $validatedData['lama_tinggal'] = $diffDays > 0 ? $diffDays : 1;
+
 
         // Calculate total_harga = harga_homestay * lama_tinggal
         $homestay = \App\Models\Homestay::find($request->id_homestay);

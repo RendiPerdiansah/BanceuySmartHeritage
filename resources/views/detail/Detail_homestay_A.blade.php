@@ -63,6 +63,9 @@
         <form action="/form-homestay" method="POST">
             @csrf
 
+            <input type="hidden" name="id_homestay" value="{{ $homestay->id }}">
+
+
             @if($user)
                 <input type="hidden" name="nama_pengunjung" id="nama_pengunjung" value="{{ $user->nama }}">
                 <div class="mb-4">

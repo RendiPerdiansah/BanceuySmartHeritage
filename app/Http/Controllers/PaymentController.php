@@ -126,7 +126,7 @@ class PaymentController extends Controller
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        return view('payment.v_bayar', ['pesanan' => $pesanan, 'paket' => $homestay, 'snapToken' => $snapToken]);
+        return view('payment.v_bayar_homestay', ['pesanan' => $pesanan, 'paket' => $homestay, 'snapToken' => $snapToken]);
     }
 
     public function successHomestay(Request $request)

@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
     public function showTabelPesanan()
     {
-        $dataPesanan = PemesananPaket::with('homestay')->get(); 
+        $dataPesanan = PemesananPaket::all(); 
         return view('dashboard.tabel_pesanan', compact('dataPesanan'));
     }
 
@@ -253,6 +253,6 @@ class DashboardController extends Controller
             'chartData' => $transactionVolumeChart,
         ]);
     }
-    }
+}
 
 

@@ -209,3 +209,5 @@ Route::get('/payment/succes', function () {
     return redirect('/payment/success');
 });
 Route::view('/thank-you', 'payment.thankyou');
+
+Route::get('/tabel_pesanan_pengunjung', [DashboardController::class, 'showTabelPesananPengunjung'])->name('tabel_pesanan_pengunjung');

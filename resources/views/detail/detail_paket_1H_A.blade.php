@@ -107,9 +107,11 @@
                 </div>
     
                 <div class="mb-4">
-                    <label for="jumlah_pengunjung" class="block font-medium">Jumlah Pengunjung</label>
-                    <input type="number" name="jumlah_pengunjung" id="jumlah_pengunjung" class="w-full border rounded px-3 py-2" required>
-                </div>
+    <label for="jumlah_pengunjung" class="block font-medium">Jumlah Pengunjung</label>
+    <input type="number" name="jumlah_pengunjung" id="jumlah_pengunjung" class="w-full border rounded px-3 py-2" min="30" required placeholder="Minimal 30 orang">
+</div>
+
+
     
                 <div class="mb-4">
                     <label for="nama_paket" class="block font-medium">Nama Paket</label>

@@ -62,7 +62,7 @@
         window.snap.pay('{{ $snapToken }}', {
             onSuccess: function(result) {
                 // Redirect to /payment/success with orderId as a query parameter
-                window.location.href = '/payment/succes?orderId={{ $pesanan->order_id }}';
+                window.location.href = '/';
             },
             onPending: function(result) {
                 alert("Menunggu pembayaran Anda!");

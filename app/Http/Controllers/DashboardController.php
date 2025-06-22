@@ -42,13 +42,25 @@ class DashboardController extends Controller
         return view('dashboard.tabel_buku_kunjungan', compact('dataBukuKunjungan'));
     }
 
-    public function showTabelPesananPengunjung()
+  public function showTabelPesananPengunjung()
     {
+        // Ambil data akun yang sedang login
         $user = auth('akun')->user();
+
         $dataPesananPengunjung = [];
-        if ($user && $user->no_hp) {
-            $dataPesananPengunjung = PemesananPaket::where('no_hp', $user->no_hp)->get();
+
+        // Pastikan user valid
+        if ($user) {
+            // Jika level 3 (pengunjung), filter berdasarkan nama_pengunjung
+            if ($user->level == 3) {
+                $dataPesananPengunjung = PemesananPaket::where('nama_pengunjung', $user->nama)->get();
+            }
+            // Jika level 1 atau 2 (admin atau pengelola), ambil semua data
+            elseif (in_array($user->level, [1, 2])) {
+                $dataPesananPengunjung = PemesananPaket::all();
+            }
         }
+
         return view('dashboard.tabel_pesanan_pengunjung', compact('dataPesananPengunjung'));
     }
 

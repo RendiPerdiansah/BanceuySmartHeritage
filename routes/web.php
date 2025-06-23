@@ -101,6 +101,9 @@ use App\Http\Controllers\DashboardController;
     Route::get('/akun/{id}/edit', [DashboardController::class, 'editAkun'])->name('akun.edit');
     Route::put('/akun/{id}', [DashboardController::class, 'updateAkun'])->name('akun.update');
     Route::delete('/akun/{id}', [DashboardController::class, 'deleteAkun'])->name('akun.delete');
+
+    // Dashboard admin route
+    Route::get('/dashboard_admin', [DashboardController::class, 'dashboard_admin'])->name('dashboard_admin');
 //
 
 use App\Http\Controllers\PemesananHomestayController;

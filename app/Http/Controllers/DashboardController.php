@@ -227,29 +227,51 @@ class DashboardController extends Controller
 
     public function dashboard_admin()
     {
-        // Menghitung Total Volume (Month to Date)
-        $totalVolume = Payment::where('status', 'settlement')
-                                    ->whereMonth('updated_at', Carbon::now()->month)
+        // Menghitung Total Volume (Month to Date) dari tabel pemesanan_paket
+        $totalVolume = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
                                     ->whereYear('updated_at', Carbon::now()->year)
-                                    ->sum('gross_amount');
+                                    ->sum('total_harga');
 
-        // Menghitung Total Transaksi (Month to Date)
-        $totalTransactions = Payment::where('status', 'settlement')
-                                        ->whereMonth('updated_at', Carbon::now()->month)
+        // Menghitung Total Transaksi (Month to Date) dari tabel pemesanan_paket
+        $totalTransactions = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
                                         ->whereYear('updated_at', Carbon::now()->year)
                                         ->count();
 
+        // Menghitung pendapatan pemesanan homestay per bulan
+        $pendapatanHomestay = PemesananHomestay::whereMonth('updated_at', Carbon::now()->month)
+                                    ->whereYear('updated_at', Carbon::now()->year)
+                                    ->sum('total_harga');
+
+        // Menghitung pendapatan pemesanan paket per bulan
+        $pendapatanPaket = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
+                                    ->whereYear('updated_at', Carbon::now()->year)
+                                    ->sum('total_harga');
+
+        // Menghitung jumlah pengunjung homestay per bulan (count distinct nama_pengunjung)
+        $jumlahPengunjungHomestay = PemesananHomestay::whereMonth('updated_at', Carbon::now()->month)
+                                            ->whereYear('updated_at', Carbon::now()->year)
+                                            ->distinct('nama_pengunjung')
+                                            ->count('nama_pengunjung');
+
+        // Menghitung jumlah pengunjung paket per bulan (sum jumlah_pengunjung)
+        $jumlahPengunjungPaket = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
+                                    ->whereYear('updated_at', Carbon::now()->year)
+                                    ->sum('jumlah_pengunjung');
+
         // Data untuk chart (Contoh: 7 hari terakhir)
-        $transactionVolumeChart = Payment::selectRaw('DATE(updated_at) as date, SUM(gross_amount) as volume')
-                                    ->where('status', 'settlement')
+        $transactionVolumeChart = PemesananPaket::selectRaw('DATE(updated_at) as date, SUM(total_harga) as volume')
                                     ->where('updated_at', '>=', Carbon::now()->subDays(7))
                                     ->groupBy('date')
                                     ->orderBy('date', 'ASC')
                                     ->get();
 
-        return view('dashboard', [
+        return view('dashboard.dashboard_admin', [
             'totalVolume' => $totalVolume,
             'totalTransactions' => $totalTransactions,
+            'pendapatanHomestay' => $pendapatanHomestay,
+            'pendapatanPaket' => $pendapatanPaket,
+            'jumlahPengunjungHomestay' => $jumlahPengunjungHomestay,
+            'jumlahPengunjungPaket' => $jumlahPengunjungPaket,
             'chartData' => $transactionVolumeChart,
         ]);
     }

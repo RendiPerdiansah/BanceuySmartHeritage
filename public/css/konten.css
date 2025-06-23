@@ -1,84 +1,36 @@
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}
 
-.konten-body-container {
-    font-family: Arial, sans-serif;
+.summary-cards .card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+}
+
+.summary-cards .card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.summary-cards .card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    color: #222222;
+    font-weight: 700;
+}
+
+.summary-cards .card p {
+    font-size: 1.1rem;
+    color: #555555;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    font-weight: 500;
 }
-.konten-header {
-    text-align: center;
-    background-color: #044E75;
-    color: white;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 10px;
-}
-.konten-container-content {
-    max-width: 900px;
-    margin: 20px auto;
-}
-.konten-makanan-container {
-    background: white;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.konten-kaulinan-container {
-    background: white;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.konten-wisata-container {
-    background: white;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.konten-text-box {
-    flex: 1;
-    padding: 20px;
-}
-.konten-image-box {
-    flex: 1;
-    text-align: center;
-}
-img {
-    width: 300px; /* Ukuran gambar */
-    max-width: 300px; /* Membatasi ukuran maksimal */
-    height: 300px; /* Menyamakan tinggi gambar */
-    object-fit: cover; /* Agar gambar tetap proporsional */
-    border-radius: 10px;
-}
-/* Gaya untuk zigzag */
-.konten-reverse {
-    flex-direction: row-reverse;
-}
-/* Responsif untuk layar kecil */
-@media (max-width: 768px) {
-    .konten-makanan-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .konten-reverse {
-        flex-direction: column;
-    }
-    img {
-        max-width: 200px;
-        height: auto;
-    }
-}
-

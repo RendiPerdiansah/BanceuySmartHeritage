@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-// app/Http/Controllers/PaymentController.php
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -43,6 +44,41 @@ class PaymentController extends Controller
             \Log::error('Payment store error: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
         }
+    }
+
+    public function uploadProof(Request $request)
+    {
+        $request->validate([
+            'id_pesanan' => 'required',
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $idPesanan = $request->id_pesanan;
+
+        if ($request->hasFile('bukti_pembayaran')) {
+            $file = $request->bukti_pembayaran;
+            $fileName = $idPesanan . '.' . $file->extension();
+            $file->move(public_path('foto_bukti_pembayaran'), $fileName);
+
+            $data = [
+                'bukti_pembayaran' => $fileName,
+            ];
+
+            // Update bukti_pembayaran in pemesanan_paket or pemesanan_homestay using id_pesanan and id_pemesanan
+            $pemesananPaket = \App\Models\PemesananPaket::where('id_pesanan', $idPesanan)->first();
+            if ($pemesananPaket) {
+                \App\Models\PemesananPaket::where('id_pesanan', $idPesanan)->update($data);
+            } else {
+                $pemesananHomestay = \App\Models\PemesananHomestay::where('id_pemesanan', $idPesanan)->first();
+                if ($pemesananHomestay) {
+                    \App\Models\PemesananHomestay::where('id_pemesanan', $idPesanan)->update($data);
+                }
+            }
+
+            return redirect()->back()->with('success', 'Bukti pembayaran berhasil diunggah.');
+        }
+
+        return redirect()->back()->with('error', 'Gagal mengunggah bukti pembayaran.');
     }
 
     public function showUnpaidOrders()
@@ -219,4 +255,3 @@ class PaymentController extends Controller
         return response()->json(['status' => 'notification received']);
     }
 }
-

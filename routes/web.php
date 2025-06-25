@@ -208,6 +208,7 @@ Route::post('/pemesanan/store', [pemesanan::class, 'store']);
 
 Route::get('/pemesanan/{id}/pay', [\App\Http\Controllers\Pemesanan::class, 'payOrder'])->name('pemesanan.payOrder');
 Route::post('/payment/store', [PaymentController::class, 'store']);
+Route::post('/payment/upload-proof', [\App\Http\Controllers\PaymentController::class, 'uploadProof'])->name('payment.uploadProof');
 Route::get('/payment/success', [\App\Http\Controllers\PaymentController::class, 'success'])->name('payment.success');
 //// Route::post('/payment/notification', [\App\Http\Controllers\PaymentController::class, 'notification'])->name('payment.notification');
 Route::get('/payment/succes', function () {

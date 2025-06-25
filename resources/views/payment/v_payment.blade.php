@@ -33,6 +33,38 @@
                     <td>{{ $order->status }}</td>
                     <td>
                         <a href="{{ url('/payment/' . $order->order_id . '/pay') }}" class="btn btn-primary btn-sm">Bayar</a>
+                        @if(auth('akun')->user() && auth('akun')->user()->level == 1)
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#uploadModal{{ $order->id }}">
+                            Upload Bukti
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="uploadModal{{ $order->id }}" tabindex="-1" aria-labelledby="uploadModalLabel{{ $order->id }}" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <form action="{{ route('payment.uploadProof') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="uploadModalLabel{{ $order->id }}">Upload Bukti Pembayaran</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <input type="hidden" name="payment_id" value="{{ $order->id }}">
+                                  <div class="mb-3">
+                                    <label for="bukti_pembayaran" class="form-label">Pilih Foto Bukti Pembayaran</label>
+                                    <input class="form-control" type="file" id="bukti_pembayaran" name="bukti_pembayaran" accept="image/*" required>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                  <button type="submit" class="btn btn-primary">Unggah</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        @endif
                     </td>
                 </tr>
                 @empty

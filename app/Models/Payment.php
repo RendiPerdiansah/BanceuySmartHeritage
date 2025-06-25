@@ -10,7 +10,7 @@ class Payment extends Model
     protected $table = 'payment';
 
     protected $fillable = [
-        'order_id', 'payment_status', 'payment_method', 'amount', 'payment_date'
+        'order_id', 'payment_status', 'payment_method', 'amount', 'payment_date', 'bukti_pembayaran'
     ];
 }
 

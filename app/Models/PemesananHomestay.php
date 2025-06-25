@@ -17,5 +17,6 @@ class PemesananHomestay extends Model
         'total_harga',
         'order_id',
         'status',
+        'bukti_pembayaran',
     ];
 }

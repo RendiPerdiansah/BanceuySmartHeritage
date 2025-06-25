@@ -11,6 +11,8 @@ use App\Models\BukuKunjungan;
 use App\Models\Payment;
 use Carbon\Carbon;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class DashboardController extends Controller
 {
     public function index()
@@ -34,6 +36,20 @@ class DashboardController extends Controller
     {
         $dataPesananHomestay = PemesananHomestay::all(); 
         return view('dashboard.tabel_pesanan_homestay', compact('dataPesananHomestay'));
+    }
+
+    public function printPesanan()
+    {
+        $dataPesanan = PemesananPaket::all();
+        $pdf = Pdf::loadView('dashboard.pdf_pesanan', compact('dataPesanan'));
+        return $pdf->stream('data_pesanan.pdf');
+    }
+
+    public function printPesananHomestay()
+    {
+        $dataPesananHomestay = PemesananHomestay::all();
+        $pdf = Pdf::loadView('dashboard.pdf_pesanan_homestay', compact('dataPesananHomestay'));
+        return $pdf->stream('data_pesanan_homestay.pdf');
     }
 
     public function showTabelBukuKunjungan()

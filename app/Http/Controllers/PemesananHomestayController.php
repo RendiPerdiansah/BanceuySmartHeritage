@@ -44,7 +44,7 @@ class PemesananHomestayController extends Controller
 
 
         // Calculate total_harga = harga_homestay * lama_tinggal
-        $homestay = \App\Models\Homestay::find($request->id_homestay);
+        $homestay = \App\Models\Homestay::where('id_homestay', $request->id_homestay)->first();
         if ($homestay) {
             $validatedData['total_harga'] = $homestay->harga_homestay * $validatedData['lama_tinggal'];
         } else {

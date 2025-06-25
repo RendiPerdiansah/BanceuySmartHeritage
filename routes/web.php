@@ -94,6 +94,7 @@ use App\Http\Controllers\DashboardController;
 
     Route::get('/tabel_akun', [DashboardController::class, 'showTabelAkun'])->name('tabel_akun');
     Route::get('/tabel_pesanan', [DashboardController::class, 'showTabelPesanan'])->name('tabel_pesanan');
+    Route::get('/tabel_pesanan/print', [DashboardController::class, 'printPesanan'])->name('tabel_pesanan.print');
 
     // Account management routes
     Route::get('/akun/create', [DashboardController::class, 'createAkun'])->name('akun.create');
@@ -147,6 +148,7 @@ Route::get('/detail_homestay_C', [C_Homestay::class, 'detailC']);
 Route::get('/detail_homestay_D', [C_Homestay::class, 'detailD']);
 
 route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
+route::get('/tabel_pesanan_homestay/print', [DashboardController::class, 'printPesananHomestay'])->name('tabel_pesanan_homestay.print');
 
 use App\Http\Controllers\BukuKunjunganController;
 

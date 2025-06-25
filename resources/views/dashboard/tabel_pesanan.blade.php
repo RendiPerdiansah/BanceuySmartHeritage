@@ -3,12 +3,12 @@
 @section('content')
 <div class="container-fluid mt-4">
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="card-title">Data Pesanan</h4>
-            {{-- <a href="#" class="btn btn-primary btn-sm">
-                <i class="fas fa-plus me-1"></i> Tambah 
-            </a> --}}
-        </div>
+<div class="card-header d-flex justify-content-between align-items-center">
+    <h4 class="card-title">Data Pesanan</h4>
+    <a href="{{ route('tabel_pesanan.print') }}" target="_blank" class="btn btn-primary btn-sm">
+        <i class="fas fa-print me-1"></i> Print
+    </a>
+</div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">

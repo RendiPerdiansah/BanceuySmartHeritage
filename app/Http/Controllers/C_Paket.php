@@ -11,7 +11,8 @@ class C_Paket extends Controller
 
     public function __construct()
     {
-        $this->M_Paket = new Paket();
+        $this->M_Paket = new Paket(); 
+        
     }
 
     public function index()

@@ -36,9 +36,29 @@
                     <th>Status</th>
                     <td>{{ $user->status }}</td>
                 </tr>
+
+                <tr>
+    <td></td>
+    <td class="pt-4 text-start">
+        <a href="{{ route('profile.edit') }}" class="btn text-white fw-bold me-2"
+           style="background-color: #1D76F2; padding: 10px 20px; border-radius: 6px;">
+           Update Profile
+        </a>
+        <a href="{{ url('/dashboard') }}" class="btn text-white fw-bold"
+           style="background-color: #6C5DD3; padding: 10px 20px; border-radius: 6px;">
+           Cancel
+        </a>
+    </td>
+</tr>
+
+                
             </tbody>
         </table>
-        <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
+        
+                
+            
+
+
     </div>
 </div>
 @endsection

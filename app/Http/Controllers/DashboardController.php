@@ -253,9 +253,13 @@ class DashboardController extends Controller
         ]);
 
         if ($request->hasFile('foto_profile')) {
-            $file = $request->file('foto_profile');
-            $imageData = base64_encode(file_get_contents($file->getRealPath()));
-            $validatedData['foto_profile'] = $imageData;
+            // Delete old photo if exists
+            if ($user->foto_profile && \Storage::disk('public')->exists($user->foto_profile)) {
+                \Storage::disk('public')->delete($user->foto_profile);
+            }
+            // Store new photo
+            $path = $request->file('foto_profile')->store('profile_photos', 'public');
+            $validatedData['foto_profile'] = $path;
         }
 
         $user->fill($validatedData);

@@ -65,8 +65,8 @@
 
             <div class="mb-3 row">
                 <div class="col-sm-9 offset-sm-3">
-                    <button type="submit" class="btn btn-primary">Update Profile</button>
-                    <a href="{{ route('profile') }}" class="btn btn-secondary ms-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary me-2">Update Profile</button>
+                    <a href="{{ route('profile') }}" class="btn btn-secondary">Cancel</a>
                 </div>
             </div>
         </form>

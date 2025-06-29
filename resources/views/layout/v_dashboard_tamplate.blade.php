@@ -5,7 +5,7 @@
     <title>Banceuy Smart Heritage</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="{{ asset('assets/img/kaiadmin/favicon.ico') }}" type="image/x-icon" />
-    <link rel="stylesheet" href="css/konten.css" />
+    <link rel="stylesheet" href="css/summary.css" />
 
     <!-- Fonts and icons -->
     <script src="{{ asset('assets/tamplate/js/plugin/webfont/webfont.min.js') }}"></script>

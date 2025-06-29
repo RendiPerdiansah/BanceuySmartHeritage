@@ -41,6 +41,7 @@ class C_Homestay extends Controller
             'harga_homestay' => 'required',
             'foto_homestay' => 'required|mimes:jpg,jpeg,png,bmp|max:1024',
             'deskripsi' => 'nullable|string',
+            'fasilitas' => 'nullable|string',
         ], [ //ini adalah konversi keterangan validasi form NIP dalam bahasa indonesia
             'nama_homestay.required' => 'Nama Homestay wajib diisi !',
             'nama_homestay.unique' => 'Nama Homestay ini sudah terdaftar di database !',
@@ -60,6 +61,7 @@ class C_Homestay extends Controller
             'harga_homestay' => Request()->harga_homestay,
             'foto_homestay' => $fileName,
             'deskripsi' => Request()->deskripsi,
+            'fasilitas' => Request()->fasilitas,
         ];
         Homestay::create($data);
         return Redirect()->route('homestay')->with('pesan', 'Data Berhasil Ditambahkan !');
@@ -81,6 +83,7 @@ class C_Homestay extends Controller
             'harga_homestay' => 'required',
             'foto_homestay' => 'mimes:jpg,jpeg,png,bmp|max:1024',
             'deskripsi' => 'nullable|string',
+            'fasilitas' => 'nullable|string',
         ], [ //ini adalah konversi keterangan validasi form NIP dalam bahasa indonesia
             'nama_homestay.required' => 'Nama Homestay wajib diisi !',
             'nama_homestay.min' => 'Nama Homestay minimal 7 karakter',
@@ -101,6 +104,7 @@ class C_Homestay extends Controller
                 'harga_homestay' => Request()->harga_homestay,
                 'foto_homestay' => $fileName,
                 'deskripsi' => Request()->deskripsi,
+                'fasilitas' => Request()->fasilitas,
             ];
             Homestay::where('id_homestay', $id_homestay)->update($data);
         } else {
@@ -109,6 +113,7 @@ class C_Homestay extends Controller
                 'nama_homestay' => Request()->nama_homestay,
                 'harga_homestay' => Request()->harga_homestay,
                 'deskripsi' => Request()->deskripsi,
+                'fasilitas' => Request()->fasilitas,
             ];
             Homestay::where('id_homestay', $id_homestay)->update($data);
         }
@@ -126,27 +131,5 @@ class C_Homestay extends Controller
         return redirect()->route('homestay')->with('pesan', 'Data Berhasil Dihapus !');
     }
 
-    public function detailA()
-    {
-        $homestay = Homestay::find(1); // Assuming id 1 for Homestay A
-        return view('detail.detail_homestay_A', compact('homestay'));
-    }
-
-    public function detailB()
-    {
-        $homestay = Homestay::find(2); // Assuming id 2 for Homestay B
-        return view('detail.detail_homestay_B', compact('homestay'));
-    }
-
-    public function detailC()
-    {
-        $homestay = Homestay::find(3); // Assuming id 3 for Homestay C
-        return view('detail.detail_homestay_C', compact('homestay'));
-    }
-
-    public function detailD()
-    {
-        $homestay = Homestay::find(4); // Assuming id 4 for Homestay D
-        return view('detail.detail_homestay_D', compact('homestay'));
-    }
+   
 }

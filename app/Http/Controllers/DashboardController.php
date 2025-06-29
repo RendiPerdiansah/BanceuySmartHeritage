@@ -26,16 +26,38 @@ class DashboardController extends Controller
         return view('dashboard.tabel_akun', compact('dataAkun'));
     }
 
-    public function showTabelPesanan()
+    public function showTabelPesanan(Request $request)
     {
-        $dataPesanan = PemesananPaket::all(); 
-        return view('dashboard.tabel_pesanan', compact('dataPesanan'));
+        $month = $request->query('month');
+        $year = $request->query('year');
+
+        $query = PemesananPaket::query();
+
+        if ($month && $year) {
+            $query->whereMonth('created_at', $month)
+                  ->whereYear('created_at', $year);
+        }
+
+        $dataPesanan = $query->get();
+
+        return view('dashboard.tabel_pesanan', compact('dataPesanan', 'month', 'year'));
     }
 
-    public function showTabelPesananHomestay()
+    public function showTabelPesananHomestay(Request $request)
     {
-        $dataPesananHomestay = PemesananHomestay::all(); 
-        return view('dashboard.tabel_pesanan_homestay', compact('dataPesananHomestay'));
+        $month = $request->query('month');
+        $year = $request->query('year');
+
+        $query = PemesananHomestay::query();
+
+        if ($month && $year) {
+            $query->whereMonth('created_at', $month)
+                  ->whereYear('created_at', $year);
+        }
+
+        $dataPesananHomestay = $query->get();
+
+        return view('dashboard.tabel_pesanan_homestay', compact('dataPesananHomestay', 'month', 'year'));
     }
 
     public function printPesanan()
@@ -241,37 +263,53 @@ class DashboardController extends Controller
         return redirect()->route('tabel_akun')->with('success', 'Akun berhasil diperbarui.');
     }
 
-    public function dashboard_admin()
+    public function dashboard_admin(Request $request)
     {
-        // Menghitung Total Volume (Month to Date) dari tabel pemesanan_paket
-        $totalVolume = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
-                                    ->whereYear('updated_at', Carbon::now()->year)
+        $monthYear = $request->query('month');
+
+        if ($monthYear) {
+            $dateParts = explode('-', $monthYear);
+            if (count($dateParts) == 2) {
+                $year = intval($dateParts[0]);
+                $month = intval($dateParts[1]);
+            } else {
+                $year = Carbon::now()->year;
+                $month = Carbon::now()->month;
+            }
+        } else {
+            $year = Carbon::now()->year;
+            $month = Carbon::now()->month;
+        }
+
+        // Menghitung Total Volume (Month to Date) dari tabel pemesanan_paket berdasarkan tanggal_kunjungan
+        $totalVolume = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
+                                    ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
                                     ->sum('total_harga');
 
-        // Menghitung Total Transaksi (Month to Date) dari tabel pemesanan_paket
-        $totalTransactions = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
-                                        ->whereYear('updated_at', Carbon::now()->year)
+        // Menghitung Total Transaksi (Month to Date) dari tabel pemesanan_paket berdasarkan tanggal_kunjungan
+        $totalTransactions = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
+                                        ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
                                         ->count();
 
-        // Menghitung pendapatan pemesanan homestay per bulan
-        $pendapatanHomestay = PemesananHomestay::whereMonth('updated_at', Carbon::now()->month)
-                                    ->whereYear('updated_at', Carbon::now()->year)
+        // Menghitung pendapatan pemesanan homestay per bulan berdasarkan check_in
+        $pendapatanHomestay = PemesananHomestay::whereYear(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $year)
+                                    ->whereMonth(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $month)
                                     ->sum('total_harga');
 
-        // Menghitung pendapatan pemesanan paket per bulan
-        $pendapatanPaket = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
-                                    ->whereYear('updated_at', Carbon::now()->year)
+        // Menghitung pendapatan pemesanan paket per bulan berdasarkan tanggal_kunjungan
+        $pendapatanPaket = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
+                                    ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
                                     ->sum('total_harga');
 
-        // Menghitung jumlah pengunjung homestay per bulan (count distinct nama_pengunjung)
-        $jumlahPengunjungHomestay = PemesananHomestay::whereMonth('updated_at', Carbon::now()->month)
-                                            ->whereYear('updated_at', Carbon::now()->year)
+        // Menghitung jumlah pengunjung homestay per bulan (count distinct nama_pengunjung) berdasarkan check_in
+        $jumlahPengunjungHomestay = PemesananHomestay::whereYear(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $year)
+                                            ->whereMonth(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $month)
                                             ->distinct('nama_pengunjung')
                                             ->count('nama_pengunjung');
 
-        // Menghitung jumlah pengunjung paket per bulan (sum jumlah_pengunjung)
-        $jumlahPengunjungPaket = PemesananPaket::whereMonth('updated_at', Carbon::now()->month)
-                                    ->whereYear('updated_at', Carbon::now()->year)
+        // Menghitung jumlah pengunjung paket per bulan (sum jumlah_pengunjung) berdasarkan tanggal_kunjungan
+        $jumlahPengunjungPaket = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
+                                    ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
                                     ->sum('jumlah_pengunjung');
 
         // Data untuk chart (Contoh: 7 hari terakhir)
@@ -289,6 +327,8 @@ class DashboardController extends Controller
             'jumlahPengunjungHomestay' => $jumlahPengunjungHomestay,
             'jumlahPengunjungPaket' => $jumlahPengunjungPaket,
             'chartData' => $transactionVolumeChart,
+            'month' => $month,
+            'year' => $year,
         ]);
     }
 }

@@ -20,7 +20,7 @@
 
                         <div class="mb-3">
                             <label for="nama_homestay" class="form-label">Nama Homestay</label>
-                            <input type="text" class="form-control" id="nama_homestay" name="nama_homestay" value="{{ old('nama_homestay', $homestay->nama_homestay) }}">
+                            <input type="text" class="form-control" id="nama_homestay" name="nama_homestay" placeholder="Masukkan Nama Homestay" value="{{ old('nama_homestay', $homestay->nama_homestay) }}">
                             @error('nama_homestay')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -28,7 +28,7 @@
 
                         <div class="mb-3">
                             <label for="harga_homestay" class="form-label">Harga Homestay</label>
-                            <input type="number" class="form-control" id="harga_homestay" name="harga_homestay" value="{{ old('harga_homestay', $homestay->harga_homestay) }}">
+                            <input type="number" class="form-control" id="harga_homestay" name="harga_homestay" placeholder="Masukkan Harga Homestay" value="{{ old('harga_homestay', $homestay->harga_homestay) }}">
                             @error('harga_homestay')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -36,7 +36,7 @@
 
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4">{{ old('deskripsi', $homestay->deskripsi) }}</textarea>
+                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" placeholder="Masukkan Deskripsi Homestay">{{ old('deskripsi', $homestay->deskripsi) }}</textarea>
                             @error('deskripsi')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -48,12 +48,18 @@
                             @error('foto_homestay')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
-                            @if($homestay->foto_homestay)
-                                <img src="{{ asset('foto_homestay/' . $homestay->foto_homestay) }}" alt="Foto Homestay" class="img-thumbnail mt-2" style="max-width: 200px;">
-                            @endif
+                            <small>Foto saat ini: {{ $homestay->foto_homestay }}</small>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update Homestay</button>
+                        <div class="mb-3">
+                            <label for="fasilitas" class="form-label">Fasilitas</label>
+                            <textarea class="form-control" id="fasilitas" name="fasilitas" rows="3" placeholder="Masukkan Fasilitas Homestay, pisahkan dengan koma">{{ old('fasilitas', $homestay->fasilitas) }}</textarea>
+                            @error('fasilitas')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         <a href="{{ url('/homestay-table') }}" class="btn btn-secondary ms-2">Kembali</a>
                     </form>
                 </div>

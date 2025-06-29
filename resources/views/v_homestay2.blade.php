@@ -35,6 +35,19 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label fw-bold">Fasilitas:</label>
+                        <ul>
+                            @if($homestay->fasilitas)
+                                @foreach(explode(',', $homestay->fasilitas) as $fasilitas)
+                                    <li>{{ trim($fasilitas) }}</li>
+                                @endforeach
+                            @else
+                                <li>Tidak ada fasilitas yang tercantum.</li>
+                            @endif
+                        </ul>
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label fw-bold">Foto Homestay:</label><br>
                         <img src="{{ url('foto_homestay/' . $homestay->foto_homestay) }}" alt="Foto Homestay" class="img-fluid rounded border" style="max-width: 300px;">
                     </div>

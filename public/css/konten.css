@@ -1,36 +1,89 @@
-.summary-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.summary-cards .card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 25px;
-    text-align: center;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: default;
-}
-
-.summary-cards .card:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
-}
-
-.summary-cards .card h2 {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
-    color: #222222;
-    font-weight: 700;
-}
-
-.summary-cards .card p {
-    font-size: 1.1rem;
-    color: #555555;
+.konten-body-container {
+    font-family: arial, sans-serif;
     margin: 0;
-    font-weight: 500;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.konten-header {
+    text-align: center;
+    background-color: #044E75;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.konten-conntainer-content {
+    max-width: 9000px;
+    margin: 20px auto;
+}
+
+.konten-makanan-container {
+    background: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.konten-kaulinan-container {
+    background: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.konten-wisata-container {
+    background: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.konten-text-box {
+    flex: 1;
+    padding: 20px;
+}
+
+.konten-image-box {
+    flex:1 ;
+    padding: 20px;
+}
+img{
+    width: 300px;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.konten-reverse {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .konten-makanan-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .conten-reverse {
+        flex-direction: column;
+    }
+    img {
+        max-width: 200px;
+        height: auto;
+    }
 }

@@ -18,6 +18,6 @@ class HomestayController extends Controller
     public function show($id)
     {
         $homestay = Homestay::findOrFail($id); // Menggunakan findOrFail untuk menangani jika tidak ditemukan
-        return view('homestay_detail', compact('homestay'));
+        return view('detail.detail_homestay', compact('homestay'));
     }
 }

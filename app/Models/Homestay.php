@@ -25,5 +25,6 @@ class Homestay extends Model
         'harga_homestay',
         'foto_homestay',
         'deskripsi',
+        'fasilitas',
     ];
 }

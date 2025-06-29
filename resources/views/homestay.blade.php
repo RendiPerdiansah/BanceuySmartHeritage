@@ -13,37 +13,13 @@
         <div class="container">
             <h2>Homestay</h2>
             <div class="destinations">
-                <!-- Destinasi 1 -->
+                @foreach($homestays as $homestay)
                 <div class="destination-card">
-                    <img src="{{ url('assets/images/homestayy.jpg') }}" alt="Destinasi 1">
-                    <h3>Homestay (A)</h3>
-                    
-                    <a href="{{ url('detail_homestay_A') }}" class="detail-button">Detail</a>
+                    <img src="{{ url('foto_homestay/' . $homestay->foto_homestay) }}" alt="{{ $homestay->nama_homestay }}">
+                    <h3>{{ $homestay->nama_homestay }}</h3>
+                    <a href="{{ route('detail_homestay', ['id' => $homestay->id_homestay]) }}" class="detail-button">Detail</a>
                 </div>
-                
-                <!-- Destinasi 2 -->
-                <div class="destination-card">
-                    <img src="{{ url('assets/images/homestay1.jpg') }}" alt="Destinasi 2">
-                    <h3>Homestay (B)</h3>
-                    
-                    <a href="detail_homestay_B" class="detail-button">Detail</a>
-                </div>
-
-                <!-- Destinasi 3 -->
-                <div class="destination-card">
-                    <img src="{{ url('assets/images/homestay1.jpg') }}" alt="Destinasi 3">
-                    <h3>Homestay (C)</h3>
-                    
-                    <a href="detail_homestay_C" class="detail-button">Detail</a>
-                </div>
-
-                <!-- Destinasi 4 -->
-                <div class="destination-card">
-                    <img src="{{ url('assets/images/homestayy.jpg') }}" alt="Destinasi 4">
-                    <h3>Homestay (D)</h3>
-                    
-                    <a href="detail_homestay_D" class="detail-button">Detail</a>
-                </div>
+                @endforeach
             </div>
         </div>
 

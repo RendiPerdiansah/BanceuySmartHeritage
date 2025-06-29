@@ -9,6 +9,15 @@
         <i class="fas fa-print me-1"></i> Print
     </a>
 </div>
+    <div class="card-body">
+        <form method="GET" action="{{ route('tabel_pesanan') }}" class="mb-3 d-flex align-items-center gap-2">
+            <label for="month" class="mb-0">Filter Bulan:</label>
+            <input type="month" id="month" name="month" class="form-control" style="max-width: 200px;"
+                value="{{ isset($month) && isset($year) ? $year . '-' . str_pad($month, 2, '0', STR_PAD_LEFT) : '' }}">
+            <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+            <a href="{{ route('tabel_pesanan') }}" class="btn btn-secondary btn-sm">Reset</a>
+        </form>
+    </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">

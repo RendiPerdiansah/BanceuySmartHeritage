@@ -1,0 +1,36 @@
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.summary-cards .card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+}
+
+.summary-cards .card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.summary-cards .card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    color: #222222;
+    font-weight: 700;
+}
+
+.summary-cards .card p {
+    font-size: 1.1rem;
+    color: #555555;
+    margin: 0;
+    font-weight: 500;
+}

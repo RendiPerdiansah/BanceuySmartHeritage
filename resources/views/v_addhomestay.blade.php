@@ -50,6 +50,14 @@
                             @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label for="fasilitas" class="form-label">Fasilitas</label>
+                            <textarea class="form-control" id="fasilitas" name="fasilitas" rows="3" placeholder="Masukkan Fasilitas Homestay, pisahkan dengan koma" >{{ old('fasilitas') }}</textarea>
+                            @error('fasilitas')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Tambah Homestay</button>
                         <a href="{{ url('/homestay-table') }}" class="btn btn-secondary ms-2">Kembali</a>
                     </form>

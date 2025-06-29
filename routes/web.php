@@ -147,6 +147,8 @@ Route::get('/detail_homestay_B', [C_Homestay::class, 'detailB']);
 Route::get('/detail_homestay_C', [C_Homestay::class, 'detailC']);
 Route::get('/detail_homestay_D', [C_Homestay::class, 'detailD']);
 
+Route::get('/detail_homestay/{id}', [\App\Http\Controllers\HomestayController::class, 'show'])->name('detail_homestay');
+
 route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
 route::get('/tabel_pesanan_homestay/print', [DashboardController::class, 'printPesananHomestay'])->name('tabel_pesanan_homestay.print');
 

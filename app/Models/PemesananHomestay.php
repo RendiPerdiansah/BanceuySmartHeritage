@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PemesananHomestay extends Model
 {
     protected $table = 'pemesanan_homestay';
+    protected $primaryKey = 'id_pemesanan';
     protected $fillable = [
         'nama_pengunjung',
         'alamat',

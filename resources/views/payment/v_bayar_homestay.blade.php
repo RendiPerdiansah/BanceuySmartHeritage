@@ -68,7 +68,7 @@
         payButton.addEventListener('click', function() {
             window.snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
-                    window.location.href = '/welcome';
+                    window.location.href = '/';
                 },
                 onPending: function(result) {
                     alert("Menunggu pembayaran Anda!");

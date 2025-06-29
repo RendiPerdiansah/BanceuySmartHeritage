@@ -34,12 +34,20 @@ class DashboardController extends Controller
         $pesanan = PemesananHomestay::where('id_pemesanan', $id_pemesanan)->firstOrFail();
 
         $validatedData = $request->validate([
-            'nama_pengunjung' => 'required|string|max:255',
-            'alamat' => 'required|string|max:500',
-            'lama_tinggal' => 'required|integer|min:1',
-            'check_in' => 'required|date|after_or_equal:today',
-            'bukti_pembayaran' => 'nullable|string|max:255',
+            'bukti_pembayaran' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('bukti_pembayaran')) {
+            $file = $request->file('bukti_pembayaran');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('foto_bukti_pembayaran'), $filename);
+            $validatedData['bukti_pembayaran'] = $filename;
+            $validatedData['status'] = 'Sudah Dibayar';
+        } else {
+            // If no new file uploaded, keep the old filename and status
+            $validatedData['bukti_pembayaran'] = $pesanan->bukti_pembayaran;
+            $validatedData['status'] = $pesanan->status;
+        }
 
         $pesanan->update($validatedData);
 

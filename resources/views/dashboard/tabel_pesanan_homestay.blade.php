@@ -38,7 +38,12 @@
         <th>Nama Pengunjung</th>
         <th>Alamat</th>
         <th>Lama Tinggal</th>
-        <th>Tanggal check in</th>
+        <th>Tanggal Check In</th>
+        <th>Tanggal Check Out</th>
+        <th>Nama Homestay</th>
+        <th>Harga Homestay</th>
+        <th>Total Harga</th>
+        <th>Status</th>
         <th>Bukti Pembayaran</th>
         <th>Aksi</th>
     </tr>
@@ -65,6 +70,23 @@
             {{ $checkInDate ? $checkInDate->format('d M Y') : '-' }}
         </td>
         <td>
+            @php
+                $checkOutDate = $PesananHomestay->check_out;
+                if (is_string($checkOutDate)) {
+                    try {
+                        $checkOutDate = \Carbon\Carbon::parse($checkOutDate);
+                    } catch (\Exception $e) {
+                        $checkOutDate = null;
+                    }
+                }
+            @endphp
+            {{ $checkOutDate ? $checkOutDate->format('d M Y') : '-' }}
+        </td>
+        <td>{{ $PesananHomestay->nama_homestay }}</td>
+        <td>{{ number_format($PesananHomestay->harga_homestay, 0, ',', '.') }}</td>
+        <td>{{ number_format($PesananHomestay->total_harga, 0, ',', '.') }}</td>
+        <td>{{ $PesananHomestay->status }}</td>
+        <td>
             @if($PesananHomestay->bukti_pembayaran)
                 <img src="{{ asset('foto_bukti_pembayaran/' . $PesananHomestay->bukti_pembayaran) }}" alt="Bukti Pembayaran" width="100">
             @else
@@ -72,11 +94,11 @@
             @endif
         </td>
             <td>
-                @if(isset($PesananHomestay->id_homestay) && !empty($PesananHomestay->id_homestay))
-                <a href="{{ route('tabel_pesanan_homestay.edit', $PesananHomestay->id_homestay) }}" class="btn btn-warning btn-sm">
+                @if(isset($PesananHomestay->id_pemesanan) && !empty($PesananHomestay->id_pemesanan))
+                <a href="{{ route('tabel_pesanan_homestay.edit', $PesananHomestay->id_pemesanan) }}" class="btn btn-warning btn-sm">
                     <i class="fas fa-edit"></i>
                 </a>
-                <form action="{{ route('tabel_pesanan_homestay.delete', $PesananHomestay->id_homestay) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus pesanan ini?')">
+                <form action="{{ route('tabel_pesanan_homestay.delete', $PesananHomestay->id_pemesanan) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus pesanan ini?')">
                 @else
                 <a href="#" class="btn btn-warning btn-sm disabled" tabindex="-1" aria-disabled="true">
                     <i class="fas fa-edit"></i>

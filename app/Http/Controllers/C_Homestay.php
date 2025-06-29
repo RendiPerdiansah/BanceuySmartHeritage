@@ -7,6 +7,8 @@ use App\Models\Homestay;
 
 class C_Homestay extends Controller
 {
+    protected $M_Homestay;
+
     public function __construct()
     {
         $this->M_Homestay = new Homestay();
@@ -123,11 +125,13 @@ class C_Homestay extends Controller
     public function delete($id_homestay)
     {
         //hapus atau delete foto
-        $homestay = $this->M_Homestay->detaildata($id_homestay);
-        if ($homestay->foto_homestay <> "") {
+        $homestay = $this->M_Homestay->find($id_homestay);
+        if ($homestay && $homestay->foto_homestay != "") {
             unlink(public_path('foto_homestay') . '/' . $homestay->foto_homestay);
         }
-        $this->M_Homestay->deleteData($id_homestay);
+        if ($homestay) {
+            $homestay->delete();
+        }
         return redirect()->route('homestay')->with('pesan', 'Data Berhasil Dihapus !');
     }
 

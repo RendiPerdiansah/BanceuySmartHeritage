@@ -66,14 +66,15 @@ class PaymentController extends Controller
 
             // Update bukti_pembayaran in pemesanan_paket or pemesanan_homestay using id_pesanan and id_pemesanan
             $pemesananPaket = \App\Models\PemesananPaket::where('id_pesanan', $idPesanan)->first();
-            if ($pemesananPaket) {
-                \App\Models\PemesananPaket::where('id_pesanan', $idPesanan)->update($data);
-            } else {
-                $pemesananHomestay = \App\Models\PemesananHomestay::where('id_pemesanan', $idPesanan)->first();
-                if ($pemesananHomestay) {
-                    \App\Models\PemesananHomestay::where('id_pemesanan', $idPesanan)->update($data);
-                }
-            }
+if ($pemesananPaket) {
+    $data['status'] = 'sudah dibayar';
+    \App\Models\PemesananPaket::where('id_pesanan', $idPesanan)->update($data);
+} else {
+    $pemesananHomestay = \App\Models\PemesananHomestay::where('id_pemesanan', $idPesanan)->first();
+    if ($pemesananHomestay) {
+        \App\Models\PemesananHomestay::where('id_pemesanan', $idPesanan)->update($data);
+    }
+}
 
             return redirect()->back()->with('success', 'Bukti pembayaran berhasil diunggah.');
         }

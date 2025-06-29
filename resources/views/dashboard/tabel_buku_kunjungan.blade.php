@@ -30,17 +30,17 @@
                                 @forelse($dataBukuKunjungan as $index => $BukuKunjungan)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $BukuKunjungan->nama_Pengunjung}}</td>
+                                    <td>{{ $BukuKunjungan->nama_pengunjung }}</td>
                                     <td>{{ $BukuKunjungan->alamat }}</td>
                                     <td>{{ $BukuKunjungan->tanggal_kunjungan }}</td>
                                     <td>{{ $BukuKunjungan->jumlah_pengunjung }}</td>
                                     <td>{{ $BukuKunjungan->kesan_pesan }}</td>
                                     <td>{{ $BukuKunjungan->created_at->format('d M Y') }}</td>
                                     <td>
-                                        <a href="" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('buku-kunjungan.edit', $BukuKunjungan->id) }}" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus akun ini?')">
+                                        <form action="{{ route('buku-kunjungan.destroy', $BukuKunjungan->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger btn-sm">

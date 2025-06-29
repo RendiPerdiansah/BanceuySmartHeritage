@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Models\Akun;
 use App\Models\PemesananHomestay;
 use App\Models\PemesananPaket;
@@ -20,6 +21,40 @@ class DashboardController extends Controller
         return view('layout.v_dashboard_tamplate');
     }
 
+    // Show edit form for pemesanan homestay
+    public function editTabelPesananHomestay($id_pemesanan)
+    {
+        $pesanan = PemesananHomestay::where('id_pemesanan', $id_pemesanan)->firstOrFail();
+        return view('dashboard.edit_pesanan_homestay', compact('pesanan'));
+    }
+
+    // Update pemesanan homestay
+    public function updateTabelPesananHomestay(Request $request, $id_pemesanan)
+    {
+        $pesanan = PemesananHomestay::where('id_pemesanan', $id_pemesanan)->firstOrFail();
+
+        $validatedData = $request->validate([
+            'nama_pengunjung' => 'required|string|max:255',
+            'alamat' => 'required|string|max:500',
+            'lama_tinggal' => 'required|integer|min:1',
+            'check_in' => 'required|date|after_or_equal:today',
+            'bukti_pembayaran' => 'nullable|string|max:255',
+        ]);
+
+        $pesanan->update($validatedData);
+
+        return redirect()->route('tabel_pesanan_homestay')->with('success', 'Pesanan homestay berhasil diperbarui.');
+    }
+
+    // Delete pemesanan homestay
+    public function deleteTabelPesananHomestay($id_pemesanan)
+    {
+        $pesanan = PemesananHomestay::where('id_pemesanan', $id_pemesanan)->firstOrFail();
+        $pesanan->delete();
+
+        return redirect()->route('tabel_pesanan_homestay')->with('success', 'Pesanan homestay berhasil dihapus.');
+    }
+
     public function showTabelAkun()
     {
         $dataAkun = Akun::all(); 
@@ -28,36 +63,68 @@ class DashboardController extends Controller
 
     public function showTabelPesanan(Request $request)
     {
-        $month = $request->query('month');
-        $year = $request->query('year');
+        $monthYear = $request->query('month'); // expects format YYYY-MM
+        $status = $request->query('status');
 
         $query = PemesananPaket::query();
 
-        if ($month && $year) {
-            $query->whereMonth('created_at', $month)
-                  ->whereYear('created_at', $year);
+        if ($monthYear) {
+            $parts = explode('-', $monthYear);
+            if (count($parts) == 2) {
+                $year = intval($parts[0]);
+                $month = intval($parts[1]);
+                $query->whereYear('created_at', $year)
+                      ->whereMonth('created_at', $month);
+            }
+        } else {
+            $year = null;
+            $month = null;
+        }
+
+        if ($status) {
+            if ($status === 'paid') {
+                $query->whereNotNull('bukti_pembayaran');
+            } elseif ($status === 'unpaid') {
+                $query->whereNull('bukti_pembayaran');
+            }
         }
 
         $dataPesanan = $query->get();
 
-        return view('dashboard.tabel_pesanan', compact('dataPesanan', 'month', 'year'));
+        return view('dashboard.tabel_pesanan', compact('dataPesanan', 'month', 'year', 'status'));
     }
 
     public function showTabelPesananHomestay(Request $request)
     {
-        $month = $request->query('month');
-        $year = $request->query('year');
+        $monthYear = $request->query('month'); // expects format YYYY-MM
+        $status = $request->query('status');
 
         $query = PemesananHomestay::query();
 
-        if ($month && $year) {
-            $query->whereMonth('created_at', $month)
-                  ->whereYear('created_at', $year);
+        if ($monthYear) {
+            $parts = explode('-', $monthYear);
+            if (count($parts) == 2) {
+                $year = intval($parts[0]);
+                $month = intval($parts[1]);
+                $query->whereYear('created_at', $year)
+                      ->whereMonth('created_at', $month);
+            }
+        } else {
+            $year = null;
+            $month = null;
+        }
+
+        if ($status) {
+            if ($status === 'paid') {
+                $query->whereNotNull('bukti_pembayaran');
+            } elseif ($status === 'unpaid') {
+                $query->whereNull('bukti_pembayaran');
+            }
         }
 
         $dataPesananHomestay = $query->get();
 
-        return view('dashboard.tabel_pesanan_homestay', compact('dataPesananHomestay', 'month', 'year'));
+        return view('dashboard.tabel_pesanan_homestay', compact('dataPesananHomestay', 'month', 'year', 'status'));
     }
 
     public function printPesanan()

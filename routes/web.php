@@ -152,6 +152,10 @@ Route::get('/detail_homestay/{id}', [\App\Http\Controllers\HomestayController::c
 route::get('/tabel_pesanan_homestay', [DashboardController::class, 'showTabelPesananHomestay'])->name('tabel_pesanan_homestay');
 route::get('/tabel_pesanan_homestay/print', [DashboardController::class, 'printPesananHomestay'])->name('tabel_pesanan_homestay.print');
 
+route::get('/tabel_pesanan_homestay/{id}/edit', [DashboardController::class, 'editTabelPesananHomestay'])->name('tabel_pesanan_homestay.edit');
+route::put('/tabel_pesanan_homestay/{id}', [DashboardController::class, 'updateTabelPesananHomestay'])->name('tabel_pesanan_homestay.update');
+route::delete('/tabel_pesanan_homestay/{id}', [DashboardController::class, 'deleteTabelPesananHomestay'])->name('tabel_pesanan_homestay.delete');
+
 use App\Http\Controllers\BukuKunjunganController;
 
 
@@ -161,6 +165,11 @@ Route::post('/form-buku-kunjungan', [PemesananHomestayController::class, 'store'
 
 
 Route::post('/buku-kunjungan', [BukuKunjunganController::class, 'store']);
+
+// Edit buku kunjungan
+Route::get('/buku-kunjungan/{id}/edit', [BukuKunjunganController::class, 'edit'])->name('buku-kunjungan.edit');
+Route::put('/buku-kunjungan/{id}', [BukuKunjunganController::class, 'update'])->name('buku-kunjungan.update');
+Route::delete('/buku-kunjungan/{id}', [BukuKunjunganController::class, 'destroy'])->name('buku-kunjungan.destroy');
 
 Route::get('/tabel_buku_kunjungan', [DashboardController::class, 'showTabelBukuKunjungan'])->name('tabel_buku_kunjungan');
 

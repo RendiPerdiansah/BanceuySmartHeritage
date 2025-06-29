@@ -33,8 +33,11 @@
                 $pemesanan = $pemesanan ?? null;
             @endphp
 
-            <form action="/buku-kunjungan" method="POST">
+            <form action="{{ isset($bukuKunjungan) ? route('buku-kunjungan.update', $bukuKunjungan->id) : url('/buku-kunjungan') }}" method="POST">
                 @csrf
+                @if(isset($bukuKunjungan))
+                    @method('PUT')
+                @endif
 
                 @if($user)
                     <input type="hidden" name="nama_pengunjung" id="nama_pengunjung" value="{{ $user->nama }}">
@@ -44,34 +47,34 @@
                 @else
                     <div class="mb-4">
                         <label for="nama_pengunjung" class="block font-medium">Nama Lengkap</label>
-                        <input type="text" name="nama_pengunjung" id="nama_pengunjung" class="w-full border rounded px-3 py-2" required>
+                        <input type="text" name="nama_pengunjung" id="nama_pengunjung" class="w-full border rounded px-3 py-2" required value="{{ isset($bukuKunjungan) ? $bukuKunjungan->nama_pengunjung : '' }}">
                     </div>
                 @endif
 
                 <div class="mb-4">
                     <label for="alamat" class="block font-medium">Alamat</label>
-                    <input type="text" name="alamat" id="alamat" class="w-full border rounded px-3 py-2" required value="{{ $pemesanan ? $pemesanan->alamat : '' }}" readonly>
+                    <input type="text" name="alamat" id="alamat" class="w-full border rounded px-3 py-2" required value="{{ isset($bukuKunjungan) ? $bukuKunjungan->alamat : ($pemesanan ? $pemesanan->alamat : '') }}" readonly>
                 </div>
 
                 <div class="mb-4">
                     <label for="tanggal_kunjungan" class="block font-medium">Tanggal Kunjungan</label>
-                    <input type="text" name="tanggal_kunjungan" id="tanggal_kunjungan" class="w-full border rounded px-3 py-2" required value="{{ $pemesanan ? $pemesanan->tanggal_kunjungan : '' }}" readonly>
+                    <input type="text" name="tanggal_kunjungan" id="tanggal_kunjungan" class="w-full border rounded px-3 py-2" required value="{{ isset($bukuKunjungan) ? $bukuKunjungan->tanggal_kunjungan : ($pemesanan ? $pemesanan->tanggal_kunjungan : '') }}" readonly>
                 </div>
 
                 <div class="mb-4">
                     <label for="jumlah_pengunjung" class="block font-medium">Jumlah pengunjung</label>
-                    <input type="text" name="jumlah_pengunjung" id="jumlah_pengunjung" class="w-full border rounded px-3 py-2" required value="{{ $pemesanan ? $pemesanan->jumlah_pengunjung : '' }}" readonly>
+                    <input type="text" name="jumlah_pengunjung" id="jumlah_pengunjung" class="w-full border rounded px-3 py-2" required value="{{ isset($bukuKunjungan) ? $bukuKunjungan->jumlah_pengunjung : ($pemesanan ? $pemesanan->jumlah_pengunjung : '') }}" readonly>
                 </div>
 
                 <div class="mb-4">
                     <label for="kesan_pesan" class="block font-medium">Kesan dan pesan</label>
-                    <textarea name="kesan_pesan" id="kesan_pesan" rows="3" class="w-full border rounded px-3 py-2" required></textarea>
+                    <textarea name="kesan_pesan" id="kesan_pesan" rows="3" class="w-full border rounded px-3 py-2" required>{{ isset($bukuKunjungan) ? $bukuKunjungan->kesan_pesan : '' }}</textarea>
                     @error('kesan_pesan')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <button type="submit" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition">Kirim</button>
+                <button type="submit" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition">{{ isset($bukuKunjungan) ? 'Update' : 'Kirim' }}</button>
             </form>
         </div>
 

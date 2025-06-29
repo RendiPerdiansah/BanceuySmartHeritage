@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <div class="card">
-            <img src="{{ isset($paket) ? asset('foto_homestay/' . $paket->foto_homestay) : asset('assets/images/homestay.jpg') }}" class="card-img-top" alt="{{ $paket->nama_homestay ?? 'Homestay' }}">
+            <img src="{{ isset($pesanan) ? asset('foto_homestay/' . $pesanan->foto_homestay) : asset('assets/images/homestay.jpg') }}" class="card-img-top" alt="{{ $pesanan->nama_homestay ?? 'Homestay' }}">
             <div class="card-body">
               <h5 class="card-title">Detail pesanan Homestay</h5>
               <table>
@@ -68,7 +68,7 @@
         payButton.addEventListener('click', function() {
             window.snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
-                    window.location.href = '/payment/homestay/success?orderId={{ $pesanan->order_id }}';
+                    window.location.href = '/welcome';
                 },
                 onPending: function(result) {
                     alert("Menunggu pembayaran Anda!");

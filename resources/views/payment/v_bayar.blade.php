@@ -16,40 +16,42 @@
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
 </head>
 <body>
-    <div class="container">
-        
-        <div class="card">
-            <img src="{{ isset($paket) ? asset('foto_paket/' . $paket->foto_paket) : asset('assets/images/paket_1ha.jpg') }}" class="card-img-top" alt="{{ $paket->nama_paket ?? 'Paket' }}">
-            <div class="card-body">
-              <h5 class="card-title">Detail pesanan</h5>
-              <table>
-                <tr>
-                    <td>nama paket</td>
-                    <td>{{ $pesanan->nama_paket }}</td>
-                </tr>
-                <tr>
-                    <td>nama pemesan</td>
-                    <td>{{ $pesanan->nama_pengunjung }}</td>
-                </tr>
-                <tr>
-                    <td>No HP</td>
-                    <td>{{ $pesanan->no_hp }}</td>
-                </tr>
-                <tr>
-                    <td>Alamat</td>
-                    <td>{{ $pesanan->alamat }}</td>
-                </tr>
-                <tr>
-                    <td>Jumlah Pengunjung</td>
-                    <td>{{ $pesanan->jumlah_pengunjung }} Orang</td>
-                </tr>
-                <tr>
-                    <td>Total Harga</td>
-                    <td> : Rp{{ number_format($pesanan->total_harga ?? 0, 0, ',', '.') }}</td>
-                </tr>
-              </table>
-              <button class="btn btn-primary mt-3" id="pay-button">Bayar</button>
-              <button class="btn btn-secondary mt-3" onclick="window.location.href='/paket_wisata'">Kembali</button>
+    <div class="container-background">
+        <div class="container">
+            
+            <div class="card">
+                <img src="{{ isset($paket) ? asset('foto_paket/' . $paket->foto_paket) : asset('assets/images/paket_1ha.jpg') }}" class="card-img-top" alt="{{ $paket->nama_paket ?? 'Paket' }}">
+                <div class="card-body">
+                  <h5 class="card-title">Detail pesanan</h5>
+                  <table>
+                    <tr>
+                        <td>nama paket</td>
+                        <td>{{ $pesanan->nama_paket }}</td>
+                    </tr>
+                    <tr>
+                        <td>nama pemesan</td>
+                        <td>{{ $pesanan->nama_pengunjung }}</td>
+                    </tr>
+                    <tr>
+                        <td>No HP</td>
+                        <td>{{ $pesanan->no_hp }}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>{{ $pesanan->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah Pengunjung</td>
+                        <td>{{ $pesanan->jumlah_pengunjung }} Orang</td>
+                    </tr>
+                    <tr>
+                        <td>Total Harga</td>
+                        <td> : Rp{{ number_format($pesanan->total_harga ?? 0, 0, ',', '.') }}</td>
+                    </tr>
+                  </table>
+                  <button class="btn btn-primary mt-3" id="pay-button">Bayar</button>
+                  <button class="btn btn-secondary mt-3" onclick="window.location.href='/paket_wisata'">Kembali</button>
+                </div>
             </div>
         </div>
     </div>

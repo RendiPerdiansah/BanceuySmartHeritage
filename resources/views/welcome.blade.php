@@ -63,8 +63,10 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                <div class="d-flex justify-content-center">
-                    
+                <div class="d-flex justify-content-center flex-column align-items-center">
+                    <h1 class="display-4 fw-bold mb-3">Welcome to Banceuy Smart Heritage</h1>
+                    <p class="lead mb-4">Explore the rich culture and traditions of Kampung Adat Banceuy</p>
+                    <a href="#projects" class="btn btn-primary btn-lg">Explore Now</a>
                 </div>
             </div>
         </header>

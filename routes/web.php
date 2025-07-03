@@ -156,6 +156,10 @@ route::get('/tabel_pesanan_homestay/{id}/edit', [DashboardController::class, 'ed
 route::put('/tabel_pesanan_homestay/{id}', [DashboardController::class, 'updateTabelPesananHomestay'])->name('tabel_pesanan_homestay.update');
 route::delete('/tabel_pesanan_homestay/{id}', [DashboardController::class, 'deleteTabelPesananHomestay'])->name('tabel_pesanan_homestay.delete');
 
+route::get('/tabel_pesanan/{id}/edit', [DashboardController::class, 'editTabelPesanan'])->name('tabel_pesanan.edit');
+route::put('/tabel_pesanan/{id}', [DashboardController::class, 'updateTabelPesanan'])->name('tabel_pesanan.update');
+route::delete('/tabel_pesanan/{id}', [DashboardController::class, 'deletePesanan'])->name('tabel_pesanan.delete');
+
 use App\Http\Controllers\BukuKunjunganController;
 
 

@@ -68,8 +68,10 @@
         </td>
         <td>{{ $pesanan->created_at->format('d M Y') }}</td>
         <td>
-           
-            <form action="" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus pesanan ini?')">
+            <a href="{{ route('tabel_pesanan.edit', $pesanan->id_pesanan) }}" class="btn btn-warning btn-sm me-1">
+                <i class="fas fa-edit"></i>
+            </a>
+            <form action="{{ route('tabel_pesanan.delete', $pesanan->id_pesanan) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus pesanan ini?')">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger btn-sm">

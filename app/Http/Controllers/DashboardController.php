@@ -21,6 +21,50 @@ class DashboardController extends Controller
         return view('layout.v_dashboard_tamplate');
     }
 
+    // Show edit form for pemesanan paket
+    public function editTabelPesanan($id)
+    {
+        $pesanan = PemesananPaket::findOrFail($id);
+        return view('dashboard.edit_pesanan_paket', compact('pesanan'));
+    }
+
+    // Update pemesanan paket
+    public function updateTabelPesanan(Request $request, $id)
+    {
+        $pesanan = PemesananPaket::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'nama_pengunjung' => 'required|string|max:255',
+            'tanggal_kunjungan' => 'required|date',
+            'nama_paket' => 'required|string|max:255',
+            'jumlah_pengunjung' => 'required|integer|min:1',
+            'catatan_tambahan' => 'nullable|string',
+            'alamat' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
+            'status' => 'nullable|string|max:50',
+            'total_harga' => 'required|numeric',
+            'bukti_pembayaran' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('bukti_pembayaran')) {
+            $file = $request->file('bukti_pembayaran');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('foto_bukti_pembayaran'), $filename);
+            $validatedData['bukti_pembayaran'] = $filename;
+            $validatedData['status'] = 'Sudah Dibayar';
+        } else {
+            $validatedData['bukti_pembayaran'] = $pesanan->bukti_pembayaran;
+            $validatedData['status'] = $pesanan->status;
+        }
+
+        $pesanan->update($validatedData);
+
+        return redirect()->route('tabel_pesanan')->with('success', 'Pesanan paket berhasil diperbarui.');
+    }
+
+    // Delete pemesanan paket
+   
+
     // Show edit form for pemesanan homestay
     public function editTabelPesananHomestay($id_pemesanan)
     {

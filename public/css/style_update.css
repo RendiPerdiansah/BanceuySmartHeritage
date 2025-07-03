@@ -1,0 +1,82 @@
+.masthead {
+    background-image: url('../assets/images/hero-banceuy.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    position: relative;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.masthead::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.masthead .container {
+    position: relative;
+    z-index: 2;
+}
+
+.masthead h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.masthead p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.card-container .card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-container .card:hover {
+    transform: translateY(-10px);
+}
+
+.card-container .card .img-content img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-container .card .content {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-container .card .heading {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#galery h2.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.card.shadow-sm img {
+    height: 200px;
+    object-fit: cover;
+}

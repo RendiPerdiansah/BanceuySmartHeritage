@@ -88,16 +88,16 @@
 
 <li class="nav-item topbar-user dropdown hidden-caret">
     <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
-        <div class="avatar-sm">
-            @php
-                $user = auth('akun')->user();
-            @endphp
-            @if ($user && $user->foto_profile)
-                <img src="{{ asset('storage/' . $user->foto_profile) }}" alt="..." class="avatar-img rounded-circle" />
-            @else
-                <img src="{{ asset('assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle" />
-            @endif
-        </div>
+            <div class="avatar-sm">
+                @php
+                    $user = auth('akun')->user();
+                @endphp
+                @if ($user && $user->foto_profile)
+                    <img src="{{ route('profile.foto', ['id' => $user->id]) }}" alt="..." class="avatar-img rounded-circle" />
+                @else
+                    <img src="{{ asset('assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle" />
+                @endif
+            </div>
         <span class="profile-username">
             <span class="op-7">Hi,</span>
             <span class="fw-bold">{{ $user->nama ?? 'User' }}</span>
@@ -109,7 +109,7 @@
                 <div class="user-box">
                     <div class="avatar-lg">
                         @if ($user && $user->foto_profile)
-                            <img src="{{ asset('storage/' . $user->foto_profile) }}" alt="image profile" class="avatar-img rounded" />
+                            <img src="{{ route('profile.foto', ['id' => $user->id]) }}" alt="image profile" class="avatar-img rounded" />
                         @else
                             <img src="{{ asset('assets/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded" />
                         @endif

@@ -65,7 +65,7 @@ class DashboardController extends Controller
 
     public function showTabelAkun()
     {
-        $dataAkun = Akun::all(); 
+        $dataAkun = Akun::all();
         return view('dashboard.tabel_akun', compact('dataAkun'));
     }
 
@@ -82,7 +82,7 @@ class DashboardController extends Controller
                 $year = intval($parts[0]);
                 $month = intval($parts[1]);
                 $query->whereYear('created_at', $year)
-                      ->whereMonth('created_at', $month);
+                    ->whereMonth('created_at', $month);
             }
         } else {
             $year = null;
@@ -115,7 +115,7 @@ class DashboardController extends Controller
                 $year = intval($parts[0]);
                 $month = intval($parts[1]);
                 $query->whereYear('created_at', $year)
-                      ->whereMonth('created_at', $month);
+                    ->whereMonth('created_at', $month);
             }
         } else {
             $year = null;
@@ -151,11 +151,11 @@ class DashboardController extends Controller
 
     public function showTabelBukuKunjungan()
     {
-        $dataBukuKunjungan = BukuKunjungan::all(); 
+        $dataBukuKunjungan = BukuKunjungan::all();
         return view('dashboard.tabel_buku_kunjungan', compact('dataBukuKunjungan'));
     }
 
-  public function showTabelPesananPengunjung()
+    public function showTabelPesananPengunjung()
     {
         // Ambil data akun yang sedang login
         $user = auth('akun')->user();
@@ -227,14 +227,16 @@ class DashboardController extends Controller
     // Show profile detail
     public function showProfile()
     {
-        $user = auth('akun')->user();
+        $authUser = auth('akun')->user();
+        $user = Akun::find($authUser->id);
         return view('detail.detail_profile', compact('user'));
     }
 
     // Show edit profile form
     public function editProfile()
     {
-        $user = auth('akun')->user();
+        $authUser = auth('akun')->user();
+        $user = Akun::find($authUser->id);
         return view('detail.edit_profile', compact('user'));
     }
 
@@ -362,41 +364,41 @@ class DashboardController extends Controller
 
         // Menghitung Total Volume (Month to Date) dari tabel pemesanan_paket berdasarkan tanggal_kunjungan
         $totalVolume = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
-                                    ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
-                                    ->sum('total_harga');
+            ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
+            ->sum('total_harga');
 
         // Menghitung Total Transaksi (Month to Date) dari tabel pemesanan_paket berdasarkan tanggal_kunjungan
         $totalTransactions = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
-                                        ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
-                                        ->count();
+            ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
+            ->count();
 
         // Menghitung pendapatan pemesanan homestay per bulan berdasarkan check_in
         $pendapatanHomestay = PemesananHomestay::whereYear(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $year)
-                                    ->whereMonth(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $month)
-                                    ->sum('total_harga');
+            ->whereMonth(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $month)
+            ->sum('total_harga');
 
         // Menghitung pendapatan pemesanan paket per bulan berdasarkan tanggal_kunjungan
         $pendapatanPaket = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
-                                    ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
-                                    ->sum('total_harga');
+            ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
+            ->sum('total_harga');
 
         // Menghitung jumlah pengunjung homestay per bulan (count distinct nama_pengunjung) berdasarkan check_in
         $jumlahPengunjungHomestay = PemesananHomestay::whereYear(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $year)
-                                            ->whereMonth(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $month)
-                                            ->distinct('nama_pengunjung')
-                                            ->count('nama_pengunjung');
+            ->whereMonth(\DB::raw("STR_TO_DATE(check_in, '%Y-%m-%d')"), $month)
+            ->distinct('nama_pengunjung')
+            ->count('nama_pengunjung');
 
         // Menghitung jumlah pengunjung paket per bulan (sum jumlah_pengunjung) berdasarkan tanggal_kunjungan
         $jumlahPengunjungPaket = PemesananPaket::whereYear(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $year)
-                                    ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
-                                    ->sum('jumlah_pengunjung');
+            ->whereMonth(\DB::raw("STR_TO_DATE(tanggal_kunjungan, '%Y-%m-%d')"), $month)
+            ->sum('jumlah_pengunjung');
 
         // Data untuk chart (Contoh: 7 hari terakhir)
         $transactionVolumeChart = PemesananPaket::selectRaw('DATE(updated_at) as date, SUM(total_harga) as volume')
-                                    ->where('updated_at', '>=', Carbon::now()->subDays(7))
-                                    ->groupBy('date')
-                                    ->orderBy('date', 'ASC')
-                                    ->get();
+            ->where('updated_at', '>=', Carbon::now()->subDays(7))
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get();
 
         return view('dashboard.dashboard_admin', [
             'totalVolume' => $totalVolume,
@@ -411,5 +413,3 @@ class DashboardController extends Controller
         ]);
     }
 }
-
-

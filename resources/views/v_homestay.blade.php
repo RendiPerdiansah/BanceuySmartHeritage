@@ -30,6 +30,7 @@
                             <th>#</th>
                             <th>Nama Homestay</th>
                             <th>Deskripsi</th>
+                            <th>Fasilitas</th>
                             <th>Harga Homestay</th>
                             <th>Foto Homestay</th>
                             <th>Aksi</th>

@@ -2,6 +2,14 @@
 
 @section('content')
 <body>
+    <div class="d-flex align-items-center mb-4">
+        @if ($user && $user->foto_profile)
+            <img src="{{ route('profile.foto', ['id' => $user->id]) }}" alt="Profile Photo" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover; margin-right: 15px;">
+        @else
+            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Default Profile" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover; margin-right: 15px;">
+        @endif
+        <h3 class="mb-0">{{ $user->nama ?? 'User' }}</h3>
+    </div>
     <h1>Summary</h1>
     <form method="GET" action="{{ route('dashboard_admin') }}" class="mb-3 d-flex align-items-center gap-2">
         <label for="month" class="mb-0">Filter Bulan:</label>

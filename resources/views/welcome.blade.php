@@ -25,8 +25,13 @@
 
 @if ($akun)
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" aria-haspopup="true"
+    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="akunDropdown" role="button" aria-haspopup="true"
        data-bs-toggle="dropdown" aria-expanded="false">
+        @if ($akun->foto_profile)
+            <img src="{{ route('profile.foto', ['id' => $akun->id]) }}" alt="Profile Photo" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 8px;">
+        @else
+            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Default Profile" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 8px;">
+        @endif
         {{ $akun->nama ?? 'Profile' }}
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="akunDropdown">

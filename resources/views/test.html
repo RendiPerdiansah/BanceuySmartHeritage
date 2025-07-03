@@ -1,218 +1,281 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verifikasi Pembayaran</title>
-  <style>
-    .container-content {
-    padding: 50px 20px;
-    text-align: center;
-}
+    <meta charset="UTF-8">
+    <title>Welcome - Kampung Adat Banceuy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-.container-content .title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+        /* Hero section */
+        .masthead {
+            background-image: url('assets/images/hero-banceuy.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.card-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    justify-items: center;
-}
+        .masthead::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            height: 100%; width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-.outer-box {
-    width: 100%;
-}
+        .masthead .container {
+            position: relative;
+            z-index: 2;
+        }
 
-.card-container {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease-in-out;
-}
+        .masthead h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
 
-.card-container:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
+        .masthead p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
 
-.card .img-content img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
 
-.card .img-content:hover img {
-    transform: scale(1.05);
-}
+        .card-container .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
 
-.content {
-    padding: 20px;
-    text-align: left;
-}
+        .card-container .card:hover {
+            transform: translateY(-10px);
+        }
 
-.content .heading {
-    font-size: 20px;
-    font-weight: bold;
-    color: #007f5f;
-    margin-bottom: 8px;
-}
+        .card-container .card .img-content img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-.content p {
-    font-size: 14px;
-    color: #555;
-}
+        .card-container .card .content {
+            padding: 1rem;
+            text-align: center;
+        }
 
-  </style>
+        .card-container .card .heading {
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        #galery h2.title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .card.shadow-sm img {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
 
-  <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-                <!-- Featured Project Row-->
-                <!-- Project Two Row-->
-                <div class="container-content">
-                    <div class="title">Konten Kampung Adat Banceuy</div>
-                    <div class="card-wrapper">
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/sejarah">
-                                            <img src="assets/images/sejarah.jpg" alt="Sejarah Kampung Adat" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Sejarah</p>
-                                        <p>Sejarah kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/budaya">
-                                            <img src="assets/images/budaya.jpg" alt="Budaya Kampung Adat" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Budaya</p>
-                                        <p>Budaya kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/makanan_khas">
-                                        <img src="assets/images/opak.jpg" alt="Makanan Khas" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Makanan Khas</p>
-                                        <p>Makanan Khas kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/kesenian">
-                                        <img src="assets/images/kesenian.jpg" alt="Kesenian" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Kesenian</p>
-                                        <p>Kesenian kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/kaulinan_barudak">
-                                        <img src="assets/images/kaulinan.jpg" alt="Kaulinan Barudak" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Kaulinan Barudak</p>
-                                        <p>Kaulinan Barudak kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/wisata_alam">
-                                        <img src="assets/images/leuwi lawang.jpg" alt="Wisata Alam" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Wisata Alam</p>
-                                        <p>Wisata Alam kampung adat banceuy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Hero Section -->
+    <header class="masthead">
+        <div class="container">
+            <h1>Selamat Datang di Kampung Adat Banceuy</h1>
+            <p>Wisata Budaya, Alam, dan Edukasi di Jantung Jawa Barat</p>
+        </div>
+    </header>
 
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/paket_wisata">
-                                        <img src="images/paket_1ha.jpg" alt="Paket Wisata" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Paket Wisata</p>
-                                        <p>Paket Wisata kampung adat banceuy</p>
-                                    </div>
-                                </div>
+    <!-- Informasi Section -->
+    <section class="projects-section bg-light py-5" id="projects">
+        <div class="container">
+            <div class="title">Informasi Kampung Adat Banceuy</div>
+            <div class="row g-4 justify-content-center">
+
+                <!-- Kartu Informasi -->
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img-content">
+                                <a href="#"><img src="assets/images/sejarah.jpg" alt="Sejarah Kampung Adat"></a>
+                            </div>
+                            <div class="content">
+                                <p class="heading">Sejarah</p>
+                                <p>Sejarah Kampung Adat Banceuy</p>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="outer-box">
-                            <div class="card-container">
-                                <div class="card">
-                                    <div class="img-content">
-                                        <a href="/homestay">
-                                        <img src="assets/images/homestayy.jpg" alt="Homestay" />
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <p class="heading">Homestay</p>
-                                        <p>Homestay kampung adat banceuy</p>
-                                    </div>
-                                </div>
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img-content">
+                                <a href="#"><img src="assets/images/budaya.jpg" alt="Budaya Kampung Adat"></a>
+                            </div>
+                            <div class="content">
+                                <p class="heading">Budaya</p>
+                                <p>Budaya khas Banceuy</p>
                             </div>
                         </div>
-                    </div>     
-                </div>   
-            </div> 
-        </section>
+                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img-content">
+                                <a href="#"><img src="assets/images/opak.jpg" alt="Makanan Khas"></a>
+                            </div>
+                            <div class="content">
+                                <p class="heading">Makanan Khas</p>
+                                <p>Cita rasa tradisional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img-content">
+                                <a href="#"><img src="assets/images/kesenian.jpg" alt="Kesenian"></a>
+                            </div>
+                            <div class="content">
+                                <p class="heading">Kesenian</p>
+                                <p>Seni budaya lokal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img-content">
+                                <a href="#"><img src="assets/images/kaulinan.jpg" alt="Kaulinan Barudak"></a>
+                            </div>
+                            <div class="content">
+                                <p class="heading">Kaulinan Barudak</p>
+                                <p>Permainan tradisional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="img-content">
+                                <a href="#"><img src="assets/images/leuwi lawang.jpg" alt="Wisata Alam"></a>
+                            </div>
+                            <div class="content">
+                                <p class="heading">Wisata Alam</p>
+                                <p>Panorama alam menawan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section class="py-5 bg-white" id="galery">
+        <div class="container">
+            <h2 class="title">Galeri Kampung Adat Banceuy</h2>
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/pemandangan.jpg" class="card-img-top" alt="Pemandangan">
+                        <div class="card-body">
+                            <h5 class="card-title">Pemandangan Alam</h5>
+                            <p class="card-text">Suasana pagi yang asri</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/tradisi1.jpg" class="card-img-top" alt="Tradisi Adat">
+                        <div class="card-body">
+                            <h5 class="card-title">Tradisi Adat</h5>
+                            <p class="card-text">Upacara adat turun temurun</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/wisata edukasi.jpg" class="card-img-top" alt="Wisata Edukasi">
+                        <div class="card-body">
+                            <h5 class="card-title">Wisata Edukasi</h5>
+                            <p class="card-text">Kegiatan edukatif di kampung</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/kunjungan mahasiswa.jpg" class="card-img-top" alt="Kunjungan Mahasiswa">
+                        <div class="card-body">
+                            <h5 class="card-title">Kunjungan Mahasiswa</h5>
+                            <p class="card-text">Pembelajaran luar ruang</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/saung pintar.jpg" class="card-img-top" alt="Saung Pintar">
+                        <div class="card-body">
+                            <h5 class="card-title">Saung Pintar</h5>
+                            <p class="card-text">Tempat belajar alam terbuka</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/situs leluhur.jpg" class="card-img-top" alt="Situs Leluhur">
+                        <div class="card-body">
+                            <h5 class="card-title">Situs Leluhur</h5>
+                            <p class="card-text">Wisata spiritual & sejarah</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-3 bg-dark text-white small">
+        &copy; 2025 Kampung Adat Banceuy. All rights reserved.
+    </footer>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen relative">
+<body class="flex items-center justify-center min-h-screen relative" style="background-image: url('/images/beranda.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
     <!-- Konten Paket -->
     <div class="bg-white p-8 rounded-lg shadow-md max-w-lg w-full">

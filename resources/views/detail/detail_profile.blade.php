@@ -8,13 +8,13 @@
             <tbody>
                 <tr>
                     <th>Foto Profile</th>
-                    <td>
-                        @if ($user->foto_profile)
-                            <img src="{{ asset('storage/' . $user->foto_profile) }}" alt="Foto Profile" class="img-thumbnail" style="max-width: 150px;">
-                        @else
-                            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Foto Profile" class="img-thumbnail" style="max-width: 150px;">
-                        @endif
-                    </td>
+                <td>
+                    @if ($user->foto_profile)
+                        <img src="{{ route('profile.foto', ['id' => $user->id]) }}" alt="Foto Profile" class="img-thumbnail" style="max-width: 150px;">
+                    @else
+                        <img src="{{ asset('assets/img/profile.jpg') }}" alt="Foto Profile" class="img-thumbnail" style="max-width: 150px;">
+                    @endif
+                </td>
                 </tr>
                 <tr>
                     <th>Nama</th>

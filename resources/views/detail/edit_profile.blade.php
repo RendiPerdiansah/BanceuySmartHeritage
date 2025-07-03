@@ -22,7 +22,9 @@
                 <label for="foto_profile" class="col-sm-3 col-form-label fw-bold">Foto Profile</label>
                 <div class="col-sm-9">
                     @if ($user->foto_profile)
-                        <img src="{{ asset('storage/' . $user->foto_profile) }}" alt="Foto Profile" class="img-thumbnail mb-2" style="max-width: 150px;">
+                        <img src="{{ route('profile.foto', ['id' => $user->id]) }}" alt="Foto Profile" class="img-thumbnail mb-2" style="max-width: 150px;">
+                    @else
+                        <img src="{{ asset('assets/img/profile.jpg') }}" alt="Foto Profile" class="img-thumbnail mb-2" style="max-width: 150px;">
                     @endif
                     <input type="file" class="form-control" id="foto_profile" name="foto_profile" accept="image/*">
                 </div>

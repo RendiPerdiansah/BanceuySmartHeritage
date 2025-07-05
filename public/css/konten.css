@@ -2,12 +2,13 @@
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('/assets/images/banceuy.jpg') no-repeat center center fixed;
+    background: url('/assets/images/sejarah.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #333;
     min-height: 100vh;
     position: relative;
     z-index: 1;
+    backdrop-filter: blur(3px);
 }
 
 .konten-body-container::before {
@@ -17,7 +18,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-
+    background: rgba(255, 255, 255, 0.2);
     z-index: -1;
 }
 
@@ -26,44 +27,47 @@
     background: linear-gradient(135deg, #044E75, #0a6ebd);
     color: white;
     padding: 25px 20px;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
 .konten-container-content {
     max-width: 1000px;
     margin: 0 auto 40px auto;
-    padding: 30px 40px 40px 40px;
-    background-color: rgba(255, 255, 255, 0.7);
+    padding: 40px 50px;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.8s ease-in-out;
 }
 
 .konten-kaulinan-container,
 .konten-makanan-container,
 .konten-wisata-container {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    padding: 30px 25px;
+    background: linear-gradient(to right, #ffffff, #f2f9ff);
+    border-left: 8px solid #044E75;
+    border-radius: 20px;
+    padding: 35px 30px;
     margin-bottom: 50px;
     display: flex;
     align-items: center;
     gap: 40px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
     flex-wrap: wrap;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .konten-kaulinan-container:hover,
 .konten-makanan-container:hover,
 .konten-wisata-container:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
 }
 
 .konten-text-box {
@@ -71,8 +75,12 @@
     padding: 10px 20px 10px 0;
     min-width: 280px;
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: #222;
+    border-left: 4px solid #0a6ebd;
+    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
 }
 
 .konten-text-box p {
@@ -95,8 +103,7 @@
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .konten-image-box img:hover {
@@ -112,10 +119,15 @@ h2 {
     margin-top: 40px;
     margin-bottom: 20px;
     text-align: left;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 2rem;
     color: #044E75;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    transition: color 0.3s ease;
+}
+
+h2:hover {
+    color: #0a6ebd;
 }
 
 .konten-reverse h2 {
@@ -135,5 +147,17 @@ h2 {
     .konten-image-box img {
         max-width: 100%;
         height: auto;
+    }
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

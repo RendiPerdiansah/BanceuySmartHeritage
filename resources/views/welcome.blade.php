@@ -25,13 +25,8 @@
 
 @if ($akun)
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="akunDropdown" role="button" aria-haspopup="true"
+    <a class="nav-link dropdown-toggle" href="#" id="akunDropdown" role="button" aria-haspopup="true"
        data-bs-toggle="dropdown" aria-expanded="false">
-        @if ($akun->foto_profile)
-            <img src="{{ route('profile.foto', ['id' => $akun->id]) }}" alt="Profile Photo" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 8px;">
-        @else
-            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Default Profile" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 8px;">
-        @endif
         {{ $akun->nama ?? 'Profile' }}
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="akunDropdown">
@@ -63,15 +58,13 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                <div class="d-flex justify-content-center flex-column align-items-center">
-                    <h1 class="display-4 fw-bold mb-3">Welcome to Banceuy Smart Heritage</h1>
-                    <p class="lead mb-4">Explore the rich culture and traditions of Kampung Adat Banceuy</p>
-                    <a href="#projects" class="btn btn-primary btn-lg">Explore Now</a>
+                <div class="d-flex justify-content-center">
+                    
                 </div>
             </div>
         </header>
         <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
+        <section class="projects-section projects-bg-image" id="projects">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <!-- Project Two Row-->

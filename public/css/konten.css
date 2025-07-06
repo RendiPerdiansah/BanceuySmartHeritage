@@ -36,7 +36,7 @@
 }
 
 .konten-container-content {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto 40px auto;
     padding: 40px 50px;
     background: rgba(255, 255, 255, 0.8);
@@ -46,6 +46,55 @@
     animation: fadeIn 0.8s ease-in-out;
 }
 
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.outer-box {
+    flex: 0 0 calc(33.333% - 20px);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.card-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+    transform: scale(1.03);
+}
+
+.card {
+    text-align: center;
+    padding: 15px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card .content {
+    margin-top: 15px;
+}
+
+.card .heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #044E75;
+}
+
+/* Tambahan styling lain */
 .konten-kaulinan-container,
 .konten-makanan-container,
 .konten-wisata-container {
@@ -134,16 +183,26 @@ h2:hover {
     text-align: right;
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE LAYOUT */
+@media (max-width: 992px) {
+    .outer-box {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .outer-box {
+        flex: 0 0 100%;
+    }
+
     .konten-kaulinan-container,
     .konten-makanan-container,
-    .konten-wisata-container {
+    .konten-wisata-container,
+    .konten-reverse {
         flex-direction: column;
         align-items: center;
     }
-    .konten-reverse {
-        flex-direction: column;
-    }
+
     .konten-image-box img {
         max-width: 100%;
         height: auto;

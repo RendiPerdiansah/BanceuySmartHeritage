@@ -68,7 +68,7 @@
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <!-- Project Two Row-->
-                <div class="container-content">
+                <div class="konten-container-content">
                     <div class="title">Informasi Kampung Adat Banceuy</div>
                     <div class="card-wrapper">
                         <div class="outer-box">

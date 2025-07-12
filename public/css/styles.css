@@ -10976,7 +10976,7 @@ html {
 }
 
 body {
-  padding-top: 3.5rem; /* height of the fixed navbar */
+  padding-top: 0; /* removed padding to avoid white gap */
 }
 
 body {
@@ -11068,32 +11068,32 @@ body {
 }
 
 /* masthead gradient-color */
+.masthead {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 35rem;
+  padding: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/images/beranda.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+/* masthead tanpa gradient-color */
 /* .masthead {
   position: relative;
   width: 100%;
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/images/beranda.jpg");
+  background: url("../assets/images/beranda.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 } */
-
-/* masthead tanpa gradient-color */
-.masthead {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 35rem;
-  padding: 15rem 0;
-  background: url("../assets/images/welcome1.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
 
 
 .projects-bg-image {

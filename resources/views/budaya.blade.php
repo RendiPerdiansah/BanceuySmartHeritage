@@ -187,7 +187,7 @@ kunyit sebagai antiseptik bagi bayi yang dibalurkan ke seluruh bagian 
 pusar bayi.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="puput puseur">
+                    <img src="{{ asset('assets/images/ngabangsar.jpg') }} }}" alt="puput puseur">
                 </div>
             </div>
 
@@ -217,7 +217,7 @@ diberikan keselamatan, dan upacara ini juga sebagai tolak bala bagi 
 anak tersebut.</p>
                 </div>
                 <div class="konten-image-box">
-                    <img src="" alt="hajat saparan">
+                    <img src="{{ asset('assets/images/hajat_mulud.jpg') }}" alt="hajat saparan">
                 </div>
             </div>
     

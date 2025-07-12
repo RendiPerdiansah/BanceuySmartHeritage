@@ -129,7 +129,7 @@ class Pemesanan extends Controller
 
         $params = [
             'transaction_details' => [
-                'order_id' => $pesanan->id,
+                'order_id' => $pesanan->order_id,
                 'gross_amount' => $totalHarga,
             ],
             'customer_details' => [

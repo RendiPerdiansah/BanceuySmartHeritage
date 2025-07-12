@@ -14,11 +14,12 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         {{-- <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li> --}}
-                        <li class="nav-item"><a class="nav-link" href="/paket_wisata">Pesan Paket</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/homestay">Pesan Homestay</a></li>
+                        
                         <li class="nav-item"><a class="nav-link" href="#projects">Akses Informasi</a></li>
                         <li class="nav-item"><a class="nav-link" href="#galery">Galery</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/paket_wisata">Pesan Paket</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/homestay">Pesan Homestay</a></li>
                         @php
     $akun = Auth::guard('akun')->user();
 @endphp
@@ -59,7 +60,11 @@
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
-                    
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">SMART HERITAGE</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5" style="max-width: 600px; white-space: normal; word-wrap: break-word;">Selamat datang di website kampung adat banceuy.</h2>
+                        <a class="btn btn-primary" href="#projects">Get Started</a>
+                    </div>
                 </div>
             </div>
         </header>
@@ -239,54 +244,24 @@
     
 </section>
 
-        <!-- Signup-->
-        <section class="signup-section" id="signup">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-10 col-lg-8 mx-auto text-center">
-                        <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Email address input-->
-                            <div class="row input-group-newsletter">
-                                <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-                                <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
-                            </div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3 mt-2 text-white">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
-                        </form>
-                    </div>
-                </div>
+        <!-- Instagram Section -->
+<section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+                <a href="https://instagram.com/kampungadatbanceuy" target="_blank" style="text-decoration: none;">
+                    <i class="fab fa-instagram fa-3x mb-3 text-white"></i>
+                    <h2 class="text-white mb-4">Follow @kampungadatbanceuy di Instagram!</h2>
+                </a>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
         <!-- Contact-->
        
         <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Smart Heritage : Sistem Informasi Digital Kampung Adat Banceuy 2025</div></footer>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->

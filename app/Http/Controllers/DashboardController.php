@@ -444,6 +444,8 @@ class DashboardController extends Controller
             ->orderBy('date', 'ASC')
             ->get();
 
+        $user = auth('akun')->user();
+
         return view('dashboard.dashboard_admin', [
             'totalVolume' => $totalVolume,
             'totalTransactions' => $totalTransactions,
@@ -454,6 +456,7 @@ class DashboardController extends Controller
             'chartData' => $transactionVolumeChart,
             'month' => $month,
             'year' => $year,
+            'user' => $user,
         ]);
     }
 }

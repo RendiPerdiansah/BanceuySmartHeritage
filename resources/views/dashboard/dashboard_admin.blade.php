@@ -2,14 +2,7 @@
 
 @section('content')
 <body>
-    <div class="d-flex align-items-center mb-4">
-        @if ($user && $user->foto_profile)
-            <img src="{{ route('profile.foto', ['id' => $user->id]) }}" alt="Profile Photo" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover; margin-right: 15px;">
-        @else
-            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Default Profile" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover; margin-right: 15px;">
-        @endif
-        <h3 class="mb-0">{{ $user->nama ?? 'User' }}</h3>
-    </div>
+    
     <h1>Summary</h1>
     <form method="GET" action="{{ route('dashboard_admin') }}" class="mb-3 d-flex align-items-center gap-2">
         <label for="month" class="mb-0">Filter Bulan:</label>
@@ -18,28 +11,28 @@
         <button type="submit" class="btn btn-primary btn-sm">Filter</button>
         <a href="{{ route('dashboard_admin') }}" class="btn btn-secondary btn-sm">Reset</a>
     </form>
-    <div class="summary-cards">
-        <div class="card">
+    <div class="summary-cards d-flex flex-wrap gap-3">
+        <div class="card p-3 flex-fill" style="min-width: 200px; max-width: 300px;">
             <h2>Rp. {{ number_format($pendapatanHomestay + $pendapatanPaket, 0, ',', '.') }}</h2>
             <p>Total Pendapatan (Month to Date)</p>
         </div>
-        <div class="card">
+        <div class="card p-3 flex-fill" style="min-width: 200px; max-width: 300px;">
             <h2>{{ $totalTransactions }}</h2>
             <p>Total Transaksi (Month to Date)</p>
         </div>
-        <div class="card">
+        <div class="card p-3 flex-fill" style="min-width: 200px; max-width: 300px;">
             <h2>Rp. {{ number_format($pendapatanHomestay ?? 0, 0, ',', '.') }}</h2>
             <p>Pendapatan Pemesanan Homestay (Bulan Ini)</p>
         </div>
-        <div class="card">
+        <div class="card p-3 flex-fill" style="min-width: 200px; max-width: 300px;">
             <h2>Rp. {{ number_format($pendapatanPaket ?? 0, 0, ',', '.') }}</h2>
             <p>Pendapatan Pemesanan Paket (Bulan Ini)</p>
         </div>
-        <div class="card">
+        <div class="card p-3 flex-fill" style="min-width: 200px; max-width: 300px;">
             <h2>{{ $jumlahPengunjungHomestay ?? 0 }}</h2>
             <p>Jumlah Pengunjung Homestay (Bulan Ini)</p>
         </div>
-        <div class="card">
+        <div class="card p-3 flex-fill" style="min-width: 200px; max-width: 300px;">
             <h2>{{ $jumlahPengunjungPaket ?? 0 }}</h2>
             <p>Jumlah Pengunjung Paket (Bulan Ini)</p>
         </div>
